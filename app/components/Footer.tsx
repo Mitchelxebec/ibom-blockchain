@@ -37,7 +37,7 @@ export default function Footer() {
 
                             {/* Learn More Button */}
                             <a 
-                                href="https://t.co/HGiZ0Ooyef"
+                                href="/maintenance"
                                 className="border border-white text-white px-6 py-2 rounded-lg text-sm font-medium hover:bg-white hover:text-black transition inline-block"
                             >
                                 Learn More
@@ -53,12 +53,12 @@ export default function Footer() {
                             </a>
                         </div>
                         <div>
-                            <a href="https://t.co/HGiZ0Ooyef" className="font-sans text-[14px] md:text-[16px] font-normal hover:text-orange-500 transition">
+                            <a href="/maintenance" className="font-sans text-[14px] md:text-[16px] font-normal hover:text-orange-500 transition">
                                 About Us
                             </a>
                         </div>
                         <div>
-                            <a href="https://t.co/HGiZ0Ooyef" className="font-sans text-[14px] md:text-[16px] font-normal hover:text-orange-500 transition">
+                            <a href="/maintenance" className="font-sans text-[14px] md:text-[16px] font-normal hover:text-orange-500 transition">
                                 IBX Tour
                             </a>
                         </div>
@@ -79,7 +79,7 @@ export default function Footer() {
                             rel="noopener noreferrer">
                             <Twitter className="w-5 h-5" />
                         </a>
-                        <a href="https://t.co/HGiZ0Ooyef" className="w-10 h-10 flex items-center justify-center hover:text-orange-500 transition" aria-label="LinkedIn" target="_blank"
+                        <a href="" className="w-10 h-10 flex items-center justify-center hover:text-orange-500 transition" aria-label="LinkedIn" target="_blank"
                             rel="noopener noreferrer">
                             <Linkedin className="w-5 h-5" />
                         </a>
@@ -87,13 +87,13 @@ export default function Footer() {
                             rel="noopener noreferrer">
                             <Facebook className="w-5 h-5" />
                         </a>
-                        <a href="https://t.co/HGiZ0Ooyef" className="w-10 h-10 flex items-center justify-center hover:text-orange-500 transition" aria-label="TikTok" target="_blank"
+                        <a href="/maintenance" className="w-10 h-10 flex items-center justify-center hover:text-orange-500 transition" aria-label="TikTok" target="_blank"
                             rel="noopener noreferrer">
                             <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1.04-.1z" />
                             </svg>
                         </a>
-                        <a href="https://t.co/HGiZ0Ooyef" className="w-10 h-10 flex items-center justify-center hover:text-orange-500 transition" aria-label="Instagram" target="_blank"
+                        <a href="/maintenance" className="w-10 h-10 flex items-center justify-center hover:text-orange-500 transition" aria-label="Instagram" target="_blank"
                             rel="noopener noreferrer">
                             <Instagram className="w-5 h-5" />
                         </a>

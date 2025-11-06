@@ -54,9 +54,9 @@ export default function Navbar({ showButton = false, extraLinks = [] }: NavbarPr
 
                     {/* CTA Button (only if showButton is true) */}
                     {showButton && (
-                        <button className="hidden md:block bg-orange-500 hover:bg-orange-600 text-white px-5 py-2 rounded-lg transition">
+                        <Link href="/maintenance" className="hidden md:block bg-orange-500 hover:bg-orange-600 text-white px-5 py-2 rounded-lg transition">
                             Register Now
-                        </button>
+                        </Link>
                     )}
                 </div>
 
@@ -90,9 +90,9 @@ export default function Navbar({ showButton = false, extraLinks = [] }: NavbarPr
 
                     {/* Show button on mobile if enabled */}
                     {showButton && (
-                        <button className="mt-4 bg-orange-500 hover:bg-orange-600 text-black px-5 py-2 rounded-lg transition">
+                        <Link href="/maintenance" className="mt-4 bg-orange-500 hover:bg-orange-600 text-black px-5 py-2 rounded-lg transition">
                             Register Now
-                        </button>
+                        </Link>
                     )}
                 </div>
             )}

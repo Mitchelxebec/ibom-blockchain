@@ -33,9 +33,9 @@ export default function Home() {
     <div className="bg-black min-h-screen">
       <Navbar
         extraLinks={[
-          { label: "About Us", href: "https://t.co/HGiZ0Ooyef" },
-          { label: "IBX 26", href: "https://t.co/HGiZ0Ooyef" },
-          { label: "IBX Tour", href: "https://t.co/HGiZ0Ooyef" },
+          { label: "About Us", href: "/maintenance" },
+          { label: "IBX 26", href: "/maintenance" },
+          { label: "IBX Tour", href: "/maintenance" },
         ]}
       />
 
@@ -63,7 +63,7 @@ export default function Home() {
             <div className="flex items-center gap-4 md:gap-6 mt-2">
               {/* Orange Button */}
               <Link
-                href="https://t.co/HGiZ0Ooyef"
+                href="/maintenance"
                 className="bg-[#E87A12] text-black font-[DM Sans] font-bold text-[14px] md:text-[16px] rounded-lg px-6 md:px-8 py-3 md:py-3.5 transition-all duration-300 hover:bg-[#f68924] hover:scale-105 hover:shadow-lg hover:shadow-orange-500/30"
               >
                 2026 Event
@@ -71,7 +71,7 @@ export default function Home() {
 
               {/* White Outline Button */}
               <Link
-                href="https://t.co/HGiZ0Ooyef"
+                href="/maintenance"
                 className="text-white font-[DM Sans] font-bold text-[14px] md:text-[16px] border-2 border-white rounded-lg px-6 md:px-8 py-3 md:py-3.5 transition-all duration-300 hover:bg-white/10 hover:scale-105"
               >
                 IBX Tour
@@ -97,7 +97,7 @@ export default function Home() {
 
             {/* Button */}
             <Link
-              href="https://t.co/HGiZ0Ooyef"
+              href="/maintenance"
               className="bg-[#E87A12] text-black font-[DM Sans] font-bold text-[14px] md:text-[16px] rounded-lg px-6 md:px-8 py-3 md:py-3.5 w-fit transition-all duration-300 hover:bg-[#f68924] hover:scale-105 hover:shadow-lg hover:shadow-orange-500/30"
             >
               Become a collaborator

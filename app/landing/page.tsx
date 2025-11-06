@@ -38,8 +38,8 @@ export default function Landing() {
             <Navbar
                 showButton={true}
                 extraLinks={[
-                    { label: "About Us", href: "https://t.co/HGiZ0Ooyef" },
-                    { label: "IBX Tour", href: "https://t.co/HGiZ0Ooyef" },
+                    { label: "About Us", href: "/maintenance" },
+                    { label: "IBX Tour", href: "/maintenance" },
                 ]}
             />
 
@@ -59,7 +59,7 @@ export default function Landing() {
                         <h1 className="font-display text-[32px] md:text-[56px] font-black leading-tight md:leading-[64px] tracking-[-0.01em] text-white capitalize">
                             West Africa Largest <span className="text-orange-500 font-display">Blockchain</span> Gathering
                         </h1>
-                        <Link href="https://t.co/HGiZ0Ooyef" className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 md:px-8 md:py-3 rounded-lg text-base md:text-lg font-semibold transition transform hover:scale-105 w-fit">
+                        <Link href="/maintenance" className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 md:px-8 md:py-3 rounded-lg text-base md:text-lg font-semibold transition transform hover:scale-105 w-fit">
                             Register Now
                         </Link>
                     </div>
@@ -131,7 +131,7 @@ export default function Landing() {
                                 It's the heartbeat of West Africa's blockchain evolution.
                             </p>
 
-                            <Link href="https://t.co/HGiZ0Ooyef" className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 md:px-6 md:py-2 rounded-lg text-xs md:text-sm font-semibold transition w-fit">
+                            <Link href="/maintenance" className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 md:px-6 md:py-2 rounded-lg text-xs md:text-sm font-semibold transition w-fit">
                                 Watch IBS 25
                             </Link>
                         </div>
@@ -154,7 +154,7 @@ export default function Landing() {
                             It's the heartbeat of West Africa's blockchain evolution.
                         </p>
 
-                        <Link href="https://t.co/HGiZ0Ooyef" className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg text-xs font-semibold transition w-fit">
+                        <Link href="/maintenance" className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg text-xs font-semibold transition w-fit">
                             Watch IBS 25
                         </Link>
                     </div>
@@ -440,7 +440,7 @@ export default function Landing() {
                     </div>
                 </section>
 
-{/* 2026 WILL DEFINE AN XPERIENCE - MOBILE */}
+                {/* 2026 WILL DEFINE AN XPERIENCE - MOBILE */}
                 <section className="py-10 px-4 w-full mx-auto md:hidden">
                     <div className="w-full bg-black rounded-2xl p-8 text-white">
                         <h3 className="font-display text-[32px] font-black leading-[40px] mb-12 text-center">
@@ -515,7 +515,7 @@ export default function Landing() {
                             <h2 className="font-display text-[56px] font-black leading-[64px] tracking-[-0.01em]">
                                 Event Outline
                             </h2>
-                            <Link href="https://t.co/HGiZ0Ooyef" className="bg-orange-500 hover:bg-orange-600 text-black px-6 py-3 rounded-lg text-sm font-bold transition whitespace-nowrap">
+                            <Link href="/maintenance" className="bg-orange-500 hover:bg-orange-600 text-black px-6 py-3 rounded-lg text-sm font-bold transition whitespace-nowrap">
                                 Add to Calendar
                             </Link>
                         </div>
@@ -785,7 +785,7 @@ export default function Landing() {
                             <p className="font-sans text-[14px] font-normal leading-[20px] tracking-[-0.006em] text-gray-300 mb-6">
                                 Join us as we dive deep into virtually shaping blockchain and cryptocurrency prospects to Nigeria and Africa continent at large. It is an immersive two day experience featuring collaborative, batch sessions, providing a unique opportunity to engage in thought-provoking insights and actions all focused on the power of blockchain technology.
                             </p>
-                            <Link href="https://t.co/HGiZ0Ooyef" className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-lg text-sm font-semibold transition w-full block text-center">
+                            <Link href="/maintenance" className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-lg text-sm font-semibold transition w-full block text-center">
                                 Add To Calendar
                             </Link>
                         </div>
@@ -841,7 +841,7 @@ export default function Landing() {
                         </div>
 
                         {/* Register Button */}
-                        <Link href="https://t.co/HGiZ0Ooyef" className="bg-black text-white px-6 py-3 rounded-lg text-sm font-semibold transition w-full text-center hover:bg-gray-800">
+                        <Link href="/maintenance" className="bg-black text-white px-6 py-3 rounded-lg text-sm font-semibold transition w-full text-center hover:bg-gray-800">
                             Register
                         </Link>
                     </div>
@@ -868,7 +868,7 @@ export default function Landing() {
                                     We are proud to partner with these industry leaders who share our passion for discovery and help make our expeditions possible.
                                 </p>
                             </div>
-                            <Link href="https://t.co/HGiZ0Ooyef" className="bg-orange-500 hover:bg-orange-600 text-black px-6 py-3 rounded-lg text-sm font-bold transition whitespace-nowrap">
+                            <Link href="/maintenance" className="bg-orange-500 hover:bg-orange-600 text-black px-6 py-3 rounded-lg text-sm font-bold transition whitespace-nowrap">
                                 Become a collaborator
                             </Link>
                         </div>
@@ -999,7 +999,7 @@ export default function Landing() {
                             We are proud to partner with these industry leaders who share our passion for discovery and help make our expeditions possible.
                         </p>
 
-                        <Link href="https://t.co/HGiZ0Ooyef" className="bg-orange-500 hover:bg-orange-600 text-black px-6 py-3 rounded-lg text-sm font-bold transition w-full block text-center">
+                        <Link href="/maintenance" className="bg-orange-500 hover:bg-orange-600 text-black px-6 py-3 rounded-lg text-sm font-bold transition w-full block text-center">
                             Become a collaborator
                         </Link>
                     </div>
