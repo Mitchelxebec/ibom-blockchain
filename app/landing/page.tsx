@@ -5,19 +5,23 @@ import Image from "next/image";
 import Link from "next/link";
 import { TrendingUp, Code, Sparkles, Building2 } from "lucide-react";
 import Footer from "../components/Footer";
+import { useEffect, useRef, useState } from "react";
 
 const blockchainEvent = "/images/meetup.png";
 const speaker = "/images/speaker.png";
-const talkSession = "/images/talk-session.png";
-const buisnessCard = "/images/card-image.png";
-const eventImage1 = "/images/March10.png";
-const eventImage2 = "/images/March11.png";
-const eventImage3 = "/images/March12.png";
-const eventImage4 = "/images/March13.png";
-const eventImage5 = "/images/March14.png";
+const talkSession = "/images/talk-session.jpg";
+const buisnessCard = "/images/card-image.jpg";
+const eventImage1 = "/images/March10.jpg";
+const eventImage2 = "/images/March11.jpg";
+const eventImage3 = "/images/March12.jpg";
+const eventImage4 = "/images/March13.jpg";
+const eventImage5 = "/images/March14.jpg";
 
 
 export default function Landing() {
+    const scrollRef = useRef<HTMLDivElement>(null);
+    const [isPaused, setIsPaused] = useState(false);
+
     const collaborators = [
         "/images/AdomLabs.png",
         "/images/AI-i-Nigeria.png",
@@ -32,6 +36,66 @@ export default function Landing() {
         "/images/Satoshi.png",
         "/images/WomenInDeFi.png",
     ];
+
+    const cards = [
+        {
+            icon: TrendingUp,
+            title: "Investors",
+            description: "Individuals or entities looking to allocate capital into promising ventures. They seek opportunities that offer potential for growth and return on investment, making them a crucial audience for our event."
+        },
+        {
+            icon: Code,
+            title: "Developers",
+            description: "Individuals or teams eager to invest in Web3 by developing innovative technologies for opportunities that promise growth and lasting returns, making them an essential part of our event's audience."
+        },
+        {
+            icon: Sparkles,
+            title: "Blockchain Enthusiast",
+            description: "People keen on exploring decentralized solutions and blockchain opportunities that offer potential for growth and disrupt returns, making them a vital segment of our event's audience."
+        },
+        {
+            icon: Building2,
+            title: "Regulators",
+            description: "Regulators are essential to Web3's adoption and innovation potential, ensuring scalable and dependable regulations that form a crucial part of our event's audience."
+        }
+    ];
+
+    // Triple the cards for seamless infinite scroll
+    const tripleCards = [...cards, ...cards, ...cards];
+
+    useEffect(() => {
+        const scrollContainer = scrollRef.current;
+        if (!scrollContainer) return;
+
+        const cardWidth = 280 + 16; // card width + gap
+        const totalCards = cards.length;
+        let intervalId: NodeJS.Timeout;
+
+        const autoScroll = () => {
+            if (isPaused) return;
+
+            const currentScroll = scrollContainer.scrollLeft;
+            const maxScroll = cardWidth * totalCards;
+
+            // Smooth scroll to next card
+            scrollContainer.scrollBy({
+                left: cardWidth,
+                behavior: 'smooth'
+            });
+
+            // Reset position when reaching the end of first set
+            if (currentScroll >= maxScroll - cardWidth) {
+                setTimeout(() => {
+                    scrollContainer.scrollLeft = cardWidth;
+                }, 500);
+            }
+        };
+
+        // Auto-scroll every 3 seconds
+        intervalId = setInterval(autoScroll, 3000);
+
+        return () => clearInterval(intervalId);
+    }, [isPaused, cards.length]);
 
     return (
         <div>
@@ -59,14 +123,14 @@ export default function Landing() {
                         <h1 className="font-display text-[32px] md:text-[56px] font-black leading-tight md:leading-[64px] tracking-[-0.01em] text-white capitalize">
                             West Africa Largest <span className="text-orange-500 font-display">Blockchain</span> Gathering
                         </h1>
-                        <Link href="/maintenance" className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 md:px-8 md:py-3 rounded-lg text-base md:text-lg font-semibold transition transform hover:scale-105 w-fit">
+                        <Link href="/maintenance" className="bg-orange-500 hover:bg-orange-600 text-white font-[DM Sans] font-bold text-[14px] md:text-[16px] rounded-lg px-6 md:px-8 py-3 md:py-3.5 text-base md:text-lg transition transform hover:scale-105 w-fit">
                             Register Now
                         </Link>
                     </div>
                 </div>
             </section>
 
-            <main className="bg-black text-white py-20 px-4 md:px-16">
+            <main className="bg-black text-white py-20 px-2 md:px-2">
                 {/* Content Grid Section - DESKTOP */}
                 <section className="py-20 px-6 md:px-12 lg:px-20 max-w-7xl mx-auto hidden md:block">
                     <div className="w-full max-w-[1282px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -123,7 +187,7 @@ export default function Landing() {
 
                         {/* Security Focused Card */}
                         <div className="bg-black rounded-2xl p-6 md:p-8 h-[360px] flex flex-col justify-between">
-                            <p className="font-sans text-[14px] md:text-[18px] font-medium leading-[20px] md:leading-[24px] tracking-[-0.015em]">
+                            <p className="font-sans text-[14px] md:text-[15px] font-medium leading-[20px] md:leading-[24px] tracking-[-0.015em]">
                                 The Ibom Blockchain Xperience (IBX) is West Africa's premier blockchain gathering,
                                 a convergence of innovators, industry leaders, creators, and enthusiasts from
                                 5 countries to explore the power of the Blockchain. Each edition brings thousands
@@ -138,28 +202,29 @@ export default function Landing() {
                     </div>
                 </section>
 
-                {/* MOBILE DISPLAY */}
+                {/* MOBILE DISPLAY ONLY */}
                 {/* Heartbeat Section for Mobile */}
-                <section className="py-10 px-4 w-full mx-auto md:hidden">
-                    <div className="flex flex-col gap-5">
-                        <h2 className="font-display text-[28px] font-black leading-[36px] tracking-[-0.01em]">
+                <section className="block md:hidden px-5 w-full mx-auto">
+                    <div className="max-w-4xl flex flex-col gap-6">
+                        <h3 className="font-display text-[25px] text-white font-black leading-[56px] tracking-[-0.02em]">
                             The heartbeat of West Africa's blockchain evolution
-                        </h2>
-
-                        <p className="font-sans text-[14px] font-medium leading-[20px] tracking-[-0.015em]">
+                        </h3>
+                        <p className="font-sans text-[16px] font-medium leading-[24px] tracking-[-0.01em] text-gray-300 text-pretty mb-4">
                             The Ibom Blockchain Xperience (IBX) is West Africa's premier blockchain gathering,
-                            a convergence of innovators, industry leaders, creators, and enthusiasts from
-                            5 countries to explore the power of the Blockchain. Each edition brings thousands
-                            together to learn, connect, and Experience what blockchain and adoption truly means.
-                            It's the heartbeat of West Africa's blockchain evolution.
+                            uniting innovators, industry leaders, creators, and enthusiasts from across
+                            5 countries to explore the transformative power of blockchain technology.
+                            Each edition brings thousands together to learn, connect, and experience
+                            what blockchain adoption truly means. It stands as the driving force behind
+                            West Africa's blockchain evolution.
                         </p>
-
-                        <Link href="/maintenance" className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg text-xs font-semibold transition w-fit">
+                        <Link
+                            href="/maintenance"
+                            className="bg-orange-500 hover:bg-orange-600 text-black px-6 py-3 rounded-lg text-sm font-semibold transition w-fit"
+                        >
                             Watch IBS 25
                         </Link>
                     </div>
                 </section>
-
                 {/* Two Images Section for Mobile */}
                 <section className="py-10 px-4 w-full mx-auto md:hidden">
                     <div className="w-full flex flex-col gap-5">
@@ -294,67 +359,40 @@ export default function Landing() {
                 </section>
 
                 {/* Who Is This Event For? Section - MOBILE */}
-                <section className="py-10 px-4 w-full mx-auto md:hidden">
+                <section className="md:hidden py-10 px-4 w-full mx-auto bg-black text-white">
                     <h2 className="font-display text-[28px] md:text-[40px] font-black leading-[36px] md:leading-[48px] tracking-[-0.01em] mb-8">
                         Who Is This Event For?
                     </h2>
 
                     {/* Horizontal Scrollable Container */}
-                    <div className="overflow-x-auto -mx-4 px-4">
+                    <div
+                        ref={scrollRef}
+                        className="overflow-x-auto -mx-4 px-4 scrollbar-hide"
+                        onMouseEnter={() => setIsPaused(true)}
+                        onMouseLeave={() => setIsPaused(false)}
+                        onTouchStart={() => setIsPaused(true)}
+                        onTouchEnd={() => setTimeout(() => setIsPaused(false), 2000)}
+                    >
                         <div className="flex gap-4 pb-4">
-                            {/* Investors */}
-                            <div className="bg-gray-900 rounded-2xl p-6 w-[280px] flex-shrink-0">
-                                <div className="w-12 h-12 bg-orange-500/20 rounded-lg flex items-center justify-center mb-4">
-                                    <TrendingUp className="w-6 h-6 text-orange-500" strokeWidth={2.5} />
-                                </div>
-                                <h3 className="font-display text-[20px] font-black leading-[28px] mb-3">
-                                    Investors
-                                </h3>
-                                <p className="font-sans text-[14px] font-medium leading-[20px] tracking-[-0.015em] text-gray-300">
-                                    Individuals or entities looking to allocate capital into promising ventures. They seek opportunities that offer potential for growth and return on investment, making them a crucial audience for our event.
-                                </p>
-                            </div>
-
-                            {/* Developers */}
-                            <div className="bg-gray-900 rounded-2xl p-6 w-[280px] flex-shrink-0">
-                                <div className="w-12 h-12 bg-orange-500/20 rounded-lg flex items-center justify-center mb-4">
-                                    <Code className="w-6 h-6 text-orange-500" strokeWidth={2.5} />
-                                </div>
-                                <h3 className="font-display text-[20px] font-black leading-[28px] mb-3">
-                                    Developers
-                                </h3>
-                                <p className="font-sans text-[14px] font-medium leading-[20px] tracking-[-0.015em] text-gray-300">
-                                    Individuals or teams eager to invest in Web3 by developing innovative technologies for opportunities that promise growth and lasting returns, making them an essential part of our event's audience.
-                                </p>
-                            </div>
-
-                            {/* Blockchain Enthusiast */}
-                            <div className="bg-gray-900 rounded-2xl p-6 w-[280px] flex-shrink-0">
-                                <div className="w-12 h-12 bg-orange-500/20 rounded-lg flex items-center justify-center mb-4">
-                                    <Sparkles className="w-6 h-6 text-orange-500" strokeWidth={2.5} />
-                                </div>
-                                <h3 className="font-display text-[20px] font-black leading-[28px] mb-3">
-                                    Blockchain Enthusiast
-                                </h3>
-                                <p className="font-sans text-[14px] font-medium leading-[20px] tracking-[-0.015em] text-gray-300">
-                                    People keen on exploring decentralized solutions and blockchain opportunities that offer potential for growth and disrupt returns, making them a vital segment of our event's audience.
-                                </p>
-                            </div>
-
-                            {/* Regulators */}
-                            <div className="bg-gray-900 rounded-2xl p-6 w-[280px] flex-shrink-0">
-                                <div className="w-12 h-12 bg-orange-500/20 rounded-lg flex items-center justify-center mb-4">
-                                    <Building2 className="w-6 h-6 text-orange-500" strokeWidth={2.5} />
-                                </div>
-                                <h3 className="font-display text-[20px] font-black leading-[28px] mb-3">
-                                    Regulators
-                                </h3>
-                                <p className="font-sans text-[14px] font-medium leading-[20px] tracking-[-0.015em] text-gray-300">
-                                    Regulators are essential to Web3's adoption and innovation potential, ensuring scalable and dependable regulations that form a crucial part of our event's audience.
-                                </p>
-                            </div>
+                            {tripleCards.map((card, index) => {
+                                const Icon = card.icon;
+                                return (
+                                    <div key={`card-${index}`} className="bg-gray-900 rounded-2xl p-6 w-[280px] flex-shrink-0">
+                                        <div className="w-12 h-12 bg-orange-500/20 rounded-lg flex items-center justify-center mb-4">
+                                            <Icon className="w-6 h-6 text-orange-500" strokeWidth={2.5} />
+                                        </div>
+                                        <h3 className="font-display text-[20px] font-black leading-[28px] mb-3">
+                                            {card.title}
+                                        </h3>
+                                        <p className="font-sans text-[14px] font-medium leading-[20px] tracking-[-0.015em] text-gray-300">
+                                            {card.description}
+                                        </p>
+                                    </div>
+                                );
+                            })}
                         </div>
                     </div>
+
                 </section>
 
                 {/* 2026 WILL DEFINE AN XPERIENCE - DESKTOP */}
@@ -505,7 +543,7 @@ export default function Landing() {
                         </div>
                     </div>
                 </section>
-                
+
                 {/* Event Outline Section - DESKTOP */}
                 <section className="py-20 px-6 md:px-12 lg:px-20 max-w-7xl mx-auto hidden md:block">
                     <div className="w-full max-w-[1441px] mx-auto">
@@ -781,7 +819,7 @@ export default function Landing() {
                             Event Outline
                         </h2>
 
-                        <div className="bg-black rounded-2xl p-6">
+                        <div className="bg-black rounded-2xl">
                             <p className="font-sans text-[14px] font-normal leading-[20px] tracking-[-0.006em] text-gray-300 mb-6">
                                 Join us as we dive deep into virtually shaping blockchain and cryptocurrency prospects to Nigeria and Africa continent at large. It is an immersive two day experience featuring collaborative, batch sessions, providing a unique opportunity to engage in thought-provoking insights and actions all focused on the power of blockchain technology.
                             </p>
@@ -793,58 +831,247 @@ export default function Landing() {
                 </section>
 
                 {/* Event Marketing Info Card - MOBILE */}
-                <section className="py-10 px-4 w-full mx-auto md:hidden">
-                    <div className="w-full bg-white rounded-xl p-5 text-black flex flex-col gap-5">
+                <section className="flex md:hidden py-10 px-4 w-full mx-auto overflow-hidden">
+                    <div
+                        className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4"
+                        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                    >
+                        {/* Event Card 1 */}
+                        <div className="bg-white text-black rounded-2xl overflow-hidden flex-shrink-0 w-[320px] snap-start">
+                            {/* Card Header */}
+                            <div className="p-6 pb-4">
+                                <p className="font-display text-[10px] font-bold uppercase tracking-wide text-gray-500 mb-4">
+                                    IBOM BLOCKCHAIN SUMMIT
+                                </p>
 
-                        {/* Date and Location Section */}
-                        <div className="w-full flex flex-col gap-6">
-                            <p className="font-display text-[12px] font-bold uppercase tracking-wide text-gray-500">
-                                DIGITAL MARKETING EXPO
-                            </p>
+                                {/* Date and Details */}
+                                <div className="flex gap-4 mb-4">
+                                    {/* Date */}
+                                    <div className="flex flex-col">
+                                        <h3 className="font-display text-[56px] font-black leading-[56px]">10</h3>
+                                        <p className="font-display text-[14px] font-bold">March</p>
+                                    </div>
 
-                            {/* Date and Location Grid */}
-                            <div className="grid grid-cols-[auto_1fr] gap-4 items-start">
-                                {/* Left - Date */}
-                                <div className="flex flex-col">
-                                    <h3 className="font-display text-[48px] md:text-[56px] font-black leading-[48px] md:leading-[56px]">
-                                        10
-                                    </h3>
-                                    <p className="font-display text-[14px] md:text-[16px] font-bold">March</p>
+                                    {/* Location and Time */}
+                                    <div className="flex flex-col gap-2 pt-2">
+                                        <div className="flex items-start gap-2">
+                                            <span className="text-[12px]">📍</span>
+                                            <p className="font-sans text-[12px] font-medium text-gray-900 leading-[16px]">
+                                                2972 Westheimer Rd. Santa Ana, Illinois 85486
+                                            </p>
+                                        </div>
+                                        <div className="flex items-center gap-2">
+                                            <span className="text-[12px]">🕐</span>
+                                            <p className="font-sans text-[12px] font-medium text-gray-900">
+                                                8:00 am - 5:00 PM
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
+                            </div>
 
-                                {/* Right - Location and Time */}
-                                <div className="flex flex-col gap-2 pt-1">
-                                    <div className="flex items-start gap-2">
-                                        <span className="text-[14px] flex-shrink-0">📍</span>
-                                        <p className="font-sans text-[12px] md:text-[14px] font-medium text-gray-900 leading-[18px] md:leading-[20px]">
-                                            1200 N LaSalle St. Chicago, Illinois 60610
-                                        </p>
-                                    </div>
-                                    <div className="flex items-center gap-2">
-                                        <span className="text-[14px] flex-shrink-0">🕐</span>
-                                        <p className="font-sans text-[12px] md:text-[14px] font-medium text-gray-900">
-                                            10:00 am - 4:00 PM
-                                        </p>
-                                    </div>
+                            {/* Event Image */}
+                            <div className="px-6 pb-6">
+                                <div className="w-full h-[240px] relative rounded-xl overflow-hidden">
+                                    <Image
+                                        src={eventImage1}
+                                        alt="Ibom Blockchain Summit Event"
+                                        fill
+                                        className="object-cover"
+                                    />
                                 </div>
                             </div>
                         </div>
 
-                        {/* Event Image */}
-                        <div className="w-full bg-gray-800 rounded-xl overflow-hidden relative h-[120px]">
-                            <Image
-                                src={buisnessCard}
-                                alt="card"
-                                fill
-                                className="object-cover"
-                            />
+                        {/* Event Card 2 */}
+                        <div className="bg-white text-black rounded-2xl overflow-hidden flex-shrink-0 w-[320px] snap-start">
+                            {/* Card Header */}
+                            <div className="p-6 pb-4">
+                                <p className="font-display text-[10px] font-bold uppercase tracking-wide text-gray-500 mb-4">
+                                    IBOM BLOCKCHAIN SUMMIT
+                                </p>
+
+                                {/* Date and Details */}
+                                <div className="flex gap-4 mb-4">
+                                    {/* Date */}
+                                    <div className="flex flex-col">
+                                        <h3 className="font-display text-[56px] font-black leading-[56px]">11</h3>
+                                        <p className="font-display text-[14px] font-bold">March</p>
+                                    </div>
+
+                                    {/* Location and Time */}
+                                    <div className="flex flex-col gap-2 pt-2">
+                                        <div className="flex items-start gap-2">
+                                            <span className="text-[12px]">📍</span>
+                                            <p className="font-sans text-[12px] font-medium text-gray-900 leading-[16px]">
+                                                123 Innovation Blvd, San Francisco, California 94107
+                                            </p>
+                                        </div>
+                                        <div className="flex items-center gap-2">
+                                            <span className="text-[12px]">🕐</span>
+                                            <p className="font-sans text-[12px] font-medium text-gray-900">
+                                                9:00 am - 5:00 PM
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Event Image */}
+                            <div className="px-6 pb-6">
+                                <div className="w-full h-[240px] relative rounded-xl overflow-hidden">
+                                    <Image
+                                        src={eventImage2}
+                                        alt="Blockchain Panel Discussion"
+                                        fill
+                                        className="object-cover"
+                                    />
+                                </div>
+                            </div>
                         </div>
 
-                        {/* Register Button */}
-                        <Link href="/maintenance" className="bg-black text-white px-6 py-3 rounded-lg text-sm font-semibold transition w-full text-center hover:bg-gray-800">
-                            Register
-                        </Link>
+                        {/* Event Card 3 */}
+                        <div className="bg-white text-black rounded-2xl overflow-hidden flex-shrink-0 w-[320px] snap-start">
+                            {/* Card Header */}
+                            <div className="p-6 pb-4">
+                                <p className="font-display text-[10px] font-bold uppercase tracking-wide text-gray-500 mb-4">
+                                    DEN OF ROGUES
+                                </p>
+
+                                {/* Date and Details */}
+                                <div className="flex gap-4 mb-4">
+                                    {/* Date */}
+                                    <div className="flex flex-col">
+                                        <h3 className="font-display text-[56px] font-black leading-[56px]">12</h3>
+                                        <p className="font-display text-[14px] font-bold">March</p>
+                                    </div>
+
+                                    {/* Location and Time */}
+                                    <div className="flex flex-col gap-2 pt-2">
+                                        <div className="flex items-start gap-2">
+                                            <span className="text-[12px]">📍</span>
+                                            <p className="font-sans text-[12px] font-medium text-gray-900 leading-[16px]">
+                                                456 Marketing St, New York, New York 10001
+                                            </p>
+                                        </div>
+                                        <div className="flex items-center gap-2">
+                                            <span className="text-[12px]">🕐</span>
+                                            <p className="font-sans text-[12px] font-medium text-gray-900">
+                                                10:00 am - 4:00 PM
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Event Image */}
+                            <div className="px-6 pb-6">
+                                <div className="w-full h-[240px] relative rounded-xl overflow-hidden">
+                                    <Image
+                                        src={eventImage3}
+                                        alt="Den of Rogues Presentation"
+                                        fill
+                                        className="object-cover"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Event Card 4 */}
+                        <div className="bg-white text-black rounded-2xl overflow-hidden flex-shrink-0 w-[320px] snap-start">
+                            {/* Card Header */}
+                            <div className="p-6 pb-4">
+                                <p className="font-display text-[10px] font-bold uppercase tracking-wide text-gray-500 mb-4">
+                                    IBX GALA: A CELEBRATION OF VISIONARIES
+                                </p>
+
+                                {/* Date and Details */}
+                                <div className="flex gap-4 mb-4">
+                                    {/* Date */}
+                                    <div className="flex flex-col">
+                                        <h3 className="font-display text-[56px] font-black leading-[56px]">13</h3>
+                                        <p className="font-display text-[14px] font-bold">March</p>
+                                    </div>
+
+                                    {/* Location and Time */}
+                                    <div className="flex flex-col gap-2 pt-2">
+                                        <div className="flex items-start gap-2">
+                                            <span className="text-[12px]">📍</span>
+                                            <p className="font-sans text-[12px] font-medium text-gray-900 leading-[16px]">
+                                                789 Community Dr, Portland, Oregon 97201
+                                            </p>
+                                        </div>
+                                        <div className="flex items-center gap-2">
+                                            <span className="text-[12px]">🕐</span>
+                                            <p className="font-sans text-[12px] font-medium text-gray-900">
+                                                8:30 am - 6:00 PM
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Event Image */}
+                            <div className="px-6 pb-6">
+                                <div className="w-full h-[240px] relative rounded-xl overflow-hidden">
+                                    <Image
+                                        src={eventImage4}
+                                        alt="Blockchain Village Event"
+                                        fill
+                                        className="object-cover"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Event Card 5 */}
+                        <div className="bg-white text-black rounded-2xl overflow-hidden flex-shrink-0 w-[320px] snap-start">
+                            {/* Card Header */}
+                            <div className="p-6 pb-4">
+                                <p className="font-display text-[10px] font-bold uppercase tracking-wide text-gray-500 mb-4">
+                                    FOUNDERS FORGE
+                                </p>
+
+                                {/* Date and Details */}
+                                <div className="flex gap-4 mb-4">
+                                    {/* Date */}
+                                    <div className="flex flex-col">
+                                        <h3 className="font-display text-[56px] font-black leading-[56px]">14</h3>
+                                        <p className="font-display text-[14px] font-bold">March</p>
+                                    </div>
+
+                                    {/* Location and Time */}
+                                    <div className="flex flex-col gap-2 pt-2">
+                                        <div className="flex items-start gap-2">
+                                            <span className="text-[12px]">📍</span>
+                                            <p className="font-sans text-[12px] font-medium text-gray-900 leading-[16px]">
+                                                101 Lamar St, Austin, Texas 78701
+                                            </p>
+                                        </div>
+                                        <div className="flex items-center gap-2">
+                                            <span className="text-[12px]">🕐</span>
+                                            <p className="font-sans text-[12px] font-medium text-gray-900">
+                                                9:30 am - 8:30 PM
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Event Image */}
+                            <div className="px-6 pb-6">
+                                <div className="w-full h-[240px] relative rounded-xl overflow-hidden">
+                                    <Image
+                                        src={eventImage5}
+                                        alt="Founders Forge Event"
+                                        fill
+                                        className="object-cover"
+                                    />
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
                 </section>
 
                 {/* Our Speakers Section - DESKTOP */}
@@ -1123,43 +1350,48 @@ export default function Landing() {
 
             {/* Single Style Tag for Both Desktop and Mobile */}
             <style jsx>{`
-    @keyframes scroll-right {
-        0% {
-            transform: translateX(0);
-        }
-        100% {
-            transform: translateX(-33.333%);
-        }
-    }
+                @keyframes scroll-right {
+                    0% {
+                        transform: translateX(0);
+                    }
+                    100% {
+                        transform: translateX(-33.333%);
+                    }
+                }
 
-    @keyframes scroll-left {
-        0% {
-            transform: translateX(-33.333%);
-        }
-        100% {
-            transform: translateX(0);
-        }
-    }
+                @keyframes scroll-left {
+                    0% {
+                        transform: translateX(-33.333%);
+                    }
+                    100% {
+                        transform: translateX(0);
+                    }
+                }
 
-    .animate-scroll-right {
-        animation: scroll-right 40s linear infinite;
-    }
+                .animate-scroll-right {
+                    animation: scroll-right 20s linear infinite;
+                }
 
-    .animate-scroll-left {
-        animation: scroll-left 40s linear infinite;
-    }
+                .animate-scroll-left {
+                    animation: scroll-left 20s linear infinite;
+                }
 
-    /* Faster animation for mobile */
-    @media (max-width: 768px) {
-        .animate-scroll-right {
-            animation: scroll-right 30s linear infinite;
-        }
+                /* Faster animation for mobile */
+                @media (max-width: 768px) {
+                    .animate-scroll-right {
+                        animation: scroll-right 5s linear infinite;
+                    }
 
-        .animate-scroll-left {
-            animation: scroll-left 30s linear infinite;
-        }
-    }
-`}</style>
+                    .animate-scroll-left {
+                        animation: scroll-left 5s linear infinite;
+                    }
+                }
+
+                //EVENT OUTLINE 
+                 .scrollbar-hide::-webkit-scrollbar {
+                         display: none;
+                 }
+            `}</style>
 
         </div >
     );

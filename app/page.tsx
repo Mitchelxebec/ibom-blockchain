@@ -34,7 +34,7 @@ export default function Home() {
       <Navbar
         extraLinks={[
           { label: "About Us", href: "/maintenance" },
-          { label: "IBX 26", href: "/maintenance" },
+          { label: "IBX 26", href: "/landing" },
           { label: "IBX Tour", href: "/maintenance" },
         ]}
       />
@@ -377,19 +377,19 @@ export default function Home() {
         }
 
         .animate-scroll-right {
-          animation: scroll-right 40s linear infinite;
+          animation: scroll-right 20s linear infinite;
         }
 
         .animate-scroll-left {
-          animation: scroll-left 40s linear infinite;
+          animation: scroll-left 20s linear infinite;
         }
 
         .animate-scroll-right-mobile {
-          animation: scroll-right-mobile 30s linear infinite;
+          animation: scroll-right-mobile 5s linear infinite;
         }
 
         .animate-scroll-left-mobile {
-          animation: scroll-left-mobile 30s linear infinite;
+          animation: scroll-left-mobile 5s linear infinite;
         }
       `}</style>
     </div>
