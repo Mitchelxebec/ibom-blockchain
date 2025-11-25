@@ -5,11 +5,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
-import ibxLogo from "../../public/images/ibx-logo.png";
+import ibxLogo from "../../public/images/ibx26.png";
 
 interface NavbarProps {
-    showButton?: boolean; // 👈 controls the "Register Now" button
-    extraLinks?: { label: string; href: string }[]; // 👈 optional extra links like IBX 2026
+    showButton?: boolean;
+    extraLinks?: { label: string; href: string }[];
 }
 
 export default function Navbar({ showButton = false, extraLinks = [] }: NavbarProps) {
@@ -24,10 +24,17 @@ export default function Navbar({ showButton = false, extraLinks = [] }: NavbarPr
 
     return (
         <nav className="fixed top-0 left-0 w-full bg-black/70 backdrop-blur-md text-white z-50">
-            <div className="container mx-auto flex justify-between items-center py-4 px-6">
-                {/* Logo */}
-                <div>
-                    <Image src={ibxLogo} alt="IBX logo" width={100} height={100} />
+            <div className="container mx-auto flex justify-between items-center h-16 md:h-20 px-6">
+                {/* Logo - Fixed height container */}
+                <div className="flex items-center">
+                    <Image 
+                        src={ibxLogo} 
+                        alt="IBX logo" 
+                        width={143}
+                        height={51}
+                        style={{ transform: 'rotate(0deg)' }}
+                        priority
+                    />
                 </div>
 
                 <div className="md:flex gap-20">
@@ -42,7 +49,7 @@ export default function Navbar({ showButton = false, extraLinks = [] }: NavbarPr
                             </Link>
                         </li>
 
-                        {/* Extra links (like IBX 2026) - using index + label for unique key */}
+                        {/* Extra links */}
                         {extraLinks.map((link, index) => (
                             <li key={`${link.label}-${index}`}>
                                 <Link href={link.href} className={getLinkClasses(link.href)}>
@@ -52,9 +59,12 @@ export default function Navbar({ showButton = false, extraLinks = [] }: NavbarPr
                         ))}
                     </ul>
 
-                    {/* CTA Button (only if showButton is true) */}
+                    {/* CTA Button */}
                     {showButton && (
-                        <Link href="/maintenance" className="hidden md:block bg-orange-500 hover:bg-orange-600 text-white px-5 py-2 rounded-lg transition">
+                        <Link 
+                            href="/maintenance" 
+                            className="hidden md:block bg-orange-500 hover:bg-orange-600 text-white px-5 py-2 rounded-lg transition"
+                        >
                             Register Now
                         </Link>
                     )}
@@ -64,6 +74,7 @@ export default function Navbar({ showButton = false, extraLinks = [] }: NavbarPr
                 <button
                     className="md:hidden text-white focus:outline-none"
                     onClick={() => setMenuOpen(!menuOpen)}
+                    aria-label="Toggle menu"
                 >
                     {menuOpen ? <X size={28} /> : <Menu size={28} />}
                 </button>
@@ -72,17 +83,21 @@ export default function Navbar({ showButton = false, extraLinks = [] }: NavbarPr
             {/* Mobile Menu */}
             {menuOpen && (
                 <div className="md:hidden bg-black/90 text-center py-8 space-y-6">
-                    <Link href="/" onClick={() => setMenuOpen(false)} className="block hover:text-white">
+                    <Link 
+                        href="/" 
+                        onClick={() => setMenuOpen(false)} 
+                        className="block hover:text-orange-500 transition"
+                    >
                         Home
                     </Link>
 
-                    {/* Extra links for mobile - using index + label for unique key */}
+                    {/* Extra links for mobile */}
                     {extraLinks.map((link, index) => (
                         <Link
                             key={`mobile-${link.label}-${index}`}
                             href={link.href}
                             onClick={() => setMenuOpen(false)}
-                            className="block hover:text-white"
+                            className="block hover:text-orange-500 transition"
                         >
                             {link.label}
                         </Link>
@@ -90,7 +105,11 @@ export default function Navbar({ showButton = false, extraLinks = [] }: NavbarPr
 
                     {/* Show button on mobile if enabled */}
                     {showButton && (
-                        <Link href="/maintenance" className="mt-4 bg-orange-500 hover:bg-orange-600 text-black px-5 py-2 rounded-lg transition">
+                        <Link 
+                            href="/maintenance" 
+                            onClick={() => setMenuOpen(false)}
+                            className="inline-block mt-4 bg-orange-500 hover:bg-orange-600 text-white px-5 py-2 rounded-lg transition"
+                        >
                             Register Now
                         </Link>
                     )}

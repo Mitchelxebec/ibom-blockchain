@@ -11,11 +11,11 @@ const blockchainEvent = "/images/meetup.png";
 const speaker = "/images/speaker.png";
 const talkSession = "/images/talk-session.jpg";
 const buisnessCard = "/images/card-image.jpg";
-const eventImage1 = "/images/March10.jpg";
-const eventImage2 = "/images/March11.jpg";
-const eventImage3 = "/images/March12.jpg";
-const eventImage4 = "/images/March13.jpg";
-const eventImage5 = "/images/March14.jpg";
+const embeddedImg1 = "/images/embedded-img1.jpg";
+const embeddedImg2 = "/images/embedded-img2.jpg";
+const embeddedImg3 = "/images/embedded-img3.jpg";
+const embeddedImg4 = "/images/embedded-img4.jpg";
+const embeddedImg5 = "/images/embedded-img5.jpg";
 
 
 export default function Landing() {
@@ -96,6 +96,140 @@ export default function Landing() {
 
         return () => clearInterval(intervalId);
     }, [isPaused, cards.length]);
+
+
+    const eventImage1 = "/images/March10.jpg";
+    const eventImage2 = "/images/March11.jpg";
+    const eventImage3 = "/images/March12.jpg";
+    const eventImage4 = "/images/March13.jpg";
+    const eventImage5 = "/images/March14.jpg";
+
+    const events = [
+        {
+            title: "IBOM BLOCKCHAIN SUMMIT",
+            day: "10",
+            month: "March",
+            location: "E3 Event Center Uyo Village Road",
+            time: "8:00 am - 5:00 PM",
+            image: eventImage1,
+            alt: "Ibom Blockchain Summit Event"
+        },
+        {
+            title: "IBOM BLOCKCHAIN SUMMIT",
+            day: "11",
+            month: "March",
+            location: "E3 Event Center Uyo Village Road",
+            time: "9:00 am - 5:00 PM",
+            image: eventImage2,
+            alt: "Blockchain Panel Discussion"
+        },
+        {
+            title: "DEN OF ROGUES",
+            day: "12",
+            month: "March",
+            location: "E3 Event Center Uyo Village Road",
+            time: "10:00 am - 4:00 PM",
+            image: eventImage3,
+            alt: "Den of Rogues Presentation"
+        },
+        {
+            title: "IBX GALA: A CELEBRATION OF VISIONARIES",
+            day: "13",
+            month: "March",
+            location: "Upon Registration",
+            time: "8:30 am - 6:00 PM",
+            image: eventImage4,
+            alt: "Blockchain Village Event"
+        },
+        {
+            title: "FOUNDERS FORGE",
+            day: "14",
+            month: "March",
+            location: "Exclusive",
+            time: "9:30 am - 8:30 PM",
+            image: eventImage5,
+            alt: "Founders Forge Event"
+        }
+    ];
+
+    // Triple the events for seamless infinite scroll
+    const tripleEvents = [...events, ...events, ...events];
+
+    useEffect(() => {
+        const scrollContainer = scrollRef.current;
+        if (!scrollContainer) return;
+
+        const cardWidth = 320 + 16; // card width + gap
+        const totalCards = events.length;
+        let intervalId: NodeJS.Timeout;
+
+        const autoScroll = () => {
+            if (isPaused) return;
+
+            const currentScroll = scrollContainer.scrollLeft;
+            const maxScroll = cardWidth * totalCards;
+
+            // Smooth scroll to next card
+            scrollContainer.scrollBy({
+                left: cardWidth,
+                behavior: 'smooth'
+            });
+
+            // Reset position when reaching the end of first set
+            if (currentScroll >= maxScroll - cardWidth) {
+                setTimeout(() => {
+                    scrollContainer.scrollLeft = cardWidth;
+                }, 500);
+            }
+        };
+
+        // Auto-scroll every 3 seconds
+        intervalId = setInterval(autoScroll, 3000);
+
+        return () => clearInterval(intervalId);
+    }, [isPaused, events.length]);
+
+    const EventCard = ({ event }: { event: typeof events[0] }) => (
+        <div className="bg-white text-black rounded-2xl overflow-hidden flex-shrink-0 w-[320px] snap-start">
+            <div className="p-6 pb-4">
+                <p className="font-display text-[10px] font-bold uppercase tracking-wide text-gray-500 mb-4">
+                    {event.title}
+                </p>
+
+                <div className="flex gap-4 mb-4">
+                    <div className="flex flex-col">
+                        <h3 className="font-display text-[56px] font-black leading-[56px]">{event.day}</h3>
+                        <p className="font-display text-[14px] font-bold">{event.month}</p>
+                    </div>
+
+                    <div className="flex flex-col gap-2 pt-2">
+                        <div className="flex items-start gap-2">
+                            <span className="text-[12px]">📍</span>
+                            <p className="font-sans text-[12px] font-medium text-gray-900 leading-[16px]">
+                                {event.location}
+                            </p>
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <span className="text-[12px]">🕐</span>
+                            <p className="font-sans text-[12px] font-medium text-gray-900">
+                                {event.time}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="px-6 pb-6">
+                <div className="w-full h-[240px] relative rounded-xl overflow-hidden bg-gray-200">
+                    <img
+                        src={event.image}
+                        alt={event.alt}
+                        className="w-full h-full object-cover"
+                    />
+                </div>
+            </div>
+        </div>
+    );
 
     return (
         <div>
@@ -228,22 +362,76 @@ export default function Landing() {
                 {/* Two Images Section for Mobile */}
                 <section className="py-10 px-4 w-full mx-auto md:hidden">
                     <div className="w-full flex flex-col gap-5">
-                        <div className=" rounded-2xl overflow-hidden relative h-[400px]">
+                        {/* First Image - Career Development */}
+                        <div className="rounded-2xl overflow-hidden relative h-[400px]">
                             <Image
                                 src={talkSession}
                                 alt="Blockchain talk session"
                                 fill
                                 className="object-cover opacity-50"
                             />
+                            <div className="absolute inset-0 flex flex-col justify-end p-8 z-10">
+                                <h3 className="font-display text-[20px] font-black leading-[28px] tracking-normal mb-4 text-white">
+                                    CAREER DEVELOPMENT<br />IN BLOCKCHAIN
+                                </h3>
+                                <p className="font-sans text-[14px] font-medium leading-[20px] tracking-[-0.015em] text-white">
+                                    The summit will focus on education on various career paths in the blockchain industry through expert-led panel sessions and workshops.
+                                </p>
+                            </div>
                         </div>
 
-                        <div className=" rounded-2xl overflow-hidden relative h-[400px]">
+                        {/* Second Image - Educate and Empower */}
+                        <div className="rounded-2xl overflow-hidden relative h-[400px]">
                             <Image
                                 src={talkSession}
                                 alt="Blockchain talk session"
                                 fill
                                 className="object-cover opacity-50"
                             />
+                            <div className="absolute inset-0 flex flex-col justify-end p-8 z-10">
+                                <h3 className="font-display text-[20px] font-black leading-[28px] tracking-normal mb-4 text-white">
+                                    EDUCATE AND<br />EMPOWER
+                                </h3>
+                                <p className="font-sans text-[14px] font-medium leading-[20px] tracking-[-0.015em] text-white">
+                                    The summit aims to offer in-depth education on Web3 technologies, covering key areas such as decentralized finance (DeFi), NFTs, smart contracts, and blockchain development.
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* third Image - Educate and Empower */}
+                        <div className="rounded-2xl overflow-hidden relative h-[400px]">
+                            <Image
+                                src={talkSession}
+                                alt="Blockchain talk session"
+                                fill
+                                className="object-cover opacity-50"
+                            />
+                            <div className="absolute inset-0 flex flex-col justify-end p-8 z-10">
+                                <h3 className="font-display text-[20px] font-black leading-[28px] tracking-normal mb-4 text-white">
+                                    EDUCATE AND<br />EMPOWER
+                                </h3>
+                                <p className="font-sans text-[14px] font-medium leading-[20px] tracking-[-0.015em] text-white">
+                                    The summit aims to offer in-depth education on Web3 technologies, covering key areas such as decentralized finance (DeFi), NFTs, smart contracts, and blockchain development.
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* forth Image - Educate and Empower */}
+                        <div className="rounded-2xl overflow-hidden relative h-[400px]">
+                            <Image
+                                src={talkSession}
+                                alt="Blockchain talk session"
+                                fill
+                                className="object-cover opacity-50"
+                            />
+                            <div className="absolute inset-0 flex flex-col justify-end p-8 z-10">
+                                <h3 className="font-display text-[20px] font-black leading-[28px] tracking-normal mb-4 text-white">
+                                    EDUCATE AND<br />EMPOWER
+                                </h3>
+                                <p className="font-sans text-[14px] font-medium leading-[20px] tracking-[-0.015em] text-white">
+                                    The summit aims to offer in-depth education on Web3 technologies, covering key areas such as decentralized finance (DeFi), NFTs, smart contracts, and blockchain development.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -262,10 +450,10 @@ export default function Landing() {
                                 <Image src={speaker} alt="Speaker 1" fill className="object-cover" />
                             </div>
                             <div className="bg-gray-800 rounded-lg md:rounded-2xl overflow-hidden relative h-[100px] md:h-[360px]">
-                                <Image src={speaker} alt="speaker 2" fill className="object-cover" />
+                                <Image src={embeddedImg1} alt="speaker 2" fill className="object-cover" />
                             </div>
                             <div className="bg-gray-800 rounded-lg md:rounded-2xl overflow-hidden relative h-[100px] md:h-[360px]">
-                                <Image src={speaker} alt="Speaker 3" fill className="object-cover" />
+                                <Image src={embeddedImg2} alt="Speaker 3" fill className="object-cover" />
                             </div>
                         </div>
 
@@ -279,13 +467,13 @@ export default function Landing() {
                         {/* Right Column - 3 Images Stacked */}
                         <div className="flex flex-col gap-2 md:gap-5">
                             <div className="bg-gray-800 rounded-lg md:rounded-2xl overflow-hidden relative h-[100px] md:h-[360px]">
-                                <Image src={speaker} alt="Speaker 4" fill className="object-cover" />
+                                <Image src={embeddedImg3} alt="Speaker 4" fill className="object-cover" />
                             </div>
                             <div className="bg-gray-800 rounded-lg md:rounded-2xl overflow-hidden relative h-[100px] md:h-[360px]">
-                                <Image src={speaker} alt="Speaker 5" fill className="object-cover" />
+                                <Image src={embeddedImg4} alt="Speaker 5" fill className="object-cover" />
                             </div>
                             <div className="bg-gray-800 rounded-lg md:rounded-2xl overflow-hidden relative h-[100px] md:h-[360px]">
-                                <Image src={speaker} alt="Speaker 6" fill className="object-cover" />
+                                <Image src={embeddedImg5} alt="Speaker 6" fill className="object-cover" />
                             </div>
                         </div>
                     </div>
@@ -547,18 +735,15 @@ export default function Landing() {
                 {/* Event Outline Section - DESKTOP */}
                 <section className="py-20 px-6 md:px-12 lg:px-20 max-w-7xl mx-auto hidden md:block">
                     <div className="w-full max-w-[1441px] mx-auto">
-
-                        {/* Header with Button */}
                         <div className="flex justify-between items-start mb-8">
-                            <h2 className="font-display text-[56px] font-black leading-[64px] tracking-[-0.01em]">
+                            <h2 className="font-display text-[56px] font-black leading-[64px] tracking-[-0.01em] text-white">
                                 Event Outline
                             </h2>
-                            <Link href="/maintenance" className="bg-orange-500 hover:bg-orange-600 text-black px-6 py-3 rounded-lg text-sm font-bold transition whitespace-nowrap">
+                            <button className="bg-orange-500 hover:bg-orange-600 text-black px-6 py-3 rounded-lg text-sm font-bold transition whitespace-nowrap">
                                 Add to Calendar
-                            </Link>
+                            </button>
                         </div>
 
-                        {/* Description */}
                         <div className="mb-12">
                             <p className="font-sans text-[16px] font-normal leading-[24px] tracking-[-0.006em] text-white max-w-[960px]">
                                 Join us at the Ibom Blockchain Summit, where visionaries and pioneers converge to explore the future of Blockchain technology.
@@ -567,513 +752,40 @@ export default function Landing() {
                             </p>
                         </div>
 
-                        {/* Event Cards Grid - First Row */}
                         <div className="grid grid-cols-3 gap-5 mb-5">
-
-                            {/* Event Card 1 */}
-                            <div className="bg-white text-black rounded-2xl overflow-hidden">
-                                {/* Card Header */}
-                                <div className="p-6 pb-4">
-                                    <p className="font-display text-[10px] font-bold uppercase tracking-wide text-gray-500 mb-4">
-                                        IBOM BLOCKCHAIN SUMMIT
-                                    </p>
-
-                                    {/* Date and Details */}
-                                    <div className="flex gap-4 mb-4">
-                                        {/* Date */}
-                                        <div className="flex flex-col">
-                                            <h3 className="font-display text-[56px] font-black leading-[56px]">10</h3>
-                                            <p className="font-display text-[14px] font-bold">March</p>
-                                        </div>
-
-                                        {/* Location and Time */}
-                                        <div className="flex flex-col gap-2 pt-2">
-                                            <div className="flex items-start gap-2">
-                                                <span className="text-[12px]">📍</span>
-                                                <p className="font-sans text-[12px] font-medium text-gray-900 leading-[16px]">
-                                                    2972 Westheimer Rd. Santa Ana, Illinois 85486
-                                                </p>
-                                            </div>
-                                            <div className="flex items-center gap-2">
-                                                <span className="text-[12px]">🕐</span>
-                                                <p className="font-sans text-[12px] font-medium text-gray-900">
-                                                    8:00 am - 5:00 PM
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Event Image */}
-                                <div className="px-6 pb-6">
-                                    <div className="w-full h-[240px] relative rounded-xl overflow-hidden">
-                                        <Image
-                                            src={eventImage1}
-                                            alt="Ibom Blockchain Summit Event"
-                                            fill
-                                            className="object-cover"
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Event Card 2 */}
-                            <div className="bg-white text-black rounded-2xl overflow-hidden">
-                                {/* Card Header */}
-                                <div className="p-6 pb-4">
-                                    <p className="font-display text-[10px] font-bold uppercase tracking-wide text-gray-500 mb-4">
-                                        IBOM BLOCKCHAIN SUMMIT
-                                    </p>
-
-                                    {/* Date and Details */}
-                                    <div className="flex gap-4 mb-4">
-                                        {/* Date */}
-                                        <div className="flex flex-col">
-                                            <h3 className="font-display text-[56px] font-black leading-[56px]">11</h3>
-                                            <p className="font-display text-[14px] font-bold">March</p>
-                                        </div>
-
-                                        {/* Location and Time */}
-                                        <div className="flex flex-col gap-2 pt-2">
-                                            <div className="flex items-start gap-2">
-                                                <span className="text-[12px]">📍</span>
-                                                <p className="font-sans text-[12px] font-medium text-gray-900 leading-[16px]">
-                                                    123 Innovation Blvd, San Francisco, California 94107
-                                                </p>
-                                            </div>
-                                            <div className="flex items-center gap-2">
-                                                <span className="text-[12px]">🕐</span>
-                                                <p className="font-sans text-[12px] font-medium text-gray-900">
-                                                    9:00 am - 5:00 PM
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Event Image */}
-                                <div className="px-6 pb-6">
-                                    <div className="w-full h-[240px] relative rounded-xl overflow-hidden">
-                                        <Image
-                                            src={eventImage2}
-                                            alt="Blockchain Panel Discussion"
-                                            fill
-                                            className="object-cover"
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Event Card 3 */}
-                            <div className="bg-white text-black rounded-2xl overflow-hidden">
-                                {/* Card Header */}
-                                <div className="p-6 pb-4">
-                                    <p className="font-display text-[10px] font-bold uppercase tracking-wide text-gray-500 mb-4">
-                                        DEN OF ROGUES
-                                    </p>
-
-                                    {/* Date and Details */}
-                                    <div className="flex gap-4 mb-4">
-                                        {/* Date */}
-                                        <div className="flex flex-col">
-                                            <h3 className="font-display text-[56px] font-black leading-[56px]">12</h3>
-                                            <p className="font-display text-[14px] font-bold">March</p>
-                                        </div>
-
-                                        {/* Location and Time */}
-                                        <div className="flex flex-col gap-2 pt-2">
-                                            <div className="flex items-start gap-2">
-                                                <span className="text-[12px]">📍</span>
-                                                <p className="font-sans text-[12px] font-medium text-gray-900 leading-[16px]">
-                                                    456 Marketing St, New York, New York 10001
-                                                </p>
-                                            </div>
-                                            <div className="flex items-center gap-2">
-                                                <span className="text-[12px]">🕐</span>
-                                                <p className="font-sans text-[12px] font-medium text-gray-900">
-                                                    10:00 am - 4:00 PM
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Event Image */}
-                                <div className="px-6 pb-6">
-                                    <div className="w-full h-[240px] relative rounded-xl overflow-hidden">
-                                        <Image
-                                            src={eventImage3}
-                                            alt="Den of Rogues Presentation"
-                                            fill
-                                            className="object-cover"
-                                        />
-                                    </div>
-                                </div>
-                            </div>
+                            {events.slice(0, 3).map((event, idx) => (
+                                <EventCard key={idx} event={event} />
+                            ))}
                         </div>
 
-                        {/* Event Cards Grid - Second Row */}
                         <div className="grid grid-cols-3 gap-5">
-
-                            {/* Event Card 4 */}
-                            <div className="bg-white text-black rounded-2xl overflow-hidden">
-                                {/* Card Header */}
-                                <div className="p-6 pb-4">
-                                    <p className="font-display text-[10px] font-bold uppercase tracking-wide text-gray-500 mb-4">
-                                        IBX GALA: A CELEBRATION OF VISIONARIES
-                                    </p>
-
-                                    {/* Date and Details */}
-                                    <div className="flex gap-4 mb-4">
-                                        {/* Date */}
-                                        <div className="flex flex-col">
-                                            <h3 className="font-display text-[56px] font-black leading-[56px]">13</h3>
-                                            <p className="font-display text-[14px] font-bold">March</p>
-                                        </div>
-
-                                        {/* Location and Time */}
-                                        <div className="flex flex-col gap-2 pt-2">
-                                            <div className="flex items-start gap-2">
-                                                <span className="text-[12px]">📍</span>
-                                                <p className="font-sans text-[12px] font-medium text-gray-900 leading-[16px]">
-                                                    789 Community Dr, Portland, Oregon 97201
-                                                </p>
-                                            </div>
-                                            <div className="flex items-center gap-2">
-                                                <span className="text-[12px]">🕐</span>
-                                                <p className="font-sans text-[12px] font-medium text-gray-900">
-                                                    8:30 am - 6:00 PM
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Event Image */}
-                                <div className="px-6 pb-6">
-                                    <div className="w-full h-[240px] relative rounded-xl overflow-hidden">
-                                        <Image
-                                            src={eventImage4}
-                                            alt="Blockchain Village Event"
-                                            fill
-                                            className="object-cover"
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Event Card 5 */}
-                            <div className="bg-white text-black rounded-2xl overflow-hidden">
-                                {/* Card Header */}
-                                <div className="p-6 pb-4">
-                                    <p className="font-display text-[10px] font-bold uppercase tracking-wide text-gray-500 mb-4">
-                                        FOUNDERS FORGE
-                                    </p>
-
-                                    {/* Date and Details */}
-                                    <div className="flex gap-4 mb-4">
-                                        {/* Date */}
-                                        <div className="flex flex-col">
-                                            <h3 className="font-display text-[56px] font-black leading-[56px]">14</h3>
-                                            <p className="font-display text-[14px] font-bold">March</p>
-                                        </div>
-
-                                        {/* Location and Time */}
-                                        <div className="flex flex-col gap-2 pt-2">
-                                            <div className="flex items-start gap-2">
-                                                <span className="text-[12px]">📍</span>
-                                                <p className="font-sans text-[12px] font-medium text-gray-900 leading-[16px]">
-                                                    101 Lamar St, Austin, Texas 78701
-                                                </p>
-                                            </div>
-                                            <div className="flex items-center gap-2">
-                                                <span className="text-[12px]">🕐</span>
-                                                <p className="font-sans text-[12px] font-medium text-gray-900">
-                                                    9:30 am - 8:30 PM
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Event Image */}
-                                <div className="px-6 pb-6">
-                                    <div className="w-full h-[240px] relative rounded-xl overflow-hidden">
-                                        <Image
-                                            src={eventImage5}
-                                            alt="Founders Forge Event"
-                                            fill
-                                            className="object-cover"
-                                        />
-                                    </div>
-                                </div>
-                            </div>
+                            {events.slice(3).map((event, idx) => (
+                                <EventCard key={idx + 3} event={event} />
+                            ))}
                         </div>
                     </div>
                 </section>
 
-                {/* Event Outline Section - MOBILE */}
-                <section className="py-10 px-4 w-full mx-auto md:hidden">
-                    <div className="flex flex-col gap-8">
-                        <h2 className="font-display text-[28px] font-black leading-[36px] tracking-[-0.01em]">
-                            Event Outline
-                        </h2>
-
-                        <div className="bg-black rounded-2xl">
-                            <p className="font-sans text-[14px] font-normal leading-[20px] tracking-[-0.006em] text-gray-300 mb-6">
-                                Join us as we dive deep into virtually shaping blockchain and cryptocurrency prospects to Nigeria and Africa continent at large. It is an immersive two day experience featuring collaborative, batch sessions, providing a unique opportunity to engage in thought-provoking insights and actions all focused on the power of blockchain technology.
-                            </p>
-                            <Link href="/maintenance" className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-lg text-sm font-semibold transition w-full block text-center">
-                                Add To Calendar
-                            </Link>
-                        </div>
-                    </div>
-                </section>
-
-                {/* Event Marketing Info Card - MOBILE */}
+                {/* Mobile View with Infinite Scroll */}
                 <section className="flex md:hidden py-10 px-4 w-full mx-auto overflow-hidden">
                     <div
-                        className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4"
-                        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                        ref={scrollRef}
+                        onMouseEnter={() => setIsPaused(true)}
+                        onMouseLeave={() => setIsPaused(false)}
+                        onTouchStart={() => setIsPaused(true)}
+                        onTouchEnd={() => setIsPaused(false)}
+                        className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4"
+                        style={{
+                            scrollbarWidth: 'none',
+                            msOverflowStyle: 'none',
+                            WebkitOverflowScrolling: 'touch'
+                        }}
                     >
-                        {/* Event Card 1 */}
-                        <div className="bg-white text-black rounded-2xl overflow-hidden flex-shrink-0 w-[320px] snap-start">
-                            {/* Card Header */}
-                            <div className="p-6 pb-4">
-                                <p className="font-display text-[10px] font-bold uppercase tracking-wide text-gray-500 mb-4">
-                                    IBOM BLOCKCHAIN SUMMIT
-                                </p>
-
-                                {/* Date and Details */}
-                                <div className="flex gap-4 mb-4">
-                                    {/* Date */}
-                                    <div className="flex flex-col">
-                                        <h3 className="font-display text-[56px] font-black leading-[56px]">10</h3>
-                                        <p className="font-display text-[14px] font-bold">March</p>
-                                    </div>
-
-                                    {/* Location and Time */}
-                                    <div className="flex flex-col gap-2 pt-2">
-                                        <div className="flex items-start gap-2">
-                                            <span className="text-[12px]">📍</span>
-                                            <p className="font-sans text-[12px] font-medium text-gray-900 leading-[16px]">
-                                                2972 Westheimer Rd. Santa Ana, Illinois 85486
-                                            </p>
-                                        </div>
-                                        <div className="flex items-center gap-2">
-                                            <span className="text-[12px]">🕐</span>
-                                            <p className="font-sans text-[12px] font-medium text-gray-900">
-                                                8:00 am - 5:00 PM
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Event Image */}
-                            <div className="px-6 pb-6">
-                                <div className="w-full h-[240px] relative rounded-xl overflow-hidden">
-                                    <Image
-                                        src={eventImage1}
-                                        alt="Ibom Blockchain Summit Event"
-                                        fill
-                                        className="object-cover"
-                                    />
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Event Card 2 */}
-                        <div className="bg-white text-black rounded-2xl overflow-hidden flex-shrink-0 w-[320px] snap-start">
-                            {/* Card Header */}
-                            <div className="p-6 pb-4">
-                                <p className="font-display text-[10px] font-bold uppercase tracking-wide text-gray-500 mb-4">
-                                    IBOM BLOCKCHAIN SUMMIT
-                                </p>
-
-                                {/* Date and Details */}
-                                <div className="flex gap-4 mb-4">
-                                    {/* Date */}
-                                    <div className="flex flex-col">
-                                        <h3 className="font-display text-[56px] font-black leading-[56px]">11</h3>
-                                        <p className="font-display text-[14px] font-bold">March</p>
-                                    </div>
-
-                                    {/* Location and Time */}
-                                    <div className="flex flex-col gap-2 pt-2">
-                                        <div className="flex items-start gap-2">
-                                            <span className="text-[12px]">📍</span>
-                                            <p className="font-sans text-[12px] font-medium text-gray-900 leading-[16px]">
-                                                123 Innovation Blvd, San Francisco, California 94107
-                                            </p>
-                                        </div>
-                                        <div className="flex items-center gap-2">
-                                            <span className="text-[12px]">🕐</span>
-                                            <p className="font-sans text-[12px] font-medium text-gray-900">
-                                                9:00 am - 5:00 PM
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Event Image */}
-                            <div className="px-6 pb-6">
-                                <div className="w-full h-[240px] relative rounded-xl overflow-hidden">
-                                    <Image
-                                        src={eventImage2}
-                                        alt="Blockchain Panel Discussion"
-                                        fill
-                                        className="object-cover"
-                                    />
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Event Card 3 */}
-                        <div className="bg-white text-black rounded-2xl overflow-hidden flex-shrink-0 w-[320px] snap-start">
-                            {/* Card Header */}
-                            <div className="p-6 pb-4">
-                                <p className="font-display text-[10px] font-bold uppercase tracking-wide text-gray-500 mb-4">
-                                    DEN OF ROGUES
-                                </p>
-
-                                {/* Date and Details */}
-                                <div className="flex gap-4 mb-4">
-                                    {/* Date */}
-                                    <div className="flex flex-col">
-                                        <h3 className="font-display text-[56px] font-black leading-[56px]">12</h3>
-                                        <p className="font-display text-[14px] font-bold">March</p>
-                                    </div>
-
-                                    {/* Location and Time */}
-                                    <div className="flex flex-col gap-2 pt-2">
-                                        <div className="flex items-start gap-2">
-                                            <span className="text-[12px]">📍</span>
-                                            <p className="font-sans text-[12px] font-medium text-gray-900 leading-[16px]">
-                                                456 Marketing St, New York, New York 10001
-                                            </p>
-                                        </div>
-                                        <div className="flex items-center gap-2">
-                                            <span className="text-[12px]">🕐</span>
-                                            <p className="font-sans text-[12px] font-medium text-gray-900">
-                                                10:00 am - 4:00 PM
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Event Image */}
-                            <div className="px-6 pb-6">
-                                <div className="w-full h-[240px] relative rounded-xl overflow-hidden">
-                                    <Image
-                                        src={eventImage3}
-                                        alt="Den of Rogues Presentation"
-                                        fill
-                                        className="object-cover"
-                                    />
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Event Card 4 */}
-                        <div className="bg-white text-black rounded-2xl overflow-hidden flex-shrink-0 w-[320px] snap-start">
-                            {/* Card Header */}
-                            <div className="p-6 pb-4">
-                                <p className="font-display text-[10px] font-bold uppercase tracking-wide text-gray-500 mb-4">
-                                    IBX GALA: A CELEBRATION OF VISIONARIES
-                                </p>
-
-                                {/* Date and Details */}
-                                <div className="flex gap-4 mb-4">
-                                    {/* Date */}
-                                    <div className="flex flex-col">
-                                        <h3 className="font-display text-[56px] font-black leading-[56px]">13</h3>
-                                        <p className="font-display text-[14px] font-bold">March</p>
-                                    </div>
-
-                                    {/* Location and Time */}
-                                    <div className="flex flex-col gap-2 pt-2">
-                                        <div className="flex items-start gap-2">
-                                            <span className="text-[12px]">📍</span>
-                                            <p className="font-sans text-[12px] font-medium text-gray-900 leading-[16px]">
-                                                789 Community Dr, Portland, Oregon 97201
-                                            </p>
-                                        </div>
-                                        <div className="flex items-center gap-2">
-                                            <span className="text-[12px]">🕐</span>
-                                            <p className="font-sans text-[12px] font-medium text-gray-900">
-                                                8:30 am - 6:00 PM
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Event Image */}
-                            <div className="px-6 pb-6">
-                                <div className="w-full h-[240px] relative rounded-xl overflow-hidden">
-                                    <Image
-                                        src={eventImage4}
-                                        alt="Blockchain Village Event"
-                                        fill
-                                        className="object-cover"
-                                    />
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Event Card 5 */}
-                        <div className="bg-white text-black rounded-2xl overflow-hidden flex-shrink-0 w-[320px] snap-start">
-                            {/* Card Header */}
-                            <div className="p-6 pb-4">
-                                <p className="font-display text-[10px] font-bold uppercase tracking-wide text-gray-500 mb-4">
-                                    FOUNDERS FORGE
-                                </p>
-
-                                {/* Date and Details */}
-                                <div className="flex gap-4 mb-4">
-                                    {/* Date */}
-                                    <div className="flex flex-col">
-                                        <h3 className="font-display text-[56px] font-black leading-[56px]">14</h3>
-                                        <p className="font-display text-[14px] font-bold">March</p>
-                                    </div>
-
-                                    {/* Location and Time */}
-                                    <div className="flex flex-col gap-2 pt-2">
-                                        <div className="flex items-start gap-2">
-                                            <span className="text-[12px]">📍</span>
-                                            <p className="font-sans text-[12px] font-medium text-gray-900 leading-[16px]">
-                                                101 Lamar St, Austin, Texas 78701
-                                            </p>
-                                        </div>
-                                        <div className="flex items-center gap-2">
-                                            <span className="text-[12px]">🕐</span>
-                                            <p className="font-sans text-[12px] font-medium text-gray-900">
-                                                9:30 am - 8:30 PM
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Event Image */}
-                            <div className="px-6 pb-6">
-                                <div className="w-full h-[240px] relative rounded-xl overflow-hidden">
-                                    <Image
-                                        src={eventImage5}
-                                        alt="Founders Forge Event"
-                                        fill
-                                        className="object-cover"
-                                    />
-                                </div>
-                            </div>
-                        </div>
+                        {tripleEvents.map((event, idx) => (
+                            <EventCard key={idx} event={event} />
+                        ))}
                     </div>
-
                 </section>
-
                 {/* Our Speakers Section - DESKTOP */}
 
                 {/* Our Speakers Section - MOBILE */}
