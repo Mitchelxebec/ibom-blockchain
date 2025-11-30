@@ -16,11 +16,21 @@ const embeddedImg2 = "/images/embedded-img2.jpg";
 const embeddedImg3 = "/images/embedded-img3.jpg";
 const embeddedImg4 = "/images/embedded-img4.jpg";
 const embeddedImg5 = "/images/embedded-img5.jpg";
+const ibx26 = "/images/ibx26.png";
 
 
 export default function Landing() {
     const scrollRef = useRef<HTMLDivElement>(null);
     const [isPaused, setIsPaused] = useState(false);
+
+    const [showMore, setShowMore] = useState<{ [key: string]: boolean }>({});
+
+    const toggleShowMore = (cardId: string) => {
+        setShowMore(prev => ({
+            ...prev,
+            [cardId]: !prev[cardId]
+        }));
+    };
 
     const collaborators = [
         "/images/AdomLabs.png",
@@ -276,16 +286,18 @@ export default function Landing() {
                             </h2>
                         </div>
 
-                        {/* Career Development Card */}
-                        <div className="bg-white text-black p-6 md:p-8 rounded-2xl h-[360px]">
-                            <h3 className="font-display text-[16px] md:text-[20px] font-black leading-[24px] md:leading-[28px] tracking-normal mb-3 md:mb-4">
-                                CAREER<br />
-                                DEVELOPMENT IN<br />
-                                BLOCKCHAIN
-                            </h3>
-                            <p className="font-sans text-[14px] md:text-[18px] font-medium leading-[20px] md:leading-[24px] tracking-[-0.015em] text-gray-700">
-                                The summit will focus on education on various career paths in the blockchain industry through expert-led panel sessions and workshops.
-                            </p>
+                        {/* ADOPTION Card */}
+                        <div className="relative h-[360px] w-full">
+                            <div className="group absolute inset-0 bg-white rounded-xl p-5 cursor-pointer transition-all duration-700 ease-out overflow-hidden border border-gray-300 hover:shadow-2xl hover:scale-[1.08] hover:z-10">
+                                <h3 className="font-bold text-2xl text-black mb-3">
+                                    ADOPTION
+                                </h3>
+                                <div className="relative overflow-hidden">
+                                    <p className="text-base text-gray-600 transition-all duration-700 ease-in-out max-h-[280px] group-hover:max-h-[500px]">
+                                        Bringing education and tools directly to communities. IBX drives adoption by taking blockchain knowledge straight to the people who need it most not waiting for them to find it. Through on-ground workshops, grassroots activations, and multilingual community sessions, we simplify blockchain concepts, demystify Web3, and provide practical tools that help everyday Africans participate confidently in the digital economy. Bringing blockchain education and tools directly to communities.
+                                    </p>
+                                </div>
+                            </div>
                         </div>
 
                         {/* Summit Image 1 */}
@@ -298,25 +310,32 @@ export default function Landing() {
                             />
                         </div>
 
-                        {/* Educate and Empower Card */}
-                        <div className="bg-white text-black p-6 md:p-8 rounded-2xl h-[360px]">
-                            <h3 className="font-display text-[16px] md:text-[20px] font-black leading-[24px] md:leading-[28px] tracking-normal mb-3 md:mb-4">
-                                EDUCATE AND<br />
-                                EMPOWER
-                            </h3>
-                            <p className="font-sans text-[14px] md:text-[18px] font-medium leading-[20px] md:leading-[24px] tracking-[-0.015em] text-gray-700">
-                                The summit aims to offer in-depth education on Web3 technologies, covering key areas such as decentralized finance (DeFi), NFTs, smart contracts, and blockchain development.
-                            </p>
+                        {/* CONNECTION Card */}
+                        <div className="relative h-[360px] w-full">
+                            <div className="group absolute inset-0 bg-white rounded-xl p-5 cursor-pointer transition-all duration-700 ease-out overflow-hidden border border-gray-300 hover:shadow-2xl hover:scale-[1.08] hover:z-10">
+                                <h3 className="font-bold text-2xl text-black mb-3">
+                                    CONNECTION
+                                </h3>
+                                <div className="relative overflow-hidden">
+                                    <p className="text-base text-gray-600 transition-all duration-700 ease-in-out max-h-[280px] group-hover:max-h-[500px]">
+                                        Creating pathways between African builders and global Web3 ecosystems. IBX acts as a bridge linking African innovators with global blockchain networks, founders, companies, and opportunities. Through strategic partnerships, ecosystem collaborations, and international visibility, we amplify African voices, projects, and talent on the world stage. Whether it's access to global exchanges, participation in online hackathons, mentorship opportunities, or integration into leading blockchain ecosystems, IBX ensures that African builders are not isolated but they are connected, recognized, and empowered to scale.
+                                    </p>
+                                </div>
+                            </div>
                         </div>
 
-                        {/* Summit Image 2 */}
-                        <div className="bg-black rounded-2xl overflow-hidden relative h-[360px]">
-                            <Image
-                                src={speaker}
-                                alt="Blockchain Speaker"
-                                fill
-                                className="object-cover"
-                            />
+                        {/* EXPANSION Card */}
+                        <div className="relative h-[360px] w-full">
+                            <div className="group absolute inset-0 bg-white rounded-xl p-5 cursor-pointer transition-all duration-700 ease-out overflow-hidden border border-gray-300 hover:shadow-2xl hover:scale-[1.08] hover:z-10">
+                                <h3 className="font-bold text-2xl text-black mb-3">
+                                    EXPANSION
+                                </h3>
+                                <div className="relative overflow-hidden">
+                                    <p className="text-base text-gray-600 transition-all duration-700 ease-in-out max-h-[280px] group-hover:max-h-[500px]">
+                                        Scaling blockchain awareness across West Africa's emerging tech hubs. IBX is rapidly expanding its reach across major and emerging cities, activating new communities and igniting blockchain awareness everywhere we go. Each country and hub we visit becomes part of a growing Web3 network creating new pockets of innovation, collaboration, and opportunity. Our goal is simple: Build a unified West African blockchain corridor where education, innovation, and participation are accessible to all. By expanding consistently and intentionally, IBX is shaping the strongest blockchain frontier on the continent.
+                                    </p>
+                                </div>
+                            </div>
                         </div>
 
                         {/* Security Focused Card */}
@@ -337,13 +356,14 @@ export default function Landing() {
                 </section>
 
                 {/* MOBILE DISPLAY ONLY */}
+
                 {/* Heartbeat Section for Mobile */}
-                <section className="block md:hidden px-5 w-full mx-auto">
+                <section className="block md:hidden px-5 w-full mx-auto py-10">
                     <div className="max-w-4xl flex flex-col gap-6">
-                        <h3 className="font-display text-[25px] text-white font-black leading-[56px] tracking-[-0.02em]">
+                        <h3 className="font-display text-[25px] text-white font-black leading-[36px] tracking-[-0.02em]">
                             The heartbeat of West Africa's blockchain evolution
                         </h3>
-                        <p className="font-sans text-[16px] font-medium leading-[24px] tracking-[-0.01em] text-gray-300 text-pretty mb-4">
+                        <p className="font-sans text-[16px] font-medium leading-[24px] tracking-[-0.01em] text-gray-300 mb-4">
                             The Ibom Blockchain Xperience (IBX) is West Africa's premier blockchain gathering,
                             uniting innovators, industry leaders, creators, and enthusiasts from across
                             5 countries to explore the transformative power of blockchain technology.
@@ -353,16 +373,17 @@ export default function Landing() {
                         </p>
                         <Link
                             href="/maintenance"
-                            className="bg-orange-500 hover:bg-orange-600 text-black px-6 py-3 rounded-lg text-sm font-semibold transition w-fit"
+                            className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg text-sm font-semibold transition w-fit"
                         >
                             Watch IBS 25
                         </Link>
                     </div>
                 </section>
-                {/* Two Images Section for Mobile */}
-                <section className="py-10 px-4 w-full mx-auto md:hidden">
+
+                {/* Cards Section for Mobile */}
+                <section className="py-10 px-5 w-full mx-auto md:hidden">
                     <div className="w-full flex flex-col gap-5">
-                        {/* First Image - Career Development */}
+                        {/* ADOPTION Card */}
                         <div className="rounded-2xl overflow-hidden relative h-[400px]">
                             <Image
                                 src={talkSession}
@@ -372,15 +393,21 @@ export default function Landing() {
                             />
                             <div className="absolute inset-0 flex flex-col justify-end p-8 z-10">
                                 <h3 className="font-display text-[20px] font-black leading-[28px] tracking-normal mb-4 text-white">
-                                    CAREER DEVELOPMENT<br />IN BLOCKCHAIN
+                                    ADOPTION
                                 </h3>
-                                <p className="font-sans text-[14px] font-medium leading-[20px] tracking-[-0.015em] text-white">
-                                    The summit will focus on education on various career paths in the blockchain industry through expert-led panel sessions and workshops.
+                                <p className={`font-sans ${showMore['adoption'] ? "" : "line-clamp-3"} text-[14px] font-medium leading-[20px] tracking-[-0.015em] text-white`}>
+                                    Bringing blockchain education and tools directly to communities. IBX drives adoption by taking blockchain knowledge straight to the people who need it most not waiting for them to find it. Through on-ground workshops, grassroots activations, and multilingual community sessions, we simplify blockchain concepts, demystify Web3, and provide practical tools that help everyday Africans participate confidently in the digital economy.
                                 </p>
+                                <span
+                                    className="hover:underline hover:cursor-pointer text-white mt-2 inline-block"
+                                    onClick={() => toggleShowMore('adoption')}
+                                >
+                                    {showMore['adoption'] ? "less" : "more"}
+                                </span>
                             </div>
                         </div>
 
-                        {/* Second Image - Educate and Empower */}
+                        {/* CONNECTION Card */}
                         <div className="rounded-2xl overflow-hidden relative h-[400px]">
                             <Image
                                 src={talkSession}
@@ -390,15 +417,21 @@ export default function Landing() {
                             />
                             <div className="absolute inset-0 flex flex-col justify-end p-8 z-10">
                                 <h3 className="font-display text-[20px] font-black leading-[28px] tracking-normal mb-4 text-white">
-                                    EDUCATE AND<br />EMPOWER
+                                    CONNECTION
                                 </h3>
-                                <p className="font-sans text-[14px] font-medium leading-[20px] tracking-[-0.015em] text-white">
-                                    The summit aims to offer in-depth education on Web3 technologies, covering key areas such as decentralized finance (DeFi), NFTs, smart contracts, and blockchain development.
+                                <p className={`font-sans ${showMore['connection'] ? "" : "line-clamp-3"} text-[14px] font-medium leading-[20px] tracking-[-0.015em] text-white`}>
+                                    Creating pathways between African builders and global Web3 ecosystems. IBX acts as a bridge linking African innovators with global blockchain networks, founders, companies, and opportunities. Through strategic partnerships, ecosystem collaborations, and international visibility, we amplify African voices, projects, and talent on the world stage. Whether it's access to global exchanges, participation in online hackathons, mentorship opportunities, or integration into leading blockchain ecosystems, IBX ensures that African builders are not isolated but they are connected, recognized, and empowered to scale.
                                 </p>
+                                <span
+                                    className="hover:underline hover:cursor-pointer text-white mt-2 inline-block"
+                                    onClick={() => toggleShowMore('connection')}
+                                >
+                                    {showMore['connection'] ? "less" : "more"}
+                                </span>
                             </div>
                         </div>
 
-                        {/* third Image - Educate and Empower */}
+                        {/* EXPANSION Card */}
                         <div className="rounded-2xl overflow-hidden relative h-[400px]">
                             <Image
                                 src={talkSession}
@@ -408,34 +441,21 @@ export default function Landing() {
                             />
                             <div className="absolute inset-0 flex flex-col justify-end p-8 z-10">
                                 <h3 className="font-display text-[20px] font-black leading-[28px] tracking-normal mb-4 text-white">
-                                    EDUCATE AND<br />EMPOWER
+                                    EXPANSION
                                 </h3>
-                                <p className="font-sans text-[14px] font-medium leading-[20px] tracking-[-0.015em] text-white">
-                                    The summit aims to offer in-depth education on Web3 technologies, covering key areas such as decentralized finance (DeFi), NFTs, smart contracts, and blockchain development.
+                                <p className={`font-sans ${showMore['expansion'] ? "" : "line-clamp-3"} text-[14px] font-medium leading-[20px] tracking-[-0.015em] text-white`}>
+                                    Scaling blockchain awareness across West Africa's emerging tech hubs. IBX is rapidly expanding its reach across major and emerging cities, activating new communities and igniting blockchain awareness everywhere we go. Each country and hub we visit becomes part of a growing Web3 network creating new pockets of innovation, collaboration, and opportunity. Our goal is simple: Build a unified West African blockchain corridor where education, innovation, and participation are accessible to all. By expanding consistently and intentionally, IBX is shaping the strongest blockchain frontier on the continent.
                                 </p>
-                            </div>
-                        </div>
-
-                        {/* forth Image - Educate and Empower */}
-                        <div className="rounded-2xl overflow-hidden relative h-[400px]">
-                            <Image
-                                src={talkSession}
-                                alt="Blockchain talk session"
-                                fill
-                                className="object-cover opacity-50"
-                            />
-                            <div className="absolute inset-0 flex flex-col justify-end p-8 z-10">
-                                <h3 className="font-display text-[20px] font-black leading-[28px] tracking-normal mb-4 text-white">
-                                    EDUCATE AND<br />EMPOWER
-                                </h3>
-                                <p className="font-sans text-[14px] font-medium leading-[20px] tracking-[-0.015em] text-white">
-                                    The summit aims to offer in-depth education on Web3 technologies, covering key areas such as decentralized finance (DeFi), NFTs, smart contracts, and blockchain development.
-                                </p>
+                                <span
+                                    className="hover:underline hover:cursor-pointer text-white mt-2 inline-block"
+                                    onClick={() => toggleShowMore('expansion')}
+                                >
+                                    {showMore['expansion'] ? "less" : "more"}
+                                </span>
                             </div>
                         </div>
                     </div>
                 </section>
-
                 {/* A Glimpse Into 2025 Section */}
                 <section className="py-10 md:py-20 px-4 md:px-12 lg:px-20 bg-black">
                     <h2 className="font-display text-[32px] md:text-[72px] font-black text-center mb-6 md:mb-16 tracking-[-0.01em]">
@@ -732,6 +752,74 @@ export default function Landing() {
                     </div>
                 </section>
 
+                {/* Join the Movement Section - DESKTOP & MOBILE */}
+                <section className="py-10 md:py-20 px-4 md:px-12 lg:px-20 max-w-7xl mx-auto">
+                    <div className="w-full max-w-[1441px] mx-auto">
+                        <div className="relative bg-gradient-to-br from-gray-900 via-black to-gray-950 rounded-3xl overflow-hidden">
+                            {/* Animated gradient border */}
+                            <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-500 via-orange-500 to-blue-500 opacity-75 blur-sm animate-pulse"></div>
+
+                            {/* Content container */}
+                            <div className="relative bg-gradient-to-br from-gray-900 via-black to-gray-950 m-[2px] rounded-3xl p-8 md:p-16 flex flex-col items-center justify-center text-center">
+                                {/* Decorative elements */}
+                                <div className="absolute top-0 left-0 w-32 md:w-64 h-32 md:h-64 bg-blue-500/10 rounded-full blur-3xl"></div>
+                                <div className="absolute bottom-0 right-0 w-32 md:w-64 h-32 md:h-64 bg-orange-500/10 rounded-full blur-3xl"></div>
+
+                                <div className="relative z-10">
+                                    <h2 className="font-display text-[32px] md:text-[56px] lg:text-[64px] font-black leading-tight bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent mb-4">
+                                        Join the Movement
+                                    </h2>
+
+                                    <p className="text-gray-400 text-base md:text-lg lg:text-xl max-w-2xl mx-auto mb-8 font-medium px-4">
+                                        Be part of West Africa's largest blockchain ecosystem. Partner with us to shape the future of Web3 innovation.
+                                    </p>
+
+                                    <div className="mb-10 flex items-center justify-center transform transition-transform duration-500 hover:scale-105">
+                                        <Image
+                                            src={ibx26}
+                                            alt="IBX 2026 Logo"
+                                            width={220}
+                                            height={220}
+                                            className="w-[150px] md:w-[220px] h-auto drop-shadow-2xl"
+                                        />
+                                    </div>
+
+                                    <div className="flex flex-col sm:flex-row gap-4 items-center justify-center w-full px-4">
+                                        <a
+                                            href="mailto:partnerships@ibomblockchain.com"
+                                            className="group relative inline-flex items-center justify-center bg-orange-500 hover:bg-orange-600 text-white font-bold text-[14px] md:text-[16px] rounded-xl px-8 md:px-10 py-3 md:py-4 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/50 overflow-hidden w-full sm:w-auto"
+                                        >
+                                            <span className="relative z-10 flex items-center gap-2">
+                                                Become Our Partner
+                                                <svg className="w-4 h-4 md:w-5 md:h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                                </svg>
+                                            </span>
+                                            <div className="absolute inset-0 bg-gradient-to-r from-orange-400 to-orange-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                        </a>
+                                    </div>
+
+                                    <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 text-gray-500 text-xs md:text-sm">
+                                        <div className="flex items-center gap-2">
+                                            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                                            <span>5+ Countries</span>
+                                        </div>
+                                        <div className="hidden sm:block w-px h-4 bg-gray-700"></div>
+                                        <div className="flex items-center gap-2">
+                                            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                                            <span>1000+ Participants</span>
+                                        </div>
+                                        <div className="hidden sm:block w-px h-4 bg-gray-700"></div>
+                                        <div className="flex items-center gap-2">
+                                            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                                            <span>Leading Ecosystem</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
                 {/* Event Outline Section - DESKTOP */}
                 <section className="py-20 px-6 md:px-12 lg:px-20 max-w-7xl mx-auto hidden md:block">
                     <div className="w-full max-w-[1441px] mx-auto">
@@ -739,9 +827,12 @@ export default function Landing() {
                             <h2 className="font-display text-[56px] font-black leading-[64px] tracking-[-0.01em] text-white">
                                 Event Outline
                             </h2>
-                            <button className="bg-orange-500 hover:bg-orange-600 text-black px-6 py-3 rounded-lg text-sm font-bold transition whitespace-nowrap">
+                            <a href="/files/IBX-26-Pitch-Deck.pdf"
+                                download="IBX'26 Pitch Deck.pdf"
+                                className="bg-orange-500 hover:bg-orange-600 text-black px-6 py-3 rounded-lg text-sm font-bold transition whitespace-nowrap"
+                            >
                                 Add to Calendar
-                            </button>
+                            </a>
                         </div>
 
                         <div className="mb-12">
