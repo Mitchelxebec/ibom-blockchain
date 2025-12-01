@@ -141,7 +141,7 @@ const events = [
         day: "14",
         month: "March",
         location: "Exclusive",
-        time: "9:30 am - 5:00 PM",
+        time: "5:00 PM Prompt",
         image: eventImage5,
         alt: "Founders Forge Event"
     }
@@ -505,7 +505,7 @@ export default function Landing() {
 
                         {/* Center Column - Stats Vertical */}
                         <div className="bg-gray-900 rounded-lg md:rounded-2xl overflow-hidden relative h-[320px] md:h-[1150px]">
-                            <div className="w-full h-full flex flex-col items-center justify-center p-2 md:p-8 gap-3 md:gap-16">
+                            <div className="w-full h-full flex flex-col items-center justify-center p-2 md:p-8 gap-5 md:gap-20">
                                 {/* Stat 1 */}
                                 <div className="text-center">
                                     <h3 className="font-display text-[28px] md:text-[96px] font-black leading-[1] mb-1 md:mb-2">
@@ -711,12 +711,14 @@ export default function Landing() {
                                 <div className="w-full h-px bg-white/20 mb-12"></div>
 
                                 {/* Row 2 - 12,000+ Participants, 300+ Collaborators, 100+ Speakers with Vertical Lines */}
-                                <div className="grid grid-cols-3 gap-16 relative">
+                                <div className="grid grid-cols-3 gap-20 relative">
                                     {/* Participants */}
-                                    <div className="text-left relative">
+                                    <div className="text-left relative right-7">
                                         {/* Vertical line at top */}
                                         <div className="absolute -top-12 left-1/2 w-px h-12 bg-white/20"></div>
-                                        <p className="font-display text-[40px] font-black leading-[48px] text-white mb-2">12,000 +</p>
+                                        <p className="font-display text-[40px] font-black leading-[48px] text-white mb-2 flex items-center gap-1">
+                                            <span>12,000</span><span>+</span>
+                                        </p>
                                         <p className="font-display text-[16px] font-bold text-white mb-2">Participants</p>
                                         <p className="font-sans text-[12px] leading-[18px] text-white/70">
                                             A movement of minds reshaping the present.
@@ -724,7 +726,7 @@ export default function Landing() {
                                     </div>
 
                                     {/* Collaborators */}
-                                    <div className="text-left relative">
+                                    <div className="text-left relative left-5">
                                         {/* Vertical line at top */}
                                         <div className="absolute -top-12 left-1/2 w-px h-12 bg-white/20"></div>
                                         <p className="font-display text-[40px] font-black leading-[48px] text-white mb-2">300 +</p>
@@ -735,7 +737,7 @@ export default function Landing() {
                                     </div>
 
                                     {/* Speakers */}
-                                    <div className="text-left relative">
+                                    <div className="text-left relative left-5">
                                         {/* Vertical line at top */}
                                         <div className="absolute -top-12 left-1/2 w-px h-12 bg-white/20"></div>
                                         <p className="font-display text-[40px] font-black leading-[48px] text-white mb-2">100 +</p>

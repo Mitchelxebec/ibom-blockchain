@@ -37,10 +37,10 @@ export default function Footer() {
 
                             {/* Learn More Button */}
                             <a 
-                                href="/maintenance"
+                               href="https://ibx2026.eventcrib.com"
                                 className="border border-white text-white px-6 py-2 rounded-lg text-sm font-medium hover:bg-white hover:text-black transition inline-block"
                             >
-                                Learn More
+                                Register Now
                             </a>
                         </div>
                     </div>
