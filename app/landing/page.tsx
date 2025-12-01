@@ -17,6 +17,7 @@ const embeddedImg3 = "/images/embedded-img3.jpg";
 const embeddedImg4 = "/images/embedded-img4.jpg";
 const embeddedImg5 = "/images/embedded-img5.jpg";
 const ibx26 = "/images/ibx26.png";
+const ibxBig = "/images/ibx-big.png"
 
 interface UseAutoScrollOptions {
     itemWidth: number;
@@ -849,7 +850,7 @@ export default function Landing() {
                                     {/* Logo */}
                                     <div className="mb-8 flex items-center justify-center transform transition-transform duration-500 hover:scale-105">
                                         <Image
-                                            src={ibx26}
+                                            src={ibxBig}
                                             alt="IBX 2026 Logo"
                                             width={240}
                                             height={240}
