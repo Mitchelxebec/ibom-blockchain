@@ -4,6 +4,7 @@ import Image from "next/image";
 import Navbar from "./components/Navbar";
 import Link from "next/link";
 import Footer from "./components/Footer";
+const ibx = "/images/ibx-logo.png";
 
 export default function Home() {
   const collaborators = [
@@ -32,12 +33,17 @@ export default function Home() {
   return (
     <div className="bg-black min-h-screen">
       <Navbar
+        logo={ibx}
+        logoAlt="Logo"
+        logoWidth={120}
+        logoHeight={50}
         extraLinks={[
           { label: "About Us", href: "/maintenance" },
           { label: "IBX 26", href: "/landing" },
           { label: "IBX Tour", href: "/maintenance" },
         ]}
       />
+
 
       {/* Hero Section */}
       <section className="relative h-screen flex items-end justify-center overflow-hidden">
@@ -96,12 +102,11 @@ export default function Home() {
             </h5>
 
             {/* Button */}
-            <Link
-              href="/maintenance"
+            <a href="mailto:partnerships@ibomblockchain.com"
               className="bg-[#E87A12] text-black font-[DM Sans] font-bold text-[14px] md:text-[16px] rounded-lg px-6 md:px-8 py-3 md:py-3.5 w-fit transition-all duration-300 hover:bg-[#f68924] hover:scale-105 hover:shadow-lg hover:shadow-orange-500/30"
             >
-              Become a collaborator
-            </Link>
+              Become a Collaborator
+            </a>
           </div>
         </section>
 
@@ -115,7 +120,7 @@ export default function Home() {
                   <div key={setIndex} className="flex gap-4 flex-shrink-0">
                     {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((index) => (
                       <div key={`row1-${setIndex}-${index}`} className="bg-black rounded-lg h-[80px] w-[120px] flex items-center justify-center flex-shrink-0">
-                        <Image 
+                        <Image
                           src={collaborators[index].src}
                           alt={collaborators[index].alt}
                           width={80}
@@ -137,7 +142,7 @@ export default function Home() {
                   <div key={setIndex} className="flex gap-4 flex-shrink-0">
                     {[2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 11, 10].map((index, i) => (
                       <div key={`row2-${setIndex}-${i}`} className="bg-black rounded-lg h-[80px] w-[120px] flex items-center justify-center flex-shrink-0">
-                        <Image 
+                        <Image
                           src={collaborators[index].src}
                           alt={collaborators[index].alt}
                           width={80}
@@ -159,7 +164,7 @@ export default function Home() {
                   <div key={setIndex} className="flex gap-4 flex-shrink-0">
                     {[4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 10, 11].map((index, i) => (
                       <div key={`row3-${setIndex}-${i}`} className="bg-black rounded-lg h-[80px] w-[120px] flex items-center justify-center flex-shrink-0">
-                        <Image 
+                        <Image
                           src={collaborators[index].src}
                           alt={collaborators[index].alt}
                           width={80}
@@ -181,7 +186,7 @@ export default function Home() {
                   <div key={setIndex} className="flex gap-4 flex-shrink-0">
                     {[6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 11, 10].map((index, i) => (
                       <div key={`row4-${setIndex}-${i}`} className="bg-black rounded-lg h-[80px] w-[120px] flex items-center justify-center flex-shrink-0">
-                        <Image 
+                        <Image
                           src={collaborators[index].src}
                           alt={collaborators[index].alt}
                           width={80}
@@ -203,7 +208,7 @@ export default function Home() {
                   <div key={setIndex} className="flex gap-4 flex-shrink-0">
                     {[8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 10, 11].map((index, i) => (
                       <div key={`row5-${setIndex}-${i}`} className="bg-black rounded-lg h-[80px] w-[120px] flex items-center justify-center flex-shrink-0">
-                        <Image 
+                        <Image
                           src={collaborators[index].src}
                           alt={collaborators[index].alt}
                           width={80}
@@ -231,7 +236,7 @@ export default function Home() {
                   <div key={setIndex} className="flex gap-3 flex-shrink-0">
                     {[0, 1, 2, 3, 4, 5].map((index) => (
                       <div key={`mobile-row1-${setIndex}-${index}`} className="bg-black rounded-lg h-[60px] w-[80px] flex items-center justify-center flex-shrink-0">
-                        <Image 
+                        <Image
                           src={collaborators[index].src}
                           alt={collaborators[index].alt}
                           width={48}
@@ -253,7 +258,7 @@ export default function Home() {
                   <div key={setIndex} className="flex gap-3 flex-shrink-0">
                     {[6, 7, 8, 9, 10, 11].map((index, i) => (
                       <div key={`mobile-row2-${setIndex}-${i}`} className="bg-black rounded-lg h-[60px] w-[80px] flex items-center justify-center flex-shrink-0">
-                        <Image 
+                        <Image
                           src={collaborators[index].src}
                           alt={collaborators[index].alt}
                           width={48}
@@ -275,7 +280,7 @@ export default function Home() {
                   <div key={setIndex} className="flex gap-3 flex-shrink-0">
                     {[1, 0, 4, 5, 2, 3].map((index, i) => (
                       <div key={`mobile-row3-${setIndex}-${i}`} className="bg-black rounded-lg h-[60px] w-[80px] flex items-center justify-center flex-shrink-0">
-                        <Image 
+                        <Image
                           src={collaborators[index].src}
                           alt={collaborators[index].alt}
                           width={48}
@@ -297,7 +302,7 @@ export default function Home() {
                   <div key={setIndex} className="flex gap-3 flex-shrink-0">
                     {[7, 6, 9, 8, 11, 10].map((index, i) => (
                       <div key={`mobile-row4-${setIndex}-${i}`} className="bg-black rounded-lg h-[60px] w-[80px] flex items-center justify-center flex-shrink-0">
-                        <Image 
+                        <Image
                           src={collaborators[index].src}
                           alt={collaborators[index].alt}
                           width={48}
@@ -319,7 +324,7 @@ export default function Home() {
                   <div key={setIndex} className="flex gap-3 flex-shrink-0">
                     {[3, 2, 1, 0, 5, 4].map((index, i) => (
                       <div key={`mobile-row5-${setIndex}-${i}`} className="bg-black rounded-lg h-[60px] w-[80px] flex items-center justify-center flex-shrink-0">
-                        <Image 
+                        <Image
                           src={collaborators[index].src}
                           alt={collaborators[index].alt}
                           width={48}

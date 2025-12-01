@@ -1,9 +1,10 @@
 "use client";
 
+import Link from "next/link";
 import Image from "next/image";
 
 // ADD YOUR BACKGROUND IMAGE PATH HERE
-const backgroundImage = "/images/sparkles.png"; // <- Replace with your image path
+const backgroundImage = "/images/sparkles.png";
 const ibxLogo = "/images/ibx-logo.png";
 
 export default function MaintenancePage() {
@@ -21,7 +22,7 @@ export default function MaintenancePage() {
             </div>
 
             {/* Circular Radial Gradient Overlay - Orange to Black */}
-            <div 
+            <div
                 className="absolute inset-0 z-[1]"
                 style={{
                     background: 'radial-gradient(circle at center, rgba(239, 133, 16, 0.3) 0%, rgba(239, 133, 16, 0.25) 40%, rgba(0, 0, 0, 0.6) 80%, rgba(0, 0, 0, 0.95) 100%)'
@@ -30,13 +31,15 @@ export default function MaintenancePage() {
 
             {/* Logo */}
             <div className="absolute top-8 md:top-12 left-1/2 transform -translate-x-1/2 z-10">
-                <Image
-                    src={ibxLogo}
-                    alt="IBX Blockchain Xperience Logo"
-                    width={200}
-                    height={50}
-                    className="h-8 md:h-12 w-auto"
-                />
+                <Link href="/">
+                    <Image
+                        src={ibxLogo}
+                        alt="IBX Blockchain Xperience Logo"
+                        width={200}
+                        height={50}
+                        className="h-8 md:h-12 w-auto cursor-pointer"
+                    />
+                </Link>
             </div>
 
             {/* Main Content */}

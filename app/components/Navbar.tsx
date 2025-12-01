@@ -2,17 +2,27 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
-import ibxLogo from "../../public/images/ibx26.png";
 
 interface NavbarProps {
     showButton?: boolean;
     extraLinks?: { label: string; href: string }[];
+    logo?: StaticImageData | string;
+    logoAlt?: string;
+    logoWidth?: number;
+    logoHeight?: number;
 }
 
-export default function Navbar({ showButton = false, extraLinks = [] }: NavbarProps) {
+export default function Navbar({
+    showButton = false,
+    extraLinks = [],
+    logo = "/images/ibx26.png",
+    logoAlt = "IBX logo",
+    logoWidth = 143,
+    logoHeight = 51
+}: NavbarProps) {
     const [menuOpen, setMenuOpen] = useState(false);
     const pathname = usePathname();
 
@@ -27,11 +37,11 @@ export default function Navbar({ showButton = false, extraLinks = [] }: NavbarPr
             <div className="container mx-auto flex justify-between items-center h-16 md:h-20 px-6">
                 {/* Logo - Fixed height container */}
                 <div className="flex items-center">
-                    <Image 
-                        src={ibxLogo} 
-                        alt="IBX logo" 
-                        width={143}
-                        height={51}
+                    <Image
+                        src={logo}
+                        alt={logoAlt}
+                        width={logoWidth}
+                        height={logoHeight}
                         style={{ transform: 'rotate(0deg)' }}
                         priority
                     />
@@ -61,8 +71,8 @@ export default function Navbar({ showButton = false, extraLinks = [] }: NavbarPr
 
                     {/* CTA Button */}
                     {showButton && (
-                        <Link 
-                            href="/maintenance" 
+                        <Link
+                            href="/https://ibx2026.eventcrib.com"
                             className="hidden md:block bg-orange-500 hover:bg-orange-600 text-white px-5 py-2 rounded-lg transition"
                         >
                             Register Now
@@ -83,9 +93,9 @@ export default function Navbar({ showButton = false, extraLinks = [] }: NavbarPr
             {/* Mobile Menu */}
             {menuOpen && (
                 <div className="md:hidden bg-black/90 text-center py-8 space-y-6">
-                    <Link 
-                        href="/" 
-                        onClick={() => setMenuOpen(false)} 
+                    <Link
+                        href="/"
+                        onClick={() => setMenuOpen(false)}
                         className="block hover:text-orange-500 transition"
                     >
                         Home
@@ -105,8 +115,8 @@ export default function Navbar({ showButton = false, extraLinks = [] }: NavbarPr
 
                     {/* Show button on mobile if enabled */}
                     {showButton && (
-                        <Link 
-                            href="/maintenance" 
+                        <Link
+                            href="/maintenance"
                             onClick={() => setMenuOpen(false)}
                             className="inline-block mt-4 bg-orange-500 hover:bg-orange-600 text-white px-5 py-2 rounded-lg transition"
                         >

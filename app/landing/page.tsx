@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { TrendingUp, Code, Sparkles, Building2 } from "lucide-react";
 import Footer from "../components/Footer";
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from 'react';
 
 const blockchainEvent = "/images/meetup.png";
 const speaker = "/images/speaker.png";
@@ -18,10 +18,155 @@ const embeddedImg4 = "/images/embedded-img4.jpg";
 const embeddedImg5 = "/images/embedded-img5.jpg";
 const ibx26 = "/images/ibx26.png";
 
+interface UseAutoScrollOptions {
+    itemWidth: number;
+    gap: number;
+    itemCount: number;
+    interval?: number;
+}
 
-export default function Landing() {
+function useAutoScroll({
+    itemWidth,
+    gap,
+    itemCount,
+    interval = 3000
+}: UseAutoScrollOptions) {
     const scrollRef = useRef<HTMLDivElement>(null);
     const [isPaused, setIsPaused] = useState(false);
+
+    useEffect(() => {
+        const scrollContainer = scrollRef.current;
+        if (!scrollContainer) return;
+
+        const cardWidth = itemWidth + gap;
+        const totalCards = itemCount;
+        let intervalId: NodeJS.Timeout;
+
+        const autoScroll = () => {
+            if (isPaused) return;
+
+            const currentScroll = scrollContainer.scrollLeft;
+            const maxScroll = cardWidth * totalCards;
+
+            scrollContainer.scrollBy({
+                left: cardWidth,
+                behavior: 'smooth'
+            });
+
+            if (currentScroll >= maxScroll - cardWidth) {
+                setTimeout(() => {
+                    scrollContainer.scrollLeft = cardWidth;
+                }, 500);
+            }
+        };
+
+        intervalId = setInterval(autoScroll, interval);
+
+        return () => clearInterval(intervalId);
+    }, [isPaused, itemWidth, gap, itemCount, interval]);
+
+    return { scrollRef, isPaused, setIsPaused };
+}
+
+// Card data
+const cards = [
+    {
+        icon: TrendingUp,
+        title: "Investors",
+        description: "Individuals or entities looking to allocate capital into promising ventures. They seek opportunities that offer potential for growth and return on investment, making them a crucial audience for our event."
+    },
+    {
+        icon: Code,
+        title: "Developers",
+        description: "Individuals or teams eager to invest in Web3 by developing innovative technologies for opportunities that promise growth and lasting returns, making them an essential part of our event's audience."
+    },
+    {
+        icon: Sparkles,
+        title: "Blockchain Enthusiast",
+        description: "People keen on exploring decentralized solutions and blockchain opportunities that offer potential for growth and disrupt returns, making them a vital segment of our event's audience."
+    },
+    {
+        icon: Building2,
+        title: "Regulators",
+        description: "Regulators are essential to Web3's adoption and innovation potential, ensuring scalable and dependable regulations that form a crucial part of our event's audience."
+    }
+];
+
+// Event images (you'll need to replace these with your actual image paths)
+const eventImage1 = "/images/March10.jpg";
+const eventImage2 = "/images/March11.jpg";
+const eventImage3 = "/images/March12.jpg";
+const eventImage4 = "/images/March13.jpg";
+const eventImage5 = "/images/March14.jpg";
+
+const events = [
+    {
+        title: "IBOM BLOCKCHAIN SUMMIT",
+        day: "10",
+        month: "March",
+        location: "E3 Event Center Uyo Village Road",
+        time: "9:00 am - 5:00 PM",
+        image: eventImage1,
+        alt: "Ibom Blockchain Summit Event"
+    },
+    {
+        title: "IBOM BLOCKCHAIN SUMMIT",
+        day: "11",
+        month: "March",
+        location: "E3 Event Center Uyo Village Road",
+        time: "9:00 am - 5:00 PM",
+        image: eventImage2,
+        alt: "Blockchain Panel Discussion"
+    },
+    {
+        title: "DEN OF ROGUES",
+        day: "12",
+        month: "March",
+        location: "E3 Event Center Uyo Village Road",
+        time: "10:00 am - 4:00 PM",
+        image: eventImage3,
+        alt: "Den of Rogues Presentation"
+    },
+    {
+        title: "FOUNDERS FORGE",
+        day: "13",
+        month: "March",
+        location: "Upon Registration",
+        time: "8:30 am - 6:00 PM",
+        image: eventImage4,
+        alt: "Blockchain Village Event"
+    },
+    {
+        title: "IBX GALA: A CELEBRATION OF VISIONARIES",
+        day: "14",
+        month: "March",
+        location: "Exclusive",
+        time: "9:30 am - 5:00 PM",
+        image: eventImage5,
+        alt: "Founders Forge Event"
+    }
+];
+
+export default function Landing() {
+    // Create tripled arrays for smooth infinite scroll
+    const tripleCards = [...cards, ...cards, ...cards];
+    const tripleEvents = [...events, ...events, ...events];
+
+    // Use the hook for cards section
+    const cardsScroll = useAutoScroll({
+        itemWidth: 280,
+        gap: 16,
+        itemCount: tripleCards.length,
+        interval: 3000
+    });
+
+    // Use the hook for events section
+    const eventsScroll = useAutoScroll({
+        itemWidth: 320,
+        gap: 16,
+        itemCount: tripleEvents.length,
+        interval: 3000
+    });
 
     const [showMore, setShowMore] = useState<{ [key: string]: boolean }>({});
 
@@ -47,181 +192,29 @@ export default function Landing() {
         "/images/WomenInDeFi.png",
     ];
 
-    const cards = [
-        {
-            icon: TrendingUp,
-            title: "Investors",
-            description: "Individuals or entities looking to allocate capital into promising ventures. They seek opportunities that offer potential for growth and return on investment, making them a crucial audience for our event."
-        },
-        {
-            icon: Code,
-            title: "Developers",
-            description: "Individuals or teams eager to invest in Web3 by developing innovative technologies for opportunities that promise growth and lasting returns, making them an essential part of our event's audience."
-        },
-        {
-            icon: Sparkles,
-            title: "Blockchain Enthusiast",
-            description: "People keen on exploring decentralized solutions and blockchain opportunities that offer potential for growth and disrupt returns, making them a vital segment of our event's audience."
-        },
-        {
-            icon: Building2,
-            title: "Regulators",
-            description: "Regulators are essential to Web3's adoption and innovation potential, ensuring scalable and dependable regulations that form a crucial part of our event's audience."
-        }
-    ];
-
-    // Triple the cards for seamless infinite scroll
-    const tripleCards = [...cards, ...cards, ...cards];
-
-    useEffect(() => {
-        const scrollContainer = scrollRef.current;
-        if (!scrollContainer) return;
-
-        const cardWidth = 280 + 16; // card width + gap
-        const totalCards = cards.length;
-        let intervalId: NodeJS.Timeout;
-
-        const autoScroll = () => {
-            if (isPaused) return;
-
-            const currentScroll = scrollContainer.scrollLeft;
-            const maxScroll = cardWidth * totalCards;
-
-            // Smooth scroll to next card
-            scrollContainer.scrollBy({
-                left: cardWidth,
-                behavior: 'smooth'
-            });
-
-            // Reset position when reaching the end of first set
-            if (currentScroll >= maxScroll - cardWidth) {
-                setTimeout(() => {
-                    scrollContainer.scrollLeft = cardWidth;
-                }, 500);
-            }
-        };
-
-        // Auto-scroll every 3 seconds
-        intervalId = setInterval(autoScroll, 3000);
-
-        return () => clearInterval(intervalId);
-    }, [isPaused, cards.length]);
-
-
-    const eventImage1 = "/images/March10.jpg";
-    const eventImage2 = "/images/March11.jpg";
-    const eventImage3 = "/images/March12.jpg";
-    const eventImage4 = "/images/March13.jpg";
-    const eventImage5 = "/images/March14.jpg";
-
-    const events = [
-        {
-            title: "IBOM BLOCKCHAIN SUMMIT",
-            day: "10",
-            month: "March",
-            location: "E3 Event Center Uyo Village Road",
-            time: "8:00 am - 5:00 PM",
-            image: eventImage1,
-            alt: "Ibom Blockchain Summit Event"
-        },
-        {
-            title: "IBOM BLOCKCHAIN SUMMIT",
-            day: "11",
-            month: "March",
-            location: "E3 Event Center Uyo Village Road",
-            time: "9:00 am - 5:00 PM",
-            image: eventImage2,
-            alt: "Blockchain Panel Discussion"
-        },
-        {
-            title: "DEN OF ROGUES",
-            day: "12",
-            month: "March",
-            location: "E3 Event Center Uyo Village Road",
-            time: "10:00 am - 4:00 PM",
-            image: eventImage3,
-            alt: "Den of Rogues Presentation"
-        },
-        {
-            title: "IBX GALA: A CELEBRATION OF VISIONARIES",
-            day: "13",
-            month: "March",
-            location: "Upon Registration",
-            time: "8:30 am - 6:00 PM",
-            image: eventImage4,
-            alt: "Blockchain Village Event"
-        },
-        {
-            title: "FOUNDERS FORGE",
-            day: "14",
-            month: "March",
-            location: "Exclusive",
-            time: "9:30 am - 8:30 PM",
-            image: eventImage5,
-            alt: "Founders Forge Event"
-        }
-    ];
-
-    // Triple the events for seamless infinite scroll
-    const tripleEvents = [...events, ...events, ...events];
-
-    useEffect(() => {
-        const scrollContainer = scrollRef.current;
-        if (!scrollContainer) return;
-
-        const cardWidth = 320 + 16; // card width + gap
-        const totalCards = events.length;
-        let intervalId: NodeJS.Timeout;
-
-        const autoScroll = () => {
-            if (isPaused) return;
-
-            const currentScroll = scrollContainer.scrollLeft;
-            const maxScroll = cardWidth * totalCards;
-
-            // Smooth scroll to next card
-            scrollContainer.scrollBy({
-                left: cardWidth,
-                behavior: 'smooth'
-            });
-
-            // Reset position when reaching the end of first set
-            if (currentScroll >= maxScroll - cardWidth) {
-                setTimeout(() => {
-                    scrollContainer.scrollLeft = cardWidth;
-                }, 500);
-            }
-        };
-
-        // Auto-scroll every 3 seconds
-        intervalId = setInterval(autoScroll, 3000);
-
-        return () => clearInterval(intervalId);
-    }, [isPaused, events.length]);
-
     const EventCard = ({ event }: { event: typeof events[0] }) => (
         <div className="bg-white text-black rounded-2xl overflow-hidden flex-shrink-0 w-[320px] snap-start">
             <div className="p-6 pb-4">
-                <p className="font-display text-[10px] font-bold uppercase tracking-wide text-gray-500 mb-4">
+                <p className="text-[10px] font-bold uppercase tracking-wide text-gray-500 mb-4">
                     {event.title}
                 </p>
 
                 <div className="flex gap-4 mb-4">
                     <div className="flex flex-col">
-                        <h3 className="font-display text-[56px] font-black leading-[56px]">{event.day}</h3>
-                        <p className="font-display text-[14px] font-bold">{event.month}</p>
+                        <h3 className="text-[56px] font-black leading-[56px]">{event.day}</h3>
+                        <p className="text-[14px] font-bold">{event.month}</p>
                     </div>
 
                     <div className="flex flex-col gap-2 pt-2">
                         <div className="flex items-start gap-2">
                             <span className="text-[12px]">📍</span>
-                            <p className="font-sans text-[12px] font-medium text-gray-900 leading-[16px]">
+                            <p className="text-[12px] font-medium text-gray-900 leading-[16px]">
                                 {event.location}
                             </p>
                         </div>
                         <div className="flex items-center gap-2">
                             <span className="text-[12px]">🕐</span>
-                            <p className="font-sans text-[12px] font-medium text-gray-900">
+                            <p className="text-[12px] font-medium text-gray-900">
                                 {event.time}
                             </p>
                         </div>
@@ -278,6 +271,10 @@ export default function Landing() {
     return (
         <div>
             <Navbar
+                logo={ibx26}
+                logoAlt="Another Logo"
+                logoWidth={150}
+                logoHeight={50}
                 showButton={true}
                 extraLinks={[
                     { label: "About Us", href: "/maintenance" },
@@ -301,7 +298,7 @@ export default function Landing() {
                         <h1 className="font-display text-[32px] md:text-[56px] font-black leading-tight md:leading-[64px] tracking-[-0.01em] text-white capitalize">
                             West Africa Largest <span className="text-orange-500 font-display">Blockchain</span> Gathering
                         </h1>
-                        <Link href="/maintenance" className="bg-orange-500 hover:bg-orange-600 text-white font-[DM Sans] font-bold text-[14px] md:text-[16px] rounded-lg px-6 md:px-8 py-3 md:py-3.5 text-base md:text-lg transition transform hover:scale-105 w-fit">
+                        <Link href="https://ibx2026.eventcrib.com" className="bg-orange-500 hover:bg-orange-600 text-white font-[DM Sans] font-bold text-[14px] md:text-[16px] rounded-lg px-6 md:px-8 py-3 md:py-3.5 text-base md:text-lg transition transform hover:scale-105 w-fit">
                             Register Now
                         </Link>
                     </div>
@@ -381,10 +378,6 @@ export default function Landing() {
                                 together to learn, connect, and Experience what blockchain and adoption truly means.
                                 It's the heartbeat of West Africa's blockchain evolution.
                             </p>
-
-                            <Link href="/maintenance" className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 md:px-6 md:py-2 rounded-lg text-xs md:text-sm font-semibold transition w-fit">
-                                Watch IBS 25
-                            </Link>
                         </div>
                     </div>
                 </section>
@@ -405,17 +398,15 @@ export default function Landing() {
                             what blockchain adoption truly means. It stands as the driving force behind
                             West Africa's blockchain evolution.
                         </p>
-                        <Link
-                            href="/maintenance"
-                            className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg text-sm font-semibold transition w-fit"
-                        >
-                            Watch IBS 25
-                        </Link>
                     </div>
                 </section>
 
                 {/* Cards Section for Mobile */}
                 <section className="py-10 px-5 w-full mx-auto md:hidden">
+                    <h2 className="font-display text-[32px] md:text-[72px] font-black text-center mb-6 md:mb-16 tracking-[-0.01em]">
+                        A Mission Driven By Impact
+                    </h2>
+
                     <div className="w-full flex flex-col gap-5">
                         {/* ADOPTION Card */}
                         <div className="rounded-2xl overflow-hidden relative h-[400px]">
@@ -490,49 +481,87 @@ export default function Landing() {
                         </div>
                     </div>
                 </section>
-                {/* A Glimpse Into 2025 Section */}
-                <section className="py-10 md:py-20 px-4 md:px-12 lg:px-20 bg-black">
-                    <h2 className="font-display text-[32px] md:text-[72px] font-black text-center mb-6 md:mb-16 tracking-[-0.01em]">
-                        A Glimpse Into 2025
-                    </h2>
 
-                    <div className="w-full max-w-[400px] md:max-w-[1400px] mx-auto grid grid-cols-3 gap-2 md:gap-5">
+{/* A Glimpse Into 2025 Section */}
+<section className="py-10 md:py-20 px-4 md:px-12 lg:px-20 bg-black">
+    <h2 className="font-display text-[32px] md:text-[72px] font-black text-center mb-6 md:mb-16 tracking-[-0.01em]">
+        "A Glimpse Into 2025"
+    </h2>
 
-                        {/* Left Column - 3 Images Stacked */}
-                        <div className="flex flex-col gap-2 md:gap-5">
-                            <div className="bg-gray-800 rounded-lg md:rounded-2xl overflow-hidden relative h-[100px] md:h-[360px]">
-                                <Image src={speaker} alt="Speaker 1" fill className="object-cover" />
-                            </div>
-                            <div className="bg-gray-800 rounded-lg md:rounded-2xl overflow-hidden relative h-[100px] md:h-[360px]">
-                                <Image src={embeddedImg1} alt="speaker 2" fill className="object-cover" />
-                            </div>
-                            <div className="bg-gray-800 rounded-lg md:rounded-2xl overflow-hidden relative h-[100px] md:h-[360px]">
-                                <Image src={embeddedImg2} alt="Speaker 3" fill className="object-cover" />
-                            </div>
-                        </div>
+    <div className="w-full max-w-[400px] md:max-w-[1400px] mx-auto grid grid-cols-3 gap-2 md:gap-5">
 
-                        {/* Center Column - YouTube Embed */}
-                        <div className="bg-white rounded-lg md:rounded-2xl overflow-hidden relative h-[320px] md:h-[1150px] flex items-center justify-center">
-                            <div className="w-full h-full flex items-center justify-center">
-                                <span className="font-display text-[8px] md:text-2xl font-black text-black whitespace-nowrap">Youtube Embed</span>
-                            </div>
-                        </div>
+        {/* Left Column - 3 Images Stacked */}
+        <div className="flex flex-col gap-2 md:gap-5">
+            <div className="bg-gray-800 rounded-lg md:rounded-2xl overflow-hidden relative h-[100px] md:h-[360px]">
+                <Image src={speaker} alt="Speaker 1" fill className="object-cover" />
+            </div>
+            <div className="bg-gray-800 rounded-lg md:rounded-2xl overflow-hidden relative h-[100px] md:h-[360px]">
+                <Image src={embeddedImg1} alt="speaker 2" fill className="object-cover" />
+            </div>
+            <div className="bg-gray-800 rounded-lg md:rounded-2xl overflow-hidden relative h-[100px] md:h-[360px]">
+                <Image src={embeddedImg2} alt="Speaker 3" fill className="object-cover" />
+            </div>
+        </div>
 
-                        {/* Right Column - 3 Images Stacked */}
-                        <div className="flex flex-col gap-2 md:gap-5">
-                            <div className="bg-gray-800 rounded-lg md:rounded-2xl overflow-hidden relative h-[100px] md:h-[360px]">
-                                <Image src={embeddedImg3} alt="Speaker 4" fill className="object-cover" />
-                            </div>
-                            <div className="bg-gray-800 rounded-lg md:rounded-2xl overflow-hidden relative h-[100px] md:h-[360px]">
-                                <Image src={embeddedImg4} alt="Speaker 5" fill className="object-cover" />
-                            </div>
-                            <div className="bg-gray-800 rounded-lg md:rounded-2xl overflow-hidden relative h-[100px] md:h-[360px]">
-                                <Image src={embeddedImg5} alt="Speaker 6" fill className="object-cover" />
-                            </div>
-                        </div>
-                    </div>
-                </section>
+        {/* Center Column - Stats Vertical */}
+        <div className="bg-gray-900 rounded-lg md:rounded-2xl overflow-hidden relative h-[320px] md:h-[1150px]">
+            <div className="w-full h-full flex flex-col items-center justify-center p-4 md:p-8 gap-6 md:gap-16">
+                {/* Stat 1 */}
+                <div className="text-center">
+                    <h3 className="font-display text-[40px] md:text-[96px] font-black leading-[1] mb-2">
+                        7K
+                    </h3>
+                    <p className="font-sans text-[12px] md:text-[24px] font-medium text-gray-300">
+                        Attendees
+                    </p>
+                </div>
 
+                {/* Stat 2 */}
+                <div className="text-center">
+                    <h3 className="font-display text-[40px] md:text-[96px] font-black leading-[1] mb-2">
+                        30+
+                    </h3>
+                    <p className="font-sans text-[12px] md:text-[24px] font-medium text-gray-300">
+                        Partners
+                    </p>
+                </div>
+
+                {/* Stat 3 */}
+                <div className="text-center">
+                    <h3 className="font-display text-[40px] md:text-[96px] font-black leading-[1] mb-2">
+                        4.8K
+                    </h3>
+                    <p className="font-sans text-[12px] md:text-[24px] font-medium text-gray-300">
+                        Participants Empowered
+                    </p>
+                </div>
+
+                {/* Stat 4 */}
+                <div className="text-center">
+                    <h3 className="font-display text-[40px] md:text-[96px] font-black leading-[1] mb-2">
+                        30
+                    </h3>
+                    <p className="font-sans text-[12px] md:text-[24px] font-medium text-gray-300">
+                        Speakers
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        {/* Right Column - 3 Images Stacked */}
+        <div className="flex flex-col gap-2 md:gap-5">
+            <div className="bg-gray-800 rounded-lg md:rounded-2xl overflow-hidden relative h-[100px] md:h-[360px]">
+                <Image src={embeddedImg3} alt="Speaker 4" fill className="object-cover" />
+            </div>
+            <div className="bg-gray-800 rounded-lg md:rounded-2xl overflow-hidden relative h-[100px] md:h-[360px]">
+                <Image src={embeddedImg4} alt="Speaker 5" fill className="object-cover" />
+            </div>
+            <div className="bg-gray-800 rounded-lg md:rounded-2xl overflow-hidden relative h-[100px] md:h-[360px]">
+                <Image src={embeddedImg5} alt="Speaker 6" fill className="object-cover" />
+            </div>
+        </div>
+    </div>
+</section>
                 {/* Who Is This Event For? Section - DESKTOP */}
                 <section className="py-20 px-6 md:px-12 lg:px-20 max-w-7xl mx-auto hidden md:block">
                     {/* Header */}
@@ -601,25 +630,27 @@ export default function Landing() {
                 </section>
 
                 {/* Who Is This Event For? Section - MOBILE */}
-                <section className="md:hidden py-10 px-4 w-full mx-auto bg-black text-white">
-                    <h2 className="font-display text-[28px] md:text-[40px] font-black leading-[36px] md:leading-[48px] tracking-[-0.01em] mb-8">
-                        Who Is This Event For?
-                    </h2>
+                <section className="py-16 px-4 md:hidden">
+                    <div className="max-w-7xl mx-auto">
+                        <h2 className="font-display text-[40px] font-black leading-[48px] tracking-[-0.01em] mb-12">
+                            Who Is This Event For?
+                        </h2>
 
-                    {/* Horizontal Scrollable Container */}
-                    <div
-                        ref={scrollRef}
-                        className="overflow-x-auto -mx-4 px-4 scrollbar-hide"
-                        onMouseEnter={() => setIsPaused(true)}
-                        onMouseLeave={() => setIsPaused(false)}
-                        onTouchStart={() => setIsPaused(true)}
-                        onTouchEnd={() => setTimeout(() => setIsPaused(false), 2000)}
-                    >
-                        <div className="flex gap-4 pb-4">
+                        {/* Cards Horizontal Scrollable Container */}
+                        <div
+                            ref={cardsScroll.scrollRef}
+                            className="flex gap-4 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-4"
+                            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                            onTouchStart={() => cardsScroll.setIsPaused(true)}
+                            onTouchEnd={() => setTimeout(() => cardsScroll.setIsPaused(false), 2000)}
+                        >
                             {tripleCards.map((card, index) => {
                                 const Icon = card.icon;
                                 return (
-                                    <div key={`card-${index}`} className="bg-gray-900 rounded-2xl p-6 w-[280px] flex-shrink-0">
+                                    <div
+                                        key={`mobile-card-${index}`}
+                                        className="bg-gray-900 rounded-2xl p-6 flex-shrink-0 w-[280px] snap-start"
+                                    >
                                         <div className="w-12 h-12 bg-orange-500/20 rounded-lg flex items-center justify-center mb-4">
                                             <Icon className="w-6 h-6 text-orange-500" strokeWidth={2.5} />
                                         </div>
@@ -634,7 +665,6 @@ export default function Landing() {
                             })}
                         </div>
                     </div>
-
                 </section>
 
                 {/* 2026 WILL DEFINE AN XPERIENCE - DESKTOP */}
@@ -897,23 +927,26 @@ export default function Landing() {
                 </section>
 
                 {/* Mobile View with Infinite Scroll */}
-                <section className="flex md:hidden py-10 px-4 w-full mx-auto overflow-hidden">
-                    <div
-                        ref={scrollRef}
-                        onMouseEnter={() => setIsPaused(true)}
-                        onMouseLeave={() => setIsPaused(false)}
-                        onTouchStart={() => setIsPaused(true)}
-                        onTouchEnd={() => setIsPaused(false)}
-                        className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4"
-                        style={{
-                            scrollbarWidth: 'none',
-                            msOverflowStyle: 'none',
-                            WebkitOverflowScrolling: 'touch'
-                        }}
-                    >
-                        {tripleEvents.map((event, idx) => (
-                            <EventCard key={idx} event={event} />
-                        ))}
+                <section className="py-16 px-4 md:hidden">
+                    <div className="max-w-7xl mx-auto">
+                        <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">
+                            Upcoming Events
+                        </h2>
+
+                        {/* Events Horizontal Scrollable Container */}
+                        <div
+                            ref={eventsScroll.scrollRef}
+                            className="flex gap-4 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-4"
+                            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                            onMouseEnter={() => eventsScroll.setIsPaused(true)}
+                            onMouseLeave={() => eventsScroll.setIsPaused(false)}
+                            onTouchStart={() => eventsScroll.setIsPaused(true)}
+                            onTouchEnd={() => setTimeout(() => eventsScroll.setIsPaused(false), 2000)}
+                        >
+                            {tripleEvents.map((event, index) => (
+                                <EventCard key={`event-${index}`} event={event} />
+                            ))}
+                        </div>
                     </div>
                 </section>
 
