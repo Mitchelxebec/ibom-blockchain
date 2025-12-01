@@ -483,7 +483,6 @@ export default function Landing() {
                 </section>
 
                 {/* A Glimpse Into 2025 Section */}
-                {/* A Glimpse Into 2025 Section */}
                 <section className="py-10 md:py-20 px-4 md:px-12 lg:px-20 bg-black">
                     <h2 className="font-display text-[32px] md:text-[72px] font-black text-center mb-6 md:mb-16 tracking-[-0.01em]">
                         "A Glimpse Into 2025"
@@ -563,7 +562,7 @@ export default function Landing() {
                         </div>
                     </div>
                 </section>
-                
+
                 {/* Who Is This Event For? Section - DESKTOP */}
                 <section className="py-20 px-6 md:px-12 lg:px-20 max-w-7xl mx-auto hidden md:block">
                     {/* Header */}
@@ -819,37 +818,44 @@ export default function Landing() {
                 </section>
 
                 {/* Join the Movement Section - DESKTOP & MOBILE */}
-                <section className="py-10 md:py-20 px-4 md:px-12 lg:px-20 max-w-7xl mx-auto">
+                <section className="py-10 md:py-16 px-4 md:px-12 lg:px-20 max-w-7xl mx-auto">
                     <div className="w-full max-w-[1441px] mx-auto">
                         <div className="relative bg-gradient-to-br from-gray-900 via-black to-gray-950 rounded-3xl overflow-hidden">
+
                             {/* Animated gradient border */}
                             <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-500 via-orange-500 to-blue-500 opacity-75 blur-sm animate-pulse"></div>
 
                             {/* Content container */}
-                            <div className="relative bg-gradient-to-br from-gray-900 via-black to-gray-950 m-[2px] rounded-3xl p-8 md:p-16 flex flex-col items-center justify-center text-center">
-                                {/* Decorative elements */}
-                                <div className="absolute top-0 left-0 w-32 md:w-64 h-32 md:h-64 bg-blue-500/10 rounded-full blur-3xl"></div>
-                                <div className="absolute bottom-0 right-0 w-32 md:w-64 h-32 md:h-64 bg-orange-500/10 rounded-full blur-3xl"></div>
+                            <div className="relative bg-gradient-to-br from-gray-900 via-black to-gray-950 m-[2px] rounded-3xl p-6 md:p-10 flex flex-col items-center justify-center text-center">
+
+                                {/* Decorative blobs */}
+                                <div className="absolute top-0 left-0 w-32 md:w-56 h-32 md:h-56 bg-blue-500/10 rounded-full blur-3xl"></div>
+                                <div className="absolute bottom-0 right-0 w-32 md:w-56 h-32 md:h-56 bg-orange-500/10 rounded-full blur-3xl"></div>
 
                                 <div className="relative z-10">
-                                    <h2 className="font-display text-[32px] md:text-[56px] lg:text-[64px] font-black leading-tight bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent mb-4">
+
+                                    {/* Title */}
+                                    <h2 className="font-display text-[28px] md:text-[48px] lg:text-[54px] font-black leading-tight bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent mb-4">
                                         Join the Movement
                                     </h2>
 
-                                    <p className="text-gray-400 text-base md:text-lg lg:text-xl max-w-2xl mx-auto mb-8 font-medium px-4">
+                                    {/* Description */}
+                                    <p className="text-gray-400 text-base md:text-lg lg:text-xl max-w-2xl mx-auto mb-6 font-medium px-4">
                                         Be part of West Africa's largest blockchain ecosystem. Partner with us to shape the future of Web3 innovation.
                                     </p>
 
-                                    <div className="mb-10 flex items-center justify-center transform transition-transform duration-500 hover:scale-105">
+                                    {/* Logo */}
+                                    <div className="mb-8 flex items-center justify-center transform transition-transform duration-500 hover:scale-105">
                                         <Image
                                             src={ibx26}
                                             alt="IBX 2026 Logo"
-                                            width={220}
-                                            height={220}
-                                            className="w-[150px] md:w-[220px] h-auto drop-shadow-2xl"
+                                            width={240}
+                                            height={240}
+                                            className="w-[240px] md:w-[260px] h-auto drop-shadow-2xl"
                                         />
                                     </div>
 
+                                    {/* Button */}
                                     <div className="flex flex-col sm:flex-row gap-4 items-center justify-center w-full px-4">
                                         <a
                                             href="/files/IBX-26-Pitch-Deck.pdf"
@@ -858,7 +864,12 @@ export default function Landing() {
                                         >
                                             <span className="relative z-10 flex items-center gap-2">
                                                 Become Our Partner
-                                                <svg className="w-4 h-4 md:w-5 md:h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <svg
+                                                    className="w-4 h-4 md:w-5 md:h-5 transition-transform duration-300 group-hover:translate-x-1"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    viewBox="0 0 24 24"
+                                                >
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                                                 </svg>
                                             </span>
@@ -866,22 +877,28 @@ export default function Landing() {
                                         </a>
                                     </div>
 
-                                    <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 text-gray-500 text-xs md:text-sm">
+                                    {/* Bottom perks */}
+                                    <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 text-gray-500 text-xs md:text-sm">
                                         <div className="flex items-center gap-2">
                                             <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                                            <span>5+ Countries</span>
+                                            <span>Visibility</span>
                                         </div>
+
                                         <div className="hidden sm:block w-px h-4 bg-gray-700"></div>
+
                                         <div className="flex items-center gap-2">
                                             <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                                            <span>1000+ Participants</span>
+                                            <span>Market Connections</span>
                                         </div>
+
                                         <div className="hidden sm:block w-px h-4 bg-gray-700"></div>
+
                                         <div className="flex items-center gap-2">
                                             <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                                            <span>Leading Ecosystem</span>
+                                            <span>Product Adoption</span>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -928,12 +945,23 @@ export default function Landing() {
                     </div>
                 </section>
 
-                {/* Mobile View with Infinite Scroll */}
+                {/* Event Outline Section - MOBILE Infinite Scroll */}
                 <section className="py-16 px-4 md:hidden">
                     <div className="max-w-7xl mx-auto">
-                        <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">
-                            Upcoming Events
-                        </h2>
+                        <div className="flex justify-between flex-col items-start mb-8">
+                            <h2 className="font-display text-[40px] font-black leading-[64px] tracking-[-0.01em] text-white">
+                                Event Outline
+                            </h2>
+                            <button
+                                onClick={handleAddToCalendar}
+                                className="bg-orange-500 hover:bg-orange-600 text-black px-6 py-3 rounded-lg text-sm font-bold transition whitespace-nowrap inline-flex items-center gap-2"
+                            >
+                                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
+                                </svg>
+                                Add to Calendar
+                            </button>
+                        </div>
 
                         {/* Events Horizontal Scrollable Container */}
                         <div
