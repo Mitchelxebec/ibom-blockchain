@@ -241,6 +241,40 @@ export default function Landing() {
         </div>
     );
 
+    // GOOGLE CALENDAR
+    // Helper function to generate Google Calendar URL
+    const generateGoogleCalendarURL = (event: {
+        title: string;
+        description: string;
+        location: string;
+        startDate: string; // Format: YYYYMMDDTHHMMSS
+        endDate: string;   // Format: YYYYMMDDTHHMMSS
+    }) => {
+        const baseURL = 'https://calendar.google.com/calendar/render?action=TEMPLATE';
+
+        const params = new URLSearchParams({
+            text: event.title,
+            details: event.description,
+            location: event.location,
+            dates: `${event.startDate}/${event.endDate}`,
+        });
+
+        return `${baseURL}&${params.toString()}`;
+    };
+
+    const handleAddToCalendar = () => {
+        const eventDetails = {
+            title: 'Ibom Blockchain Xperience 2026',
+            description: 'Join West Africa\'s premier blockchain gathering. A convergence of innovators, industry leaders, creators, and enthusiasts exploring the power of blockchain technology.',
+            location: 'E3 Event Center, Uyo Village Road, Uyo, Nigeria',
+            startDate: '20260310T080000', // March 10, 2026, 8:00 AM
+            endDate: '20260314T173000',   // March 14, 2026, 5:30 PM
+        };
+
+        const calendarURL = generateGoogleCalendarURL(eventDetails);
+        window.open(calendarURL, '_blank');
+    };
+
     return (
         <div>
             <Navbar
@@ -786,7 +820,8 @@ export default function Landing() {
 
                                     <div className="flex flex-col sm:flex-row gap-4 items-center justify-center w-full px-4">
                                         <a
-                                            href="mailto:partnerships@ibomblockchain.com"
+                                            href="/files/IBX-26-Pitch-Deck.pdf"
+                                            download="IBX'26 Pitch Deck.pdf"
                                             className="group relative inline-flex items-center justify-center bg-orange-500 hover:bg-orange-600 text-white font-bold text-[14px] md:text-[16px] rounded-xl px-8 md:px-10 py-3 md:py-4 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/50 overflow-hidden w-full sm:w-auto"
                                         >
                                             <span className="relative z-10 flex items-center gap-2">
@@ -820,6 +855,7 @@ export default function Landing() {
                         </div>
                     </div>
                 </section>
+
                 {/* Event Outline Section - DESKTOP */}
                 <section className="py-20 px-6 md:px-12 lg:px-20 max-w-7xl mx-auto hidden md:block">
                     <div className="w-full max-w-[1441px] mx-auto">
@@ -827,12 +863,15 @@ export default function Landing() {
                             <h2 className="font-display text-[56px] font-black leading-[64px] tracking-[-0.01em] text-white">
                                 Event Outline
                             </h2>
-                            <a href="/files/IBX-26-Pitch-Deck.pdf"
-                                download="IBX'26 Pitch Deck.pdf"
-                                className="bg-orange-500 hover:bg-orange-600 text-black px-6 py-3 rounded-lg text-sm font-bold transition whitespace-nowrap"
+                            <button
+                                onClick={handleAddToCalendar}
+                                className="bg-orange-500 hover:bg-orange-600 text-black px-6 py-3 rounded-lg text-sm font-bold transition whitespace-nowrap inline-flex items-center gap-2"
                             >
+                                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
+                                </svg>
                                 Add to Calendar
-                            </a>
+                            </button>
                         </div>
 
                         <div className="mb-12">
@@ -877,6 +916,7 @@ export default function Landing() {
                         ))}
                     </div>
                 </section>
+
                 {/* Our Speakers Section - DESKTOP */}
 
                 {/* Our Speakers Section - MOBILE */}
@@ -898,120 +938,121 @@ export default function Landing() {
                                     We are proud to partner with these industry leaders who share our passion for discovery and help make our expeditions possible.
                                 </p>
                             </div>
-                            <Link href="/maintenance" className="bg-orange-500 hover:bg-orange-600 text-black px-6 py-3 rounded-lg text-sm font-bold transition whitespace-nowrap">
-                                Become a collaborator
-                            </Link>
-                        </div>
-
-                        {/* Collaborators Grid - 5 Rows with Alternating Scroll Directions */}
-                        <div className="mt-12 space-y-8">
-                            {/* Row 1 - Scroll Right */}
-                            <div className="relative">
-                                <div className="flex gap-4 animate-scroll-right">
-                                    {[...Array(3)].map((_, setIndex) => (
-                                        <div key={setIndex} className="flex gap-4 flex-shrink-0">
-                                            {collaborators.map((collaborator, index) => (
-                                                <div key={`row1-${setIndex}-${index}`} className="bg-black rounded-lg h-[80px] w-[120px] flex items-center justify-center flex-shrink-0">
-                                                    <Image
-                                                        src={collaborator}
-                                                        alt={`Collaborator ${index + 1}`}
-                                                        width={80}
-                                                        height={80}
-                                                        className="object-contain"
-                                                        loading="lazy"
-                                                    />
-                                                </div>
-                                            ))}
-                                        </div>
-                                    ))}
+                            <a href="mailto:partnerships@ibomblockchain.com"
+                                className="bg-orange-500 hover:bg-orange-600 text-black px-6 py-3 rounded-lg text-sm font-bold transition whitespace-nowrap inline-block text-center"
+                            >
+                                Become a Collaborator
+                            </a>
+                            {/* Collaborators Grid - 5 Rows with Alternating Scroll Directions */}
+                            <div className="mt-12 space-y-8">
+                                {/* Row 1 - Scroll Right */}
+                                <div className="relative">
+                                    <div className="flex gap-4 animate-scroll-right">
+                                        {[...Array(3)].map((_, setIndex) => (
+                                            <div key={setIndex} className="flex gap-4 flex-shrink-0">
+                                                {collaborators.map((collaborator, index) => (
+                                                    <div key={`row1-${setIndex}-${index}`} className="bg-black rounded-lg h-[80px] w-[120px] flex items-center justify-center flex-shrink-0">
+                                                        <Image
+                                                            src={collaborator}
+                                                            alt={`Collaborator ${index + 1}`}
+                                                            width={80}
+                                                            height={80}
+                                                            className="object-contain"
+                                                            loading="lazy"
+                                                        />
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        ))}
+                                    </div>
                                 </div>
-                            </div>
 
-                            {/* Row 2 - Scroll Left */}
-                            <div className="relative">
-                                <div className="flex gap-4 animate-scroll-left">
-                                    {[...Array(3)].map((_, setIndex) => (
-                                        <div key={setIndex} className="flex gap-4 flex-shrink-0">
-                                            {[...collaborators].reverse().map((collaborator, index) => (
-                                                <div key={`row2-${setIndex}-${index}`} className="bg-black rounded-lg h-[80px] w-[120px] flex items-center justify-center flex-shrink-0">
-                                                    <Image
-                                                        src={collaborator}
-                                                        alt={`Collaborator ${index + 1}`}
-                                                        width={80}
-                                                        height={80}
-                                                        className="object-contain"
-                                                        loading="lazy"
-                                                    />
-                                                </div>
-                                            ))}
-                                        </div>
-                                    ))}
+                                {/* Row 2 - Scroll Left */}
+                                <div className="relative">
+                                    <div className="flex gap-4 animate-scroll-left">
+                                        {[...Array(3)].map((_, setIndex) => (
+                                            <div key={setIndex} className="flex gap-4 flex-shrink-0">
+                                                {[...collaborators].reverse().map((collaborator, index) => (
+                                                    <div key={`row2-${setIndex}-${index}`} className="bg-black rounded-lg h-[80px] w-[120px] flex items-center justify-center flex-shrink-0">
+                                                        <Image
+                                                            src={collaborator}
+                                                            alt={`Collaborator ${index + 1}`}
+                                                            width={80}
+                                                            height={80}
+                                                            className="object-contain"
+                                                            loading="lazy"
+                                                        />
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        ))}
+                                    </div>
                                 </div>
-                            </div>
 
-                            {/* Row 3 - Scroll Right */}
-                            <div className="relative">
-                                <div className="flex gap-4 animate-scroll-right">
-                                    {[...Array(3)].map((_, setIndex) => (
-                                        <div key={setIndex} className="flex gap-4 flex-shrink-0">
-                                            {collaborators.map((collaborator, index) => (
-                                                <div key={`row3-${setIndex}-${index}`} className="bg-black rounded-lg h-[80px] w-[120px] flex items-center justify-center flex-shrink-0">
-                                                    <Image
-                                                        src={collaborator}
-                                                        alt={`Collaborator ${index + 1}`}
-                                                        width={80}
-                                                        height={80}
-                                                        className="object-contain"
-                                                        loading="lazy"
-                                                    />
-                                                </div>
-                                            ))}
-                                        </div>
-                                    ))}
+                                {/* Row 3 - Scroll Right */}
+                                <div className="relative">
+                                    <div className="flex gap-4 animate-scroll-right">
+                                        {[...Array(3)].map((_, setIndex) => (
+                                            <div key={setIndex} className="flex gap-4 flex-shrink-0">
+                                                {collaborators.map((collaborator, index) => (
+                                                    <div key={`row3-${setIndex}-${index}`} className="bg-black rounded-lg h-[80px] w-[120px] flex items-center justify-center flex-shrink-0">
+                                                        <Image
+                                                            src={collaborator}
+                                                            alt={`Collaborator ${index + 1}`}
+                                                            width={80}
+                                                            height={80}
+                                                            className="object-contain"
+                                                            loading="lazy"
+                                                        />
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        ))}
+                                    </div>
                                 </div>
-                            </div>
 
-                            {/* Row 4 - Scroll Left */}
-                            <div className="relative">
-                                <div className="flex gap-4 animate-scroll-left">
-                                    {[...Array(3)].map((_, setIndex) => (
-                                        <div key={setIndex} className="flex gap-4 flex-shrink-0">
-                                            {[...collaborators].reverse().map((collaborator, index) => (
-                                                <div key={`row4-${setIndex}-${index}`} className="bg-black rounded-lg h-[80px] w-[120px] flex items-center justify-center flex-shrink-0">
-                                                    <Image
-                                                        src={collaborator}
-                                                        alt={`Collaborator ${index + 1}`}
-                                                        width={80}
-                                                        height={80}
-                                                        className="object-contain"
-                                                        loading="lazy"
-                                                    />
-                                                </div>
-                                            ))}
-                                        </div>
-                                    ))}
+                                {/* Row 4 - Scroll Left */}
+                                <div className="relative">
+                                    <div className="flex gap-4 animate-scroll-left">
+                                        {[...Array(3)].map((_, setIndex) => (
+                                            <div key={setIndex} className="flex gap-4 flex-shrink-0">
+                                                {[...collaborators].reverse().map((collaborator, index) => (
+                                                    <div key={`row4-${setIndex}-${index}`} className="bg-black rounded-lg h-[80px] w-[120px] flex items-center justify-center flex-shrink-0">
+                                                        <Image
+                                                            src={collaborator}
+                                                            alt={`Collaborator ${index + 1}`}
+                                                            width={80}
+                                                            height={80}
+                                                            className="object-contain"
+                                                            loading="lazy"
+                                                        />
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        ))}
+                                    </div>
                                 </div>
-                            </div>
 
-                            {/* Row 5 - Scroll Right */}
-                            <div className="relative">
-                                <div className="flex gap-4 animate-scroll-right">
-                                    {[...Array(3)].map((_, setIndex) => (
-                                        <div key={setIndex} className="flex gap-4 flex-shrink-0">
-                                            {collaborators.map((collaborator, index) => (
-                                                <div key={`row5-${setIndex}-${index}`} className="bg-black rounded-lg h-[80px] w-[120px] flex items-center justify-center flex-shrink-0">
-                                                    <Image
-                                                        src={collaborator}
-                                                        alt={`Collaborator ${index + 1}`}
-                                                        width={80}
-                                                        height={80}
-                                                        className="object-contain"
-                                                        loading="lazy"
-                                                    />
-                                                </div>
-                                            ))}
-                                        </div>
-                                    ))}
+                                {/* Row 5 - Scroll Right */}
+                                <div className="relative">
+                                    <div className="flex gap-4 animate-scroll-right">
+                                        {[...Array(3)].map((_, setIndex) => (
+                                            <div key={setIndex} className="flex gap-4 flex-shrink-0">
+                                                {collaborators.map((collaborator, index) => (
+                                                    <div key={`row5-${setIndex}-${index}`} className="bg-black rounded-lg h-[80px] w-[120px] flex items-center justify-center flex-shrink-0">
+                                                        <Image
+                                                            src={collaborator}
+                                                            alt={`Collaborator ${index + 1}`}
+                                                            width={80}
+                                                            height={80}
+                                                            className="object-contain"
+                                                            loading="lazy"
+                                                        />
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1029,9 +1070,11 @@ export default function Landing() {
                             We are proud to partner with these industry leaders who share our passion for discovery and help make our expeditions possible.
                         </p>
 
-                        <Link href="/maintenance" className="bg-orange-500 hover:bg-orange-600 text-black px-6 py-3 rounded-lg text-sm font-bold transition w-full block text-center">
-                            Become a collaborator
-                        </Link>
+                        <a href="mailto:partnerships@ibomblockchain.com"
+                            className="bg-orange-500 hover:bg-orange-600 text-black px-6 py-3 rounded-lg text-sm font-bold transition whitespace-nowrap inline-block text-center"
+                        >
+                            Become a Collaborator
+                        </a>
                     </div>
 
                     <div className="space-y-6">
