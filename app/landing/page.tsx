@@ -482,86 +482,88 @@ export default function Landing() {
                     </div>
                 </section>
 
-{/* A Glimpse Into 2025 Section */}
-<section className="py-10 md:py-20 px-4 md:px-12 lg:px-20 bg-black">
-    <h2 className="font-display text-[32px] md:text-[72px] font-black text-center mb-6 md:mb-16 tracking-[-0.01em]">
-        "A Glimpse Into 2025"
-    </h2>
+                {/* A Glimpse Into 2025 Section */}
+                {/* A Glimpse Into 2025 Section */}
+                <section className="py-10 md:py-20 px-4 md:px-12 lg:px-20 bg-black">
+                    <h2 className="font-display text-[32px] md:text-[72px] font-black text-center mb-6 md:mb-16 tracking-[-0.01em]">
+                        "A Glimpse Into 2025"
+                    </h2>
 
-    <div className="w-full max-w-[400px] md:max-w-[1400px] mx-auto grid grid-cols-3 gap-2 md:gap-5">
+                    <div className="w-full max-w-[400px] md:max-w-[1400px] mx-auto grid grid-cols-3 gap-2 md:gap-5">
 
-        {/* Left Column - 3 Images Stacked */}
-        <div className="flex flex-col gap-2 md:gap-5">
-            <div className="bg-gray-800 rounded-lg md:rounded-2xl overflow-hidden relative h-[100px] md:h-[360px]">
-                <Image src={speaker} alt="Speaker 1" fill className="object-cover" />
-            </div>
-            <div className="bg-gray-800 rounded-lg md:rounded-2xl overflow-hidden relative h-[100px] md:h-[360px]">
-                <Image src={embeddedImg1} alt="speaker 2" fill className="object-cover" />
-            </div>
-            <div className="bg-gray-800 rounded-lg md:rounded-2xl overflow-hidden relative h-[100px] md:h-[360px]">
-                <Image src={embeddedImg2} alt="Speaker 3" fill className="object-cover" />
-            </div>
-        </div>
+                        {/* Left Column - 3 Images Stacked */}
+                        <div className="flex flex-col gap-2 md:gap-5">
+                            <div className="bg-gray-800 rounded-lg md:rounded-2xl overflow-hidden relative h-[100px] md:h-[360px]">
+                                <Image src={speaker} alt="Speaker 1" fill className="object-cover" />
+                            </div>
+                            <div className="bg-gray-800 rounded-lg md:rounded-2xl overflow-hidden relative h-[100px] md:h-[360px]">
+                                <Image src={embeddedImg1} alt="speaker 2" fill className="object-cover" />
+                            </div>
+                            <div className="bg-gray-800 rounded-lg md:rounded-2xl overflow-hidden relative h-[100px] md:h-[360px]">
+                                <Image src={embeddedImg2} alt="Speaker 3" fill className="object-cover" />
+                            </div>
+                        </div>
 
-        {/* Center Column - Stats Vertical */}
-        <div className="bg-gray-900 rounded-lg md:rounded-2xl overflow-hidden relative h-[320px] md:h-[1150px]">
-            <div className="w-full h-full flex flex-col items-center justify-center p-4 md:p-8 gap-6 md:gap-16">
-                {/* Stat 1 */}
-                <div className="text-center">
-                    <h3 className="font-display text-[40px] md:text-[96px] font-black leading-[1] mb-2">
-                        7K
-                    </h3>
-                    <p className="font-sans text-[12px] md:text-[24px] font-medium text-gray-300">
-                        Attendees
-                    </p>
-                </div>
+                        {/* Center Column - Stats Vertical */}
+                        <div className="bg-gray-900 rounded-lg md:rounded-2xl overflow-hidden relative h-[320px] md:h-[1150px]">
+                            <div className="w-full h-full flex flex-col items-center justify-center p-2 md:p-8 gap-3 md:gap-16">
+                                {/* Stat 1 */}
+                                <div className="text-center">
+                                    <h3 className="font-display text-[28px] md:text-[96px] font-black leading-[1] mb-1 md:mb-2">
+                                        7K
+                                    </h3>
+                                    <p className="font-sans text-[10px] md:text-[24px] font-medium text-gray-300">
+                                        Attendees
+                                    </p>
+                                </div>
 
-                {/* Stat 2 */}
-                <div className="text-center">
-                    <h3 className="font-display text-[40px] md:text-[96px] font-black leading-[1] mb-2">
-                        30+
-                    </h3>
-                    <p className="font-sans text-[12px] md:text-[24px] font-medium text-gray-300">
-                        Partners
-                    </p>
-                </div>
+                                {/* Stat 2 */}
+                                <div className="text-center">
+                                    <h3 className="font-display text-[28px] md:text-[96px] font-black leading-[1] mb-1 md:mb-2">
+                                        30+
+                                    </h3>
+                                    <p className="font-sans text-[10px] md:text-[24px] font-medium text-gray-300">
+                                        Partners
+                                    </p>
+                                </div>
 
-                {/* Stat 3 */}
-                <div className="text-center">
-                    <h3 className="font-display text-[40px] md:text-[96px] font-black leading-[1] mb-2">
-                        4.8K
-                    </h3>
-                    <p className="font-sans text-[12px] md:text-[24px] font-medium text-gray-300">
-                        Participants Empowered
-                    </p>
-                </div>
+                                {/* Stat 3 */}
+                                <div className="text-center">
+                                    <h3 className="font-display text-[28px] md:text-[96px] font-black leading-[1] mb-1 md:mb-2">
+                                        4.8K
+                                    </h3>
+                                    <p className="font-sans text-[10px] md:text-[24px] font-medium text-gray-300">
+                                        Participants Empowered
+                                    </p>
+                                </div>
 
-                {/* Stat 4 */}
-                <div className="text-center">
-                    <h3 className="font-display text-[40px] md:text-[96px] font-black leading-[1] mb-2">
-                        30
-                    </h3>
-                    <p className="font-sans text-[12px] md:text-[24px] font-medium text-gray-300">
-                        Speakers
-                    </p>
-                </div>
-            </div>
-        </div>
+                                {/* Stat 4 */}
+                                <div className="text-center">
+                                    <h3 className="font-display text-[28px] md:text-[96px] font-black leading-[1] mb-1 md:mb-2">
+                                        30
+                                    </h3>
+                                    <p className="font-sans text-[10px] md:text-[24px] font-medium text-gray-300">
+                                        Speakers
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
 
-        {/* Right Column - 3 Images Stacked */}
-        <div className="flex flex-col gap-2 md:gap-5">
-            <div className="bg-gray-800 rounded-lg md:rounded-2xl overflow-hidden relative h-[100px] md:h-[360px]">
-                <Image src={embeddedImg3} alt="Speaker 4" fill className="object-cover" />
-            </div>
-            <div className="bg-gray-800 rounded-lg md:rounded-2xl overflow-hidden relative h-[100px] md:h-[360px]">
-                <Image src={embeddedImg4} alt="Speaker 5" fill className="object-cover" />
-            </div>
-            <div className="bg-gray-800 rounded-lg md:rounded-2xl overflow-hidden relative h-[100px] md:h-[360px]">
-                <Image src={embeddedImg5} alt="Speaker 6" fill className="object-cover" />
-            </div>
-        </div>
-    </div>
-</section>
+                        {/* Right Column - 3 Images Stacked */}
+                        <div className="flex flex-col gap-2 md:gap-5">
+                            <div className="bg-gray-800 rounded-lg md:rounded-2xl overflow-hidden relative h-[100px] md:h-[360px]">
+                                <Image src={embeddedImg3} alt="Speaker 4" fill className="object-cover" />
+                            </div>
+                            <div className="bg-gray-800 rounded-lg md:rounded-2xl overflow-hidden relative h-[100px] md:h-[360px]">
+                                <Image src={embeddedImg4} alt="Speaker 5" fill className="object-cover" />
+                            </div>
+                            <div className="bg-gray-800 rounded-lg md:rounded-2xl overflow-hidden relative h-[100px] md:h-[360px]">
+                                <Image src={embeddedImg5} alt="Speaker 6" fill className="object-cover" />
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
                 {/* Who Is This Event For? Section - DESKTOP */}
                 <section className="py-20 px-6 md:px-12 lg:px-20 max-w-7xl mx-auto hidden md:block">
                     {/* Header */}
