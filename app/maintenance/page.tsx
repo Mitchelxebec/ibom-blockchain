@@ -67,7 +67,7 @@ export default function MaintenancePage() {
                             textAlign: 'center'
                         }}
                     >
-                        Our site is currently undergoing maintenance.
+                        We are Currently Updating this page.
                     </p>
                     <p
                         className="text-white/90"
@@ -81,7 +81,7 @@ export default function MaintenancePage() {
                             textAlign: 'center'
                         }}
                     >
-                        We will be back in 3 days
+                        Will be live again soon
                     </p>
                 </div>
             </div>
