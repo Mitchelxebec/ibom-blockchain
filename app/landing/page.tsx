@@ -1028,7 +1028,7 @@ export default function Landing() {
                         </div>
 
                         {/* Collaborators Grid - 5 Rows with Alternating Scroll Directions */}
-                        <div className="mt-12 space-y-8">
+<div className="mt-12 space-y-8">
                             {/* Row 1 - Scroll Right */}
                             <div className="relative">
                                 <div className="flex gap-4 animate-scroll-right">
@@ -1039,8 +1039,8 @@ export default function Landing() {
                                                     <Image
                                                         src={collaborator}
                                                         alt={`Collaborator ${index + 1}`}
-                                                        width={80}
-                                                        height={80}
+                                                        width={60}
+                                                        height={60}
                                                         className="object-contain"
                                                         loading="lazy"
                                                     />
@@ -1061,8 +1061,8 @@ export default function Landing() {
                                                     <Image
                                                         src={collaborator}
                                                         alt={`Collaborator ${index + 1}`}
-                                                        width={80}
-                                                        height={80}
+                                                        width={60}
+                                                        height={60}
                                                         className="object-contain"
                                                         loading="lazy"
                                                     />
@@ -1083,8 +1083,8 @@ export default function Landing() {
                                                     <Image
                                                         src={collaborator}
                                                         alt={`Collaborator ${index + 1}`}
-                                                        width={80}
-                                                        height={80}
+                                                        width={60}
+                                                        height={60}
                                                         className="object-contain"
                                                         loading="lazy"
                                                     />
@@ -1105,8 +1105,8 @@ export default function Landing() {
                                                     <Image
                                                         src={collaborator}
                                                         alt={`Collaborator ${index + 1}`}
-                                                        width={80}
-                                                        height={80}
+                                                        width={60}
+                                                        height={60}
                                                         className="object-contain"
                                                         loading="lazy"
                                                     />
@@ -1127,8 +1127,8 @@ export default function Landing() {
                                                     <Image
                                                         src={collaborator}
                                                         alt={`Collaborator ${index + 1}`}
-                                                        width={80}
-                                                        height={80}
+                                                        width={60}
+                                                        height={60}
                                                         className="object-contain"
                                                         loading="lazy"
                                                     />
@@ -1141,7 +1141,7 @@ export default function Landing() {
                         </div>
                     </div>
                 </section>
-
+                
                 {/* Our Collaborators Section - MOBILE */}
                 <section className="py-10 w-full md:hidden overflow-hidden">
                     <div className="px-4 mb-8">
@@ -1298,11 +1298,11 @@ export default function Landing() {
                 }
 
                 .animate-scroll-right {
-                    animation: scroll-right 20s linear infinite;
+                    animation: scroll-right 10s linear infinite;
                 }
 
                 .animate-scroll-left {
-                    animation: scroll-left 20s linear infinite;
+                    animation: scroll-left 10s linear infinite;
                 }
 
                 /* Faster animation for mobile */

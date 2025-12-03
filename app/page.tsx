@@ -127,7 +127,7 @@ export default function Home() {
 
         {/* Our Collaborators Section - DESKTOP */}
         <section className="py-20 w-full hidden md:block overflow-hidden">
-          <div className="w-full space-y-8">
+          <div className="mt-12 space-y-8">
             {/* Row 1 - Scroll Right */}
             <div className="mt-12 space-y-8">
               {/* Row 1 - Scroll Right */}
@@ -140,8 +140,8 @@ export default function Home() {
                           <Image
                             src={collaborator}
                             alt={`Collaborator ${index + 1}`}
-                            width={80}
-                            height={80}
+                            width={60}
+                            height={60}
                             className="object-contain"
                             loading="lazy"
                           />
@@ -162,8 +162,8 @@ export default function Home() {
                           <Image
                             src={collaborator}
                             alt={`Collaborator ${index + 1}`}
-                            width={80}
-                            height={80}
+                            width={60}
+                            height={60}
                             className="object-contain"
                             loading="lazy"
                           />
@@ -184,8 +184,8 @@ export default function Home() {
                           <Image
                             src={collaborator}
                             alt={`Collaborator ${index + 1}`}
-                            width={80}
-                            height={80}
+                            width={60}
+                            height={60}
                             className="object-contain"
                             loading="lazy"
                           />
@@ -206,8 +206,8 @@ export default function Home() {
                           <Image
                             src={collaborator}
                             alt={`Collaborator ${index + 1}`}
-                            width={80}
-                            height={80}
+                            width={60}
+                            height={60}
                             className="object-contain"
                             loading="lazy"
                           />
@@ -228,8 +228,8 @@ export default function Home() {
                           <Image
                             src={collaborator}
                             alt={`Collaborator ${index + 1}`}
-                            width={80}
-                            height={80}
+                            width={60}
+                            height={60}
                             className="object-contain"
                             loading="lazy"
                           />
@@ -252,13 +252,13 @@ export default function Home() {
               <div className="flex gap-3 animate-scroll-right">
                 {[...Array(3)].map((_, setIndex) => (
                   <div key={setIndex} className="flex gap-3 flex-shrink-0">
-                    {collaborators.slice(0, 6).map((collaborator, index) => (
-                      <div key={`mobile-row1-${setIndex}-${index}`} className="bg-black rounded-lg h-[60px] w-[80px] flex items-center justify-center flex-shrink-0">
+                    {collaborators.map((collaborator, index) => (
+                      <div key={`mobile-row1-${setIndex}-${index}`} className="bg-black rounded-lg h-[60px] w-[90px] flex items-center justify-center flex-shrink-0">
                         <Image
                           src={collaborator}
                           alt={`Collaborator ${index + 1}`}
-                          width={48}
-                          height={48}
+                          width={50}
+                          height={50}
                           className="object-contain"
                           loading="lazy"
                         />
@@ -274,13 +274,13 @@ export default function Home() {
               <div className="flex gap-3 animate-scroll-left">
                 {[...Array(3)].map((_, setIndex) => (
                   <div key={setIndex} className="flex gap-3 flex-shrink-0">
-                    {collaborators.slice(6, 12).map((collaborator, index) => (
-                      <div key={`mobile-row2-${setIndex}-${index}`} className="bg-black rounded-lg h-[60px] w-[80px] flex items-center justify-center flex-shrink-0">
+                    {[...collaborators].reverse().map((collaborator, index) => (
+                      <div key={`mobile-row2-${setIndex}-${index}`} className="bg-black rounded-lg h-[60px] w-[90px] flex items-center justify-center flex-shrink-0">
                         <Image
                           src={collaborator}
-                          alt={`Collaborator ${index + 7}`}
-                          width={48}
-                          height={48}
+                          alt={`Collaborator ${index + 1}`}
+                          width={50}
+                          height={50}
                           className="object-contain"
                           loading="lazy"
                         />
@@ -296,13 +296,13 @@ export default function Home() {
               <div className="flex gap-3 animate-scroll-right">
                 {[...Array(3)].map((_, setIndex) => (
                   <div key={setIndex} className="flex gap-3 flex-shrink-0">
-                    {[...collaborators].reverse().slice(0, 6).map((collaborator, index) => (
-                      <div key={`mobile-row3-${setIndex}-${index}`} className="bg-black rounded-lg h-[60px] w-[80px] flex items-center justify-center flex-shrink-0">
+                    {collaborators.map((collaborator, index) => (
+                      <div key={`mobile-row3-${setIndex}-${index}`} className="bg-black rounded-lg h-[60px] w-[90px] flex items-center justify-center flex-shrink-0">
                         <Image
                           src={collaborator}
-                          alt={`Collaborator ${index + 13}`}
-                          width={48}
-                          height={48}
+                          alt={`Collaborator ${index + 1}`}
+                          width={50}
+                          height={50}
                           className="object-contain"
                           loading="lazy"
                         />
@@ -318,13 +318,13 @@ export default function Home() {
               <div className="flex gap-3 animate-scroll-left">
                 {[...Array(3)].map((_, setIndex) => (
                   <div key={setIndex} className="flex gap-3 flex-shrink-0">
-                    {collaborators.slice(0, 6).map((collaborator, index) => (
-                      <div key={`mobile-row4-${setIndex}-${index}`} className="bg-black rounded-lg h-[60px] w-[80px] flex items-center justify-center flex-shrink-0">
+                    {[...collaborators].reverse().map((collaborator, index) => (
+                      <div key={`mobile-row4-${setIndex}-${index}`} className="bg-black rounded-lg h-[60px] w-[90px] flex items-center justify-center flex-shrink-0">
                         <Image
                           src={collaborator}
-                          alt={`Collaborator ${index + 19}`}
-                          width={48}
-                          height={48}
+                          alt={`Collaborator ${index + 1}`}
+                          width={50}
+                          height={50}
                           className="object-contain"
                           loading="lazy"
                         />
@@ -340,13 +340,13 @@ export default function Home() {
               <div className="flex gap-3 animate-scroll-right">
                 {[...Array(3)].map((_, setIndex) => (
                   <div key={setIndex} className="flex gap-3 flex-shrink-0">
-                    {collaborators.slice(6, 12).map((collaborator, index) => (
-                      <div key={`mobile-row5-${setIndex}-${index}`} className="bg-black rounded-lg h-[60px] w-[80px] flex items-center justify-center flex-shrink-0">
+                    {collaborators.map((collaborator, index) => (
+                      <div key={`mobile-row5-${setIndex}-${index}`} className="bg-black rounded-lg h-[60px] w-[90px] flex items-center justify-center flex-shrink-0">
                         <Image
                           src={collaborator}
-                          alt={`Collaborator ${index + 25}`}
-                          width={48}
-                          height={48}
+                          alt={`Collaborator ${index + 1}`}
+                          width={50}
+                          height={50}
                           className="object-contain"
                           loading="lazy"
                         />
@@ -400,11 +400,11 @@ export default function Home() {
         }
 
         .animate-scroll-right {
-          animation: scroll-right 20s linear infinite;
+          animation: scroll-right 10s linear infinite;
         }
 
         .animate-scroll-left {
-          animation: scroll-left 20s linear infinite;
+          animation: scroll-left 10s linear infinite;
         }
 
         .animate-scroll-right-mobile {
