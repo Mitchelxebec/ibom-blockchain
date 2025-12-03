@@ -8,18 +8,33 @@ const ibx = "/images/ibx-logo.png";
 
 export default function Home() {
   const collaborators = [
-    { src: "/images/AdomLabs.png", alt: "Adom Labs" },
-    { src: "/images/AI-i-Nigeria.png", alt: "AI in Nigeria" },
-    { src: "/images/Bazil.png", alt: "Bazil" },
-    { src: "/images/Bloquest.png", alt: "Bloquest" },
-    { src: "/images/CDS.png", alt: "CDS" },
-    { src: "/images/chainDustry.png", alt: "ChainDustry" },
-    { src: "/images/FutureLabs.png", alt: "Future Labs" },
-    { src: "/images/infinityExchange.png", alt: "Infinity Exchange" },
-    { src: "/images/Rabble.png", alt: "Rabble" },
-    { src: "/images/Satoshi.png", alt: "Satoshi" },
-    { src: "/images/WomenInDeFi.png", alt: "Women In DeFi" },
-    { src: "/images/chainDrive.png", alt: "Chain Drive" },
+    "/images/AdomLabs.png",
+    "/images/BA.png",
+    "/images/bitcoin.png",
+    "/images/blockchainFUL.png",
+    "/images/cadinu.png",
+    "/images/CalabarBTCClub.png",
+    "/images/chainDustry.png",
+    "/images/CoinGabbar.png",
+    "/images/coinRateCap.png",
+    "/images/CryptoAssetBuyer.png",
+    "/images/CryptoFy.png",
+    "/images/cyberChain.png",
+    "/images/ibx26.png",
+    "/images/ITPulse.png",
+    "/images/Limitless.png",
+    "/images/MITASchool.png",
+    "/images/NigCommWeek.png",
+    "/images/NigeriaInnvSumm.png",
+    "/images/NigCommWeek.png",
+    "/images/RavenewsOnline.png",
+    "/images/Satoshi.png",
+    "/images/SmartWaka.png",
+    "/images/techBuildAfrica.png",
+    "/images/techEconomy.png",
+    "/images/techTrendsAfrica.png",
+    "/images/TeenGirlBlockchain.png",
+    "/images/TheConCave.png",
   ];
 
   const countries = [
@@ -114,112 +129,115 @@ export default function Home() {
         <section className="py-20 w-full hidden md:block overflow-hidden">
           <div className="w-full space-y-8">
             {/* Row 1 - Scroll Right */}
-            <div className="relative">
-              <div className="flex gap-4 animate-scroll-right">
-                {[...Array(3)].map((_, setIndex) => (
-                  <div key={setIndex} className="flex gap-4 flex-shrink-0">
-                    {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((index) => (
-                      <div key={`row1-${setIndex}-${index}`} className="bg-black rounded-lg h-[80px] w-[120px] flex items-center justify-center flex-shrink-0">
-                        <Image
-                          src={collaborators[index].src}
-                          alt={collaborators[index].alt}
-                          width={80}
-                          height={80}
-                          className="object-contain"
-                          loading="lazy"
-                        />
-                      </div>
-                    ))}
-                  </div>
-                ))}
+            <div className="mt-12 space-y-8">
+              {/* Row 1 - Scroll Right */}
+              <div className="relative">
+                <div className="flex gap-4 animate-scroll-right">
+                  {[...Array(3)].map((_, setIndex) => (
+                    <div key={setIndex} className="flex gap-4 flex-shrink-0">
+                      {collaborators.map((collaborator, index) => (
+                        <div key={`row1-${setIndex}-${index}`} className="bg-black rounded-lg h-[80px] w-[120px] flex items-center justify-center flex-shrink-0">
+                          <Image
+                            src={collaborator}
+                            alt={`Collaborator ${index + 1}`}
+                            width={80}
+                            height={80}
+                            className="object-contain"
+                            loading="lazy"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
 
-            {/* Row 2 - Scroll Left */}
-            <div className="relative">
-              <div className="flex gap-4 animate-scroll-left">
-                {[...Array(3)].map((_, setIndex) => (
-                  <div key={setIndex} className="flex gap-4 flex-shrink-0">
-                    {[2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 11, 10].map((index, i) => (
-                      <div key={`row2-${setIndex}-${i}`} className="bg-black rounded-lg h-[80px] w-[120px] flex items-center justify-center flex-shrink-0">
-                        <Image
-                          src={collaborators[index].src}
-                          alt={collaborators[index].alt}
-                          width={80}
-                          height={80}
-                          className="object-contain"
-                          loading="lazy"
-                        />
-                      </div>
-                    ))}
-                  </div>
-                ))}
+              {/* Row 2 - Scroll Left */}
+              <div className="relative">
+                <div className="flex gap-4 animate-scroll-left">
+                  {[...Array(3)].map((_, setIndex) => (
+                    <div key={setIndex} className="flex gap-4 flex-shrink-0">
+                      {[...collaborators].reverse().map((collaborator, index) => (
+                        <div key={`row2-${setIndex}-${index}`} className="bg-black rounded-lg h-[80px] w-[120px] flex items-center justify-center flex-shrink-0">
+                          <Image
+                            src={collaborator}
+                            alt={`Collaborator ${index + 1}`}
+                            width={80}
+                            height={80}
+                            className="object-contain"
+                            loading="lazy"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
 
-            {/* Row 3 - Scroll Right */}
-            <div className="relative">
-              <div className="flex gap-4 animate-scroll-right">
-                {[...Array(3)].map((_, setIndex) => (
-                  <div key={setIndex} className="flex gap-4 flex-shrink-0">
-                    {[4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 10, 11].map((index, i) => (
-                      <div key={`row3-${setIndex}-${i}`} className="bg-black rounded-lg h-[80px] w-[120px] flex items-center justify-center flex-shrink-0">
-                        <Image
-                          src={collaborators[index].src}
-                          alt={collaborators[index].alt}
-                          width={80}
-                          height={80}
-                          className="object-contain"
-                          loading="lazy"
-                        />
-                      </div>
-                    ))}
-                  </div>
-                ))}
+              {/* Row 3 - Scroll Right */}
+              <div className="relative">
+                <div className="flex gap-4 animate-scroll-right">
+                  {[...Array(3)].map((_, setIndex) => (
+                    <div key={setIndex} className="flex gap-4 flex-shrink-0">
+                      {collaborators.map((collaborator, index) => (
+                        <div key={`row3-${setIndex}-${index}`} className="bg-black rounded-lg h-[80px] w-[120px] flex items-center justify-center flex-shrink-0">
+                          <Image
+                            src={collaborator}
+                            alt={`Collaborator ${index + 1}`}
+                            width={80}
+                            height={80}
+                            className="object-contain"
+                            loading="lazy"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
 
-            {/* Row 4 - Scroll Left */}
-            <div className="relative">
-              <div className="flex gap-4 animate-scroll-left">
-                {[...Array(3)].map((_, setIndex) => (
-                  <div key={setIndex} className="flex gap-4 flex-shrink-0">
-                    {[6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 11, 10].map((index, i) => (
-                      <div key={`row4-${setIndex}-${i}`} className="bg-black rounded-lg h-[80px] w-[120px] flex items-center justify-center flex-shrink-0">
-                        <Image
-                          src={collaborators[index].src}
-                          alt={collaborators[index].alt}
-                          width={80}
-                          height={80}
-                          className="object-contain"
-                          loading="lazy"
-                        />
-                      </div>
-                    ))}
-                  </div>
-                ))}
+              {/* Row 4 - Scroll Left */}
+              <div className="relative">
+                <div className="flex gap-4 animate-scroll-left">
+                  {[...Array(3)].map((_, setIndex) => (
+                    <div key={setIndex} className="flex gap-4 flex-shrink-0">
+                      {[...collaborators].reverse().map((collaborator, index) => (
+                        <div key={`row4-${setIndex}-${index}`} className="bg-black rounded-lg h-[80px] w-[120px] flex items-center justify-center flex-shrink-0">
+                          <Image
+                            src={collaborator}
+                            alt={`Collaborator ${index + 1}`}
+                            width={80}
+                            height={80}
+                            className="object-contain"
+                            loading="lazy"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
 
-            {/* Row 5 - Scroll Right */}
-            <div className="relative">
-              <div className="flex gap-4 animate-scroll-right">
-                {[...Array(3)].map((_, setIndex) => (
-                  <div key={setIndex} className="flex gap-4 flex-shrink-0">
-                    {[8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 10, 11].map((index, i) => (
-                      <div key={`row5-${setIndex}-${i}`} className="bg-black rounded-lg h-[80px] w-[120px] flex items-center justify-center flex-shrink-0">
-                        <Image
-                          src={collaborators[index].src}
-                          alt={collaborators[index].alt}
-                          width={80}
-                          height={80}
-                          className="object-contain"
-                          loading="lazy"
-                        />
-                      </div>
-                    ))}
-                  </div>
-                ))}
+              {/* Row 5 - Scroll Right */}
+              <div className="relative">
+                <div className="flex gap-4 animate-scroll-right">
+                  {[...Array(3)].map((_, setIndex) => (
+                    <div key={setIndex} className="flex gap-4 flex-shrink-0">
+                      {collaborators.map((collaborator, index) => (
+                        <div key={`row5-${setIndex}-${index}`} className="bg-black rounded-lg h-[80px] w-[120px] flex items-center justify-center flex-shrink-0">
+                          <Image
+                            src={collaborator}
+                            alt={`Collaborator ${index + 1}`}
+                            width={80}
+                            height={80}
+                            className="object-contain"
+                            loading="lazy"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -231,14 +249,14 @@ export default function Home() {
           <div className="space-y-6">
             {/* Mobile Row 1 - Scroll Right */}
             <div className="relative">
-              <div className="flex gap-3 animate-scroll-right-mobile">
+              <div className="flex gap-3 animate-scroll-right">
                 {[...Array(3)].map((_, setIndex) => (
                   <div key={setIndex} className="flex gap-3 flex-shrink-0">
-                    {[0, 1, 2, 3, 4, 5].map((index) => (
+                    {collaborators.slice(0, 6).map((collaborator, index) => (
                       <div key={`mobile-row1-${setIndex}-${index}`} className="bg-black rounded-lg h-[60px] w-[80px] flex items-center justify-center flex-shrink-0">
                         <Image
-                          src={collaborators[index].src}
-                          alt={collaborators[index].alt}
+                          src={collaborator}
+                          alt={`Collaborator ${index + 1}`}
                           width={48}
                           height={48}
                           className="object-contain"
@@ -253,14 +271,14 @@ export default function Home() {
 
             {/* Mobile Row 2 - Scroll Left */}
             <div className="relative">
-              <div className="flex gap-3 animate-scroll-left-mobile">
+              <div className="flex gap-3 animate-scroll-left">
                 {[...Array(3)].map((_, setIndex) => (
                   <div key={setIndex} className="flex gap-3 flex-shrink-0">
-                    {[6, 7, 8, 9, 10, 11].map((index, i) => (
-                      <div key={`mobile-row2-${setIndex}-${i}`} className="bg-black rounded-lg h-[60px] w-[80px] flex items-center justify-center flex-shrink-0">
+                    {collaborators.slice(6, 12).map((collaborator, index) => (
+                      <div key={`mobile-row2-${setIndex}-${index}`} className="bg-black rounded-lg h-[60px] w-[80px] flex items-center justify-center flex-shrink-0">
                         <Image
-                          src={collaborators[index].src}
-                          alt={collaborators[index].alt}
+                          src={collaborator}
+                          alt={`Collaborator ${index + 7}`}
                           width={48}
                           height={48}
                           className="object-contain"
@@ -275,14 +293,14 @@ export default function Home() {
 
             {/* Mobile Row 3 - Scroll Right */}
             <div className="relative">
-              <div className="flex gap-3 animate-scroll-right-mobile">
+              <div className="flex gap-3 animate-scroll-right">
                 {[...Array(3)].map((_, setIndex) => (
                   <div key={setIndex} className="flex gap-3 flex-shrink-0">
-                    {[1, 0, 4, 5, 2, 3].map((index, i) => (
-                      <div key={`mobile-row3-${setIndex}-${i}`} className="bg-black rounded-lg h-[60px] w-[80px] flex items-center justify-center flex-shrink-0">
+                    {[...collaborators].reverse().slice(0, 6).map((collaborator, index) => (
+                      <div key={`mobile-row3-${setIndex}-${index}`} className="bg-black rounded-lg h-[60px] w-[80px] flex items-center justify-center flex-shrink-0">
                         <Image
-                          src={collaborators[index].src}
-                          alt={collaborators[index].alt}
+                          src={collaborator}
+                          alt={`Collaborator ${index + 13}`}
                           width={48}
                           height={48}
                           className="object-contain"
@@ -297,14 +315,14 @@ export default function Home() {
 
             {/* Mobile Row 4 - Scroll Left */}
             <div className="relative">
-              <div className="flex gap-3 animate-scroll-left-mobile">
+              <div className="flex gap-3 animate-scroll-left">
                 {[...Array(3)].map((_, setIndex) => (
                   <div key={setIndex} className="flex gap-3 flex-shrink-0">
-                    {[7, 6, 9, 8, 11, 10].map((index, i) => (
-                      <div key={`mobile-row4-${setIndex}-${i}`} className="bg-black rounded-lg h-[60px] w-[80px] flex items-center justify-center flex-shrink-0">
+                    {collaborators.slice(0, 6).map((collaborator, index) => (
+                      <div key={`mobile-row4-${setIndex}-${index}`} className="bg-black rounded-lg h-[60px] w-[80px] flex items-center justify-center flex-shrink-0">
                         <Image
-                          src={collaborators[index].src}
-                          alt={collaborators[index].alt}
+                          src={collaborator}
+                          alt={`Collaborator ${index + 19}`}
                           width={48}
                           height={48}
                           className="object-contain"
@@ -319,14 +337,14 @@ export default function Home() {
 
             {/* Mobile Row 5 - Scroll Right */}
             <div className="relative">
-              <div className="flex gap-3 animate-scroll-right-mobile">
+              <div className="flex gap-3 animate-scroll-right">
                 {[...Array(3)].map((_, setIndex) => (
                   <div key={setIndex} className="flex gap-3 flex-shrink-0">
-                    {[3, 2, 1, 0, 5, 4].map((index, i) => (
-                      <div key={`mobile-row5-${setIndex}-${i}`} className="bg-black rounded-lg h-[60px] w-[80px] flex items-center justify-center flex-shrink-0">
+                    {collaborators.slice(6, 12).map((collaborator, index) => (
+                      <div key={`mobile-row5-${setIndex}-${index}`} className="bg-black rounded-lg h-[60px] w-[80px] flex items-center justify-center flex-shrink-0">
                         <Image
-                          src={collaborators[index].src}
-                          alt={collaborators[index].alt}
+                          src={collaborator}
+                          alt={`Collaborator ${index + 25}`}
                           width={48}
                           height={48}
                           className="object-contain"
