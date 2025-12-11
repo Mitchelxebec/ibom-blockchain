@@ -3,6 +3,8 @@
 import Navbar from "../components/Navbar";
 import Image from "next/image";
 import Link from "next/link";
+import EventOutlineSection from '../components/Event';
+import CollaboratorsSection from "../components/Collaborators";
 import { TrendingUp, Code, Sparkles, Building2 } from "lucide-react";
 import Footer from "../components/Footer";
 import React, { useEffect, useRef, useState } from 'react';
@@ -93,65 +95,10 @@ const cards = [
     }
 ];
 
-// Event images (you'll need to replace these with your actual image paths)
-const eventImage1 = "/images/March10.jpg";
-const eventImage2 = "/images/March11.jpg";
-const eventImage3 = "/images/March12.jpg";
-const eventImage4 = "/images/March13.jpg";
-const eventImage5 = "/images/March14.jpg";
-
-const events = [
-    {
-        title: "IBOM BLOCKCHAIN SUMMIT",
-        day: "10",
-        month: "March",
-        location: "E3 Event Center Uyo Village Road",
-        time: "9:00 am - 5:00 PM",
-        image: eventImage1,
-        alt: "Ibom Blockchain Summit Event"
-    },
-    {
-        title: "IBOM BLOCKCHAIN SUMMIT",
-        day: "11",
-        month: "March",
-        location: "E3 Event Center Uyo Village Road",
-        time: "9:00 am - 5:00 PM",
-        image: eventImage2,
-        alt: "Blockchain Panel Discussion"
-    },
-    {
-        title: "DEN OF ROGUES",
-        day: "12",
-        month: "March",
-        location: "E3 Event Center Uyo Village Road",
-        time: "10:00 am - 4:00 PM",
-        image: eventImage3,
-        alt: "Den of Rogues Presentation"
-    },
-    {
-        title: "FOUNDERS FORGE",
-        day: "13",
-        month: "March",
-        location: "Upon Registration",
-        time: "8:30 am - 6:00 PM",
-        image: eventImage4,
-        alt: "Blockchain Village Event"
-    },
-    {
-        title: "IBX GALA: A CELEBRATION OF VISIONARIES",
-        day: "14",
-        month: "March",
-        location: "Exclusive",
-        time: "5:00 PM Prompt",
-        image: eventImage5,
-        alt: "Founders Forge Event"
-    }
-];
 
 export default function Landing() {
     // Create tripled arrays for smooth infinite scroll
     const tripleCards = [...cards, ...cards, ...cards];
-    const tripleEvents = [...events, ...events, ...events];
 
     // Use the hook for cards section
     const cardsScroll = useAutoScroll({
@@ -161,13 +108,6 @@ export default function Landing() {
         interval: 3000
     });
 
-    // Use the hook for events section
-    const eventsScroll = useAutoScroll({
-        itemWidth: 320,
-        gap: 16,
-        itemCount: tripleEvents.length,
-        interval: 3000
-    });
 
     const [showMore, setShowMore] = useState<{ [key: string]: boolean }>({});
 
@@ -178,111 +118,7 @@ export default function Landing() {
         }));
     };
 
-    const collaborators = [
-        "/images/AdomLabs.png",
-        "/images/BA.png",
-        "/images/bitcoin.png",
-        "/images/blockchainFUL.png",
-        "/images/cadinu.png",
-        "/images/CalabarBTCClub.png",
-        "/images/chainDustry.png",
-        "/images/CoinGabbar.png",
-        "/images/coinRateCap.png",
-        "/images/CryptoAssetBuyer.png",
-        "/images/CryptoFy.png",
-        "/images/cyberChain.png",
-        "/images/ibx26.png",
-        "/images/ITPulse.png",
-        "/images/Limitless.png",
-        "/images/MITASchool.png",
-        "/images/NigCommWeek.png",
-        "/images/NigeriaInnvSumm.png",
-        "/images/NigCommWeek.png",
-        "/images/RavenewsOnline.png",
-        "/images/Satoshi.png",
-        "/images/SmartWaka.png",
-        "/images/techBuildAfrica.png",
-        "/images/techEconomy.png",
-        "/images/techTrendsAfrica.png",
-        "/images/TeenGirlBlockchain.png",
-        "/images/TheConCave.png",
-    ];
 
-    const EventCard = ({ event }: { event: typeof events[0] }) => (
-        <div className="bg-white text-black rounded-2xl overflow-hidden flex-shrink-0 w-[320px] snap-start">
-            <div className="p-6 pb-4">
-                <p className="text-[10px] font-bold uppercase tracking-wide text-gray-500 mb-4">
-                    {event.title}
-                </p>
-
-                <div className="flex gap-4 mb-4">
-                    <div className="flex flex-col">
-                        <h3 className="text-[56px] font-black leading-[56px]">{event.day}</h3>
-                        <p className="text-[14px] font-bold">{event.month}</p>
-                    </div>
-
-                    <div className="flex flex-col gap-2 pt-2">
-                        <div className="flex items-start gap-2">
-                            <span className="text-[12px]">📍</span>
-                            <p className="text-[12px] font-medium text-gray-900 leading-[16px]">
-                                {event.location}
-                            </p>
-                        </div>
-                        <div className="flex items-center gap-2">
-                            <span className="text-[12px]">🕐</span>
-                            <p className="text-[12px] font-medium text-gray-900">
-                                {event.time}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div className="px-6 pb-6">
-                <div className="w-full h-[240px] relative rounded-xl overflow-hidden bg-gray-200">
-                    <img
-                        src={event.image}
-                        alt={event.alt}
-                        className="w-full h-full object-cover"
-                    />
-                </div>
-            </div>
-        </div>
-    );
-
-    // GOOGLE CALENDAR
-    // Helper function to generate Google Calendar URL
-    const generateGoogleCalendarURL = (event: {
-        title: string;
-        description: string;
-        location: string;
-        startDate: string; // Format: YYYYMMDDTHHMMSS
-        endDate: string;   // Format: YYYYMMDDTHHMMSS
-    }) => {
-        const baseURL = 'https://calendar.google.com/calendar/render?action=TEMPLATE';
-
-        const params = new URLSearchParams({
-            text: event.title,
-            details: event.description,
-            location: event.location,
-            dates: `${event.startDate}/${event.endDate}`,
-        });
-
-        return `${baseURL}&${params.toString()}`;
-    };
-
-    const handleAddToCalendar = () => {
-        const eventDetails = {
-            title: 'Ibom Blockchain Xperience 2026',
-            description: 'Join West Africa\'s premier blockchain gathering. A convergence of innovators, industry leaders, creators, and enthusiasts exploring the power of blockchain technology.',
-            location: 'E3 Event Center, Uyo Village Road, Uyo, Nigeria',
-            startDate: '20260310T080000', // March 10, 2026, 8:00 AM
-            endDate: '20260314T173000',   // March 14, 2026, 5:30 PM
-        };
-
-        const calendarURL = generateGoogleCalendarURL(eventDetails);
-        window.open(calendarURL, '_blank');
-    };
 
     return (
         <div>
@@ -321,7 +157,7 @@ export default function Landing() {
                 </div>
             </section>
 
-            <main className="bg-black text-white py-20 px-2 md:px-2">
+            <main className="bg-black text-white py-5 px-2 md:px-2">
                 {/* Content Grid Section - DESKTOP */}
                 <section className="py-20 px-6 md:px-12 lg:px-20 max-w-7xl mx-auto hidden md:block">
                     <div className="w-full max-w-[1282px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -924,79 +760,7 @@ export default function Landing() {
                 </section>
 
                 {/* Event Outline Section - DESKTOP */}
-                <section className="py-20 px-6 md:px-12 lg:px-20 max-w-7xl mx-auto hidden md:block">
-                    <div className="w-full max-w-[1441px] mx-auto">
-                        <div className="flex justify-between items-start mb-8">
-                            <h2 className="font-display text-[56px] font-black leading-[64px] tracking-[-0.01em] text-white">
-                                Event Outline
-                            </h2>
-                            <button
-                                onClick={handleAddToCalendar}
-                                className="bg-orange-500 hover:bg-orange-600 text-black px-6 py-3 rounded-lg text-sm font-bold transition whitespace-nowrap inline-flex items-center gap-2"
-                            >
-                                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
-                                </svg>
-                                Add to Calendar
-                            </button>
-                        </div>
-
-                        <div className="mb-12">
-                            <p className="font-sans text-[16px] font-normal leading-[24px] tracking-[-0.006em] text-white max-w-[960px]">
-                                Join us at the Ibom Blockchain Summit, where visionaries and pioneers converge to explore the future of Blockchain technology.
-                                This annual event is dedicated to fostering collaboration and innovation, providing a unique opportunity to engage with thought
-                                leaders and discover cutting-edge developments in the Web3 space.
-                            </p>
-                        </div>
-
-                        <div className="grid grid-cols-3 gap-5 mb-5">
-                            {events.slice(0, 3).map((event, idx) => (
-                                <EventCard key={idx} event={event} />
-                            ))}
-                        </div>
-
-                        <div className="grid grid-cols-3 gap-5">
-                            {events.slice(3).map((event, idx) => (
-                                <EventCard key={idx + 3} event={event} />
-                            ))}
-                        </div>
-                    </div>
-                </section>
-
-                {/* Event Outline Section - MOBILE Infinite Scroll */}
-                <section className="py-16 px-4 md:hidden">
-                    <div className="max-w-7xl mx-auto">
-                        <div className="flex justify-between flex-col items-start mb-8">
-                            <h2 className="font-display text-[40px] font-black leading-[64px] tracking-[-0.01em] text-white">
-                                Event Outline
-                            </h2>
-                            <button
-                                onClick={handleAddToCalendar}
-                                className="bg-orange-500 hover:bg-orange-600 text-black px-6 py-3 rounded-lg text-sm font-bold transition whitespace-nowrap inline-flex items-center gap-2"
-                            >
-                                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
-                                </svg>
-                                Add to Calendar
-                            </button>
-                        </div>
-
-                        {/* Events Horizontal Scrollable Container */}
-                        <div
-                            ref={eventsScroll.scrollRef}
-                            className="flex gap-4 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-4"
-                            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-                            onMouseEnter={() => eventsScroll.setIsPaused(true)}
-                            onMouseLeave={() => eventsScroll.setIsPaused(false)}
-                            onTouchStart={() => eventsScroll.setIsPaused(true)}
-                            onTouchEnd={() => setTimeout(() => eventsScroll.setIsPaused(false), 2000)}
-                        >
-                            {tripleEvents.map((event, index) => (
-                                <EventCard key={`event-${index}`} event={event} />
-                            ))}
-                        </div>
-                    </div>
-                </section>
+                <EventOutlineSection />
 
                 {/* Our Speakers Section - DESKTOP */}
 
@@ -1007,7 +771,7 @@ export default function Landing() {
                 {/* Our sponsors Section - MOBILE */}
 
                 {/* Our Collaborators Section - DESKTOP */}
-                <section className="py-20 w-full hidden md:block overflow-hidden">
+                <section className="hidden py-20 w-full md:block overflow-hidden">
                     <div className="w-full">
                         {/* Header with Button */}
                         <div className="flex justify-between items-start mb-6 max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
@@ -1028,120 +792,10 @@ export default function Landing() {
                         </div>
 
                         {/* Collaborators Grid - 5 Rows with Alternating Scroll Directions */}
-<div className="mt-12 space-y-8">
-                            {/* Row 1 - Scroll Right */}
-                            <div className="relative">
-                                <div className="flex gap-4 animate-scroll-right">
-                                    {[...Array(3)].map((_, setIndex) => (
-                                        <div key={setIndex} className="flex gap-4 flex-shrink-0">
-                                            {collaborators.map((collaborator, index) => (
-                                                <div key={`row1-${setIndex}-${index}`} className="bg-black rounded-lg h-[80px] w-[120px] flex items-center justify-center flex-shrink-0">
-                                                    <Image
-                                                        src={collaborator}
-                                                        alt={`Collaborator ${index + 1}`}
-                                                        width={60}
-                                                        height={60}
-                                                        className="object-contain"
-                                                        loading="lazy"
-                                                    />
-                                                </div>
-                                            ))}
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-
-                            {/* Row 2 - Scroll Left */}
-                            <div className="relative">
-                                <div className="flex gap-4 animate-scroll-left">
-                                    {[...Array(3)].map((_, setIndex) => (
-                                        <div key={setIndex} className="flex gap-4 flex-shrink-0">
-                                            {[...collaborators].reverse().map((collaborator, index) => (
-                                                <div key={`row2-${setIndex}-${index}`} className="bg-black rounded-lg h-[80px] w-[120px] flex items-center justify-center flex-shrink-0">
-                                                    <Image
-                                                        src={collaborator}
-                                                        alt={`Collaborator ${index + 1}`}
-                                                        width={60}
-                                                        height={60}
-                                                        className="object-contain"
-                                                        loading="lazy"
-                                                    />
-                                                </div>
-                                            ))}
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-
-                            {/* Row 3 - Scroll Right */}
-                            <div className="relative">
-                                <div className="flex gap-4 animate-scroll-right">
-                                    {[...Array(3)].map((_, setIndex) => (
-                                        <div key={setIndex} className="flex gap-4 flex-shrink-0">
-                                            {collaborators.map((collaborator, index) => (
-                                                <div key={`row3-${setIndex}-${index}`} className="bg-black rounded-lg h-[80px] w-[120px] flex items-center justify-center flex-shrink-0">
-                                                    <Image
-                                                        src={collaborator}
-                                                        alt={`Collaborator ${index + 1}`}
-                                                        width={60}
-                                                        height={60}
-                                                        className="object-contain"
-                                                        loading="lazy"
-                                                    />
-                                                </div>
-                                            ))}
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-
-                            {/* Row 4 - Scroll Left */}
-                            <div className="relative">
-                                <div className="flex gap-4 animate-scroll-left">
-                                    {[...Array(3)].map((_, setIndex) => (
-                                        <div key={setIndex} className="flex gap-4 flex-shrink-0">
-                                            {[...collaborators].reverse().map((collaborator, index) => (
-                                                <div key={`row4-${setIndex}-${index}`} className="bg-black rounded-lg h-[80px] w-[120px] flex items-center justify-center flex-shrink-0">
-                                                    <Image
-                                                        src={collaborator}
-                                                        alt={`Collaborator ${index + 1}`}
-                                                        width={60}
-                                                        height={60}
-                                                        className="object-contain"
-                                                        loading="lazy"
-                                                    />
-                                                </div>
-                                            ))}
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-
-                            {/* Row 5 - Scroll Right */}
-                            <div className="relative">
-                                <div className="flex gap-4 animate-scroll-right">
-                                    {[...Array(3)].map((_, setIndex) => (
-                                        <div key={setIndex} className="flex gap-4 flex-shrink-0">
-                                            {collaborators.map((collaborator, index) => (
-                                                <div key={`row5-${setIndex}-${index}`} className="bg-black rounded-lg h-[80px] w-[120px] flex items-center justify-center flex-shrink-0">
-                                                    <Image
-                                                        src={collaborator}
-                                                        alt={`Collaborator ${index + 1}`}
-                                                        width={60}
-                                                        height={60}
-                                                        className="object-contain"
-                                                        loading="lazy"
-                                                    />
-                                                </div>
-                                            ))}
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
+                        <CollaboratorsSection />
                     </div>
                 </section>
-                
+
                 {/* Our Collaborators Section - MOBILE */}
                 <section className="py-10 w-full md:hidden overflow-hidden">
                     <div className="px-4 mb-8">
@@ -1160,117 +814,7 @@ export default function Landing() {
                         </a>
                     </div>
 
-                    <div className="space-y-6">
-                        {/* Mobile Row 1 - Scroll Right */}
-                        <div className="relative">
-                            <div className="flex gap-3 animate-scroll-right">
-                                {[...Array(3)].map((_, setIndex) => (
-                                    <div key={setIndex} className="flex gap-3 flex-shrink-0">
-                                        {collaborators.slice(0, 6).map((collaborator, index) => (
-                                            <div key={`mobile-row1-${setIndex}-${index}`} className="bg-black rounded-lg h-[60px] w-[80px] flex items-center justify-center flex-shrink-0">
-                                                <Image
-                                                    src={collaborator}
-                                                    alt={`Collaborator ${index + 1}`}
-                                                    width={48}
-                                                    height={48}
-                                                    className="object-contain"
-                                                    loading="lazy"
-                                                />
-                                            </div>
-                                        ))}
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-
-                        {/* Mobile Row 2 - Scroll Left */}
-                        <div className="relative">
-                            <div className="flex gap-3 animate-scroll-left">
-                                {[...Array(3)].map((_, setIndex) => (
-                                    <div key={setIndex} className="flex gap-3 flex-shrink-0">
-                                        {collaborators.slice(6, 12).map((collaborator, index) => (
-                                            <div key={`mobile-row2-${setIndex}-${index}`} className="bg-black rounded-lg h-[60px] w-[80px] flex items-center justify-center flex-shrink-0">
-                                                <Image
-                                                    src={collaborator}
-                                                    alt={`Collaborator ${index + 7}`}
-                                                    width={48}
-                                                    height={48}
-                                                    className="object-contain"
-                                                    loading="lazy"
-                                                />
-                                            </div>
-                                        ))}
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-
-                        {/* Mobile Row 3 - Scroll Right */}
-                        <div className="relative">
-                            <div className="flex gap-3 animate-scroll-right">
-                                {[...Array(3)].map((_, setIndex) => (
-                                    <div key={setIndex} className="flex gap-3 flex-shrink-0">
-                                        {[...collaborators].reverse().slice(0, 6).map((collaborator, index) => (
-                                            <div key={`mobile-row3-${setIndex}-${index}`} className="bg-black rounded-lg h-[60px] w-[80px] flex items-center justify-center flex-shrink-0">
-                                                <Image
-                                                    src={collaborator}
-                                                    alt={`Collaborator ${index + 13}`}
-                                                    width={48}
-                                                    height={48}
-                                                    className="object-contain"
-                                                    loading="lazy"
-                                                />
-                                            </div>
-                                        ))}
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-
-                        {/* Mobile Row 4 - Scroll Left */}
-                        <div className="relative">
-                            <div className="flex gap-3 animate-scroll-left">
-                                {[...Array(3)].map((_, setIndex) => (
-                                    <div key={setIndex} className="flex gap-3 flex-shrink-0">
-                                        {collaborators.slice(0, 6).map((collaborator, index) => (
-                                            <div key={`mobile-row4-${setIndex}-${index}`} className="bg-black rounded-lg h-[60px] w-[80px] flex items-center justify-center flex-shrink-0">
-                                                <Image
-                                                    src={collaborator}
-                                                    alt={`Collaborator ${index + 19}`}
-                                                    width={48}
-                                                    height={48}
-                                                    className="object-contain"
-                                                    loading="lazy"
-                                                />
-                                            </div>
-                                        ))}
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-
-                        {/* Mobile Row 5 - Scroll Right */}
-                        <div className="relative">
-                            <div className="flex gap-3 animate-scroll-right">
-                                {[...Array(3)].map((_, setIndex) => (
-                                    <div key={setIndex} className="flex gap-3 flex-shrink-0">
-                                        {collaborators.slice(6, 12).map((collaborator, index) => (
-                                            <div key={`mobile-row5-${setIndex}-${index}`} className="bg-black rounded-lg h-[60px] w-[80px] flex items-center justify-center flex-shrink-0">
-                                                <Image
-                                                    src={collaborator}
-                                                    alt={`Collaborator ${index + 25}`}
-                                                    width={48}
-                                                    height={48}
-                                                    className="object-contain"
-                                                    loading="lazy"
-                                                />
-                                            </div>
-                                        ))}
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
+                    <CollaboratorsSection />
                 </section>
 
             </main >
