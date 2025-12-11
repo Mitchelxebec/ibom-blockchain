@@ -49,57 +49,57 @@ const ScrollRow: React.FC<ScrollRowProps> = ({ collaborators, direction, rowId, 
 
     const getImageSize = (collaborator: string) => {
         // Larger size for CalabarBTCClub to make it clearer
-        if (collaborator.includes('CalabarBTCClub')) {
-            return isMobile ? { width: 65, height: 65 } : { width: 80, height: 80 };
-        }
-        // Smaller size for blockchainFUL
-        if (collaborator.includes('blockchainFUL')) {
-            return isMobile ? { width: 40, height: 40 } : { width: 50, height: 50 };
-        }
-        return { width: imageWidth, height: imageHeight };
-    };
+    //     // if (collaborator.includes('CalabarBTCClub')) {
+    //     //     return isMobile ? { width: 65, height: 65 } : { width: 80, height: 80 };
+    // }
+    // Smaller size for blockchainFUL
+    if (collaborator.includes('blockchainFUL')) {
+        return isMobile ? { width: 40, height: 40 } : { width: 50, height: 50 };
+    }
+    return { width: imageWidth, height: imageHeight };
+};
 
-    return (
-        <div className="relative overflow-hidden">
-            <div className={`flex ${gap} ${animationClass}`}>
-                {[...Array(3)].map((_, setIndex) => (
-                    <div key={setIndex} className={`flex ${gap} flex-shrink-0`}>
-                        {displayCollaborators.map((collaborator, index) => {
-                            const size = getImageSize(collaborator);
-                            return (
+return (
+    <div className="relative overflow-hidden">
+        <div className={`flex ${gap} ${animationClass}`}>
+            {[...Array(3)].map((_, setIndex) => (
+                <div key={setIndex} className={`flex ${gap} flex-shrink-0`}>
+                    {displayCollaborators.map((collaborator, index) => {
+                        const size = getImageSize(collaborator);
+                        return (
+                            <div
+                                key={`${rowId}-${setIndex}-${index}`}
+                                className={`bg-black rounded-lg ${containerSize} flex items-center justify-center flex-shrink-0`}
+                            >
                                 <div
-                                    key={`${rowId}-${setIndex}-${index}`}
-                                    className={`bg-black rounded-lg ${containerSize} flex items-center justify-center flex-shrink-0`}
+                                    style={{
+                                        width: size.width,
+                                        height: size.height,
+                                        position: 'relative',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center'
+                                    }}
                                 >
-                                    <div
+                                    <img
+                                        src={collaborator}
+                                        alt={`Collaborator ${index + 1}`}
                                         style={{
-                                            width: size.width,
-                                            height: size.height,
-                                            position: 'relative',
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            justifyContent: 'center'
+                                            maxWidth: '100%',
+                                            maxHeight: '100%',
+                                            objectFit: 'contain'
                                         }}
-                                    >
-                                        <img
-                                            src={collaborator}
-                                            alt={`Collaborator ${index + 1}`}
-                                            style={{
-                                                maxWidth: '100%',
-                                                maxHeight: '100%',
-                                                objectFit: 'contain'
-                                            }}
-                                            loading="lazy"
-                                        />
-                                    </div>
+                                        loading="lazy"
+                                    />
                                 </div>
-                            );
-                        })}
-                    </div>
-                ))}
-            </div>
+                            </div>
+                        );
+                    })}
+                </div>
+            ))}
         </div>
-    );
+    </div>
+);
 };
 
 export default function CollaboratorsSection() {
