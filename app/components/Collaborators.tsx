@@ -41,11 +41,26 @@ const ScrollRow: React.FC<ScrollRowProps> = ({ collaborators, direction, rowId, 
     const gap = isMobile ? 12 : 16; // gap in pixels
     const containerWidth = isMobile ? 90 : 120;
     const containerHeight = isMobile ? 60 : 80;
-    const imageWidth = isMobile ? 50 : 70;
-    const imageHeight = isMobile ? 50 : 70;
+    const imageWidth = isMobile ? 65 : 75;
+    const imageHeight = isMobile ? 65 : 75;
 
     const getImageSize = (collaborator: string) => {
-        if (collaborator.includes('blockchainFUL')) {
+        if (collaborator.includes('BA')) {
+            return isMobile ? { width: 35, height: 35 } : { width: 45, height: 45 };
+        }
+        if (collaborator.includes('cadinu')) {
+            return isMobile ? { width: 35, height: 35 } : { width: 45, height: 45 };
+        }
+        if (collaborator.includes('CalabarBTCClub')) {
+            return isMobile ? { width: 55, height: 55 } : { width: 45, height: 45 };
+        }
+        if (collaborator.includes('cyberChain')) {
+            return isMobile ? { width: 35, height: 35 } : { width: 45, height: 45 };
+        }
+        if (collaborator.includes('ibx26')) {
+            return isMobile ? { width: 95, height: 95 } : { width: 100, height: 100 };
+        }
+        if (collaborator.includes('TheConCave')) {
             return isMobile ? { width: 35, height: 35 } : { width: 45, height: 45 };
         }
         return { width: imageWidth, height: imageHeight };
