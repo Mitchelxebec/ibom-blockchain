@@ -13,7 +13,6 @@ const collaborators = [
     "/images/CryptoAssetBuyer.png",
     "/images/CryptoFy.png",
     "/images/cyberChain.png",
-    "/images/ibx26.png",
     "/images/ITPulse.png",
     "/images/Limitless.png",
     "/images/MITASchool.png",
@@ -56,9 +55,6 @@ const ScrollRow: React.FC<ScrollRowProps> = ({ collaborators, direction, rowId, 
         }
         if (collaborator.includes('cyberChain')) {
             return isMobile ? { width: 35, height: 35 } : { width: 45, height: 45 };
-        }
-        if (collaborator.includes('ibx26')) {
-            return isMobile ? { width: 95, height: 95 } : { width: 100, height: 100 };
         }
         if (collaborator.includes('TheConCave')) {
             return isMobile ? { width: 35, height: 35 } : { width: 45, height: 45 };
