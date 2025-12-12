@@ -52,7 +52,7 @@ const ScrollRow: React.FC<ScrollRowProps> = ({ collaborators, direction, rowId, 
             return isMobile ? { width: 35, height: 35 } : { width: 45, height: 45 };
         }
         if (collaborator.includes('CalabarBTCClub')) {
-            return isMobile ? { width: 55, height: 55 } : { width: 45, height: 45 };
+            return isMobile ? { width: 55, height: 55 } : { width: 55, height: 55 };
         }
         if (collaborator.includes('cyberChain')) {
             return isMobile ? { width: 35, height: 35 } : { width: 45, height: 45 };
