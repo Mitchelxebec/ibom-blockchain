@@ -691,7 +691,7 @@ export default function Landing() {
 
                                     {/* Title */}
                                     <h2 className="font-display text-[28px] md:text-[48px] lg:text-[54px] font-black leading-tight bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent mb-4">
-                                        Join the Movement
+                                        Get Funded
                                     </h2>
 
                                     {/* Description */}
@@ -715,8 +715,8 @@ export default function Landing() {
                                     {/* Button */}
                                     <div className="flex flex-col sm:flex-row gap-4 items-center justify-center w-full px-4">
                                         <a
-                                            href="/files/IBX-26-Pitch-Deck.pdf"
-                                            download="IBX'26 Pitch Deck.pdf"
+                                            href="/opening"
+                                            // download="IBX'26 Pitch Deck.pdf"
                                             className="group relative inline-flex items-center justify-center bg-orange-500 hover:bg-orange-600 text-white font-bold text-[14px] md:text-[16px] rounded-xl px-8 md:px-10 py-3 md:py-4 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/50 overflow-hidden w-full sm:w-auto"
                                         >
                                             <span className="relative z-10 flex items-center gap-2">

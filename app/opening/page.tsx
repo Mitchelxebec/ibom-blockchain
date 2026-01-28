@@ -53,7 +53,7 @@ export default function MaintenancePage() {
                         letterSpacing: '-0.02em'
                     }}
                 >
-                    We'll Be Back Soon
+                    Opening Soon
                 </h1>
 
                 <div className="space-y-2">
