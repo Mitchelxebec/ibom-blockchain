@@ -19,7 +19,8 @@ const embeddedImg3 = "/images/embedded-img3.jpg";
 const embeddedImg4 = "/images/embedded-img4.jpg";
 const embeddedImg5 = "/images/embedded-img5.jpg";
 const ibx26 = "/images/ibx26.png";
-const ibxBig = "/images/ibx-big.png"
+const ibxBig = "/images/ibx-big.png";
+const rogues = "/images/RoguesLogo.png";
 
 interface UseAutoScrollOptions {
     itemWidth: number;
@@ -666,6 +667,96 @@ export default function Landing() {
                                 <p className="font-sans text-[14px] leading-[20px] text-white/70">
                                     Thought leaders shaping the blockchain narrative.
                                 </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* JOIN DEN OF ROGUES Section - DESKTOP & MOBILE */}
+                <section className="py-10 md:py-16 px-4 md:px-12 lg:px-20 max-w-7xl mx-auto">
+                    <div className="w-full max-w-[1441px] mx-auto">
+                        <div className="relative bg-gradient-to-br from-gray-900 via-black to-gray-950 rounded-3xl overflow-hidden">
+
+                            {/* Animated gradient border */}
+                            <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-500 via-orange-500 to-blue-500 opacity-75 blur-sm animate-pulse"></div>
+
+                            {/* Content container */}
+                            <div className="relative bg-gradient-to-br from-gray-900 via-black to-gray-950 m-[2px] rounded-3xl p-6 md:p-10 flex flex-col items-center justify-center text-center">
+
+                                {/* Decorative blobs */}
+                                <div className="absolute top-0 left-0 w-32 md:w-56 h-32 md:h-56 bg-blue-500/10 rounded-full blur-3xl"></div>
+                                <div className="absolute bottom-0 right-0 w-32 md:w-56 h-32 md:h-56 bg-orange-500/10 rounded-full blur-3xl"></div>
+
+                                <div className="relative z-10">
+
+                                    {/* Title */}
+                                    <h2 className="font-display text-[28px] md:text-[48px] lg:text-[54px] font-black leading-tight bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent mb-4">
+                                        Join the Movement
+                                    </h2>
+
+                                    {/* Description */}
+                                    <p className="text-gray-400 text-base md:text-lg lg:text-xl max-w-2xl mx-auto mb-6 font-medium px-4">
+                                        Building a Web3 or blockchain startup?
+                                        Pitch your idea to founders and investors at IBX26.
+                                        Register now for the Den of Rogues.
+                                    </p>
+
+                                    {/* Logo */}
+                                    <div className="mb-8 flex items-center justify-center transform transition-transform duration-500 hover:scale-105">
+                                        <Image
+                                            src={rogues}
+                                            alt="IBX 2026 Logo"
+                                            width={200}
+                                            height={200}
+                                            className="w-[200px] md:w-[200px] h-auto drop-shadow-2xl"
+                                        />
+                                    </div>
+
+                                    {/* Button */}
+                                    <div className="flex flex-col sm:flex-row gap-4 items-center justify-center w-full px-4">
+                                        <a
+                                            href="/files/IBX-26-Pitch-Deck.pdf"
+                                            download="IBX'26 Pitch Deck.pdf"
+                                            className="group relative inline-flex items-center justify-center bg-orange-500 hover:bg-orange-600 text-white font-bold text-[14px] md:text-[16px] rounded-xl px-8 md:px-10 py-3 md:py-4 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/50 overflow-hidden w-full sm:w-auto"
+                                        >
+                                            <span className="relative z-10 flex items-center gap-2">
+                                                Register Now
+                                                <svg
+                                                    className="w-4 h-4 md:w-5 md:h-5 transition-transform duration-300 group-hover:translate-x-1"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    viewBox="0 0 24 24"
+                                                >
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                                </svg>
+                                            </span>
+                                            <div className="absolute inset-0 bg-gradient-to-r from-orange-400 to-orange-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                        </a>
+                                    </div>
+
+                                    {/* Bottom perks */}
+                                    <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 text-gray-500 text-xs md:text-sm">
+                                        <div className="flex items-center gap-2">
+                                            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                                            <span>Visibility</span>
+                                        </div>
+
+                                        <div className="hidden sm:block w-px h-4 bg-gray-700"></div>
+
+                                        <div className="flex items-center gap-2">
+                                            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                                            <span>Market Connections</span>
+                                        </div>
+
+                                        <div className="hidden sm:block w-px h-4 bg-gray-700"></div>
+
+                                        <div className="flex items-center gap-2">
+                                            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                                            <span>Product Adoption</span>
+                                        </div>
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
                     </div>

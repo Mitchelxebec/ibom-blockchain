@@ -25,7 +25,7 @@ export default function Home() {
         logoHeight={50}
         extraLinks={[
           { label: "About Us", href: "/maintenance" },
-          { label: "IBX 26", href: "/landing" },
+          { label: "IBX 26", href: "/ibx26" },
           { label: "IBX Tour", href: "/maintenance" },
         ]}
       />
@@ -55,7 +55,7 @@ export default function Home() {
             <div className="flex items-center gap-4 md:gap-6 mt-2">
               {/* Orange Button */}
               <Link
-                href="/landing"
+                href="/ibx26"
                 className="bg-[#E87A12] text-black font-[DM Sans] font-bold text-[14px] md:text-[16px] rounded-lg px-6 md:px-8 py-3 md:py-3.5 transition-all duration-300 hover:bg-[#f68924] hover:scale-105 hover:shadow-lg hover:shadow-orange-500/30"
               >
                 2026 Event

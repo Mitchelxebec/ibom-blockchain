@@ -70,7 +70,7 @@ export default function Footer() {
 
                     {/* Copyright */}
                     <p className="font-sans text-[12px] md:text-[14px] font-normal text-gray-400">
-                        © 2025 Ibom Blockchain Xperience. All rights reserved.
+                        © 2026 Ibom Blockchain Xperience. All rights reserved.
                     </p>
 
                     {/* Social Media Icons */}
