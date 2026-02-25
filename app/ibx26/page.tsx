@@ -39,37 +39,44 @@ function useAutoScroll({
     const [isPaused, setIsPaused] = useState(false);
 
     useEffect(() => {
-        const scrollContainer = scrollRef.current;
-        if (!scrollContainer) return;
+        if (!scrollRef.current || isPaused) return;
 
+        const scrollContainer = scrollRef.current;
         const cardWidth = itemWidth + gap;
-        const totalCards = itemCount;
-        let intervalId: NodeJS.Timeout;
+        const singleSetWidth = cardWidth * (itemCount / 3); // Divide by 3 since we tripled the cards
+
+        // Initialize scroll position to middle set
+        scrollContainer.scrollLeft = singleSetWidth;
 
         const autoScroll = () => {
-            if (isPaused) return;
+            if (!scrollContainer) return;
 
             const currentScroll = scrollContainer.scrollLeft;
-            const maxScroll = cardWidth * totalCards;
+            const targetScroll = currentScroll + cardWidth;
 
-            scrollContainer.scrollBy({
-                left: cardWidth,
+            scrollContainer.scrollTo({
+                left: targetScroll,
                 behavior: 'smooth'
             });
 
-            if (currentScroll >= maxScroll - cardWidth) {
-                setTimeout(() => {
-                    scrollContainer.scrollLeft = cardWidth;
-                }, 500);
-            }
+            // Reset position seamlessly when reaching the end of second set
+            setTimeout(() => {
+                if (scrollContainer.scrollLeft >= singleSetWidth * 2 - cardWidth) {
+                    scrollContainer.scrollLeft = singleSetWidth;
+                }
+
+                if (scrollContainer.scrollLeft <= cardWidth) {
+                    scrollContainer.scrollLeft = singleSetWidth;
+                }
+            }, 600); // Wait for smooth scroll to complete
         };
 
-        intervalId = setInterval(autoScroll, interval);
+        const intervalId = setInterval(autoScroll, interval);
 
         return () => clearInterval(intervalId);
     }, [isPaused, itemWidth, gap, itemCount, interval]);
 
-    return { scrollRef, isPaused, setIsPaused };
+    return { scrollRef, setIsPaused };
 }
 
 // Card data
@@ -96,7 +103,6 @@ const cards = [
     }
 ];
 
-
 export default function Landing() {
     // Create tripled arrays for smooth infinite scroll
     const tripleCards = [...cards, ...cards, ...cards];
@@ -119,7 +125,11 @@ export default function Landing() {
         }));
     };
 
-
+    const handleRegisterClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+        e.preventDefault();
+        const mailtoLink = "mailto:ibomblockchainsummit@gmail.com?subject=IBX%2026%20Registration&body=Hi%2C%20I%20would%20like%20to%20register%20for%20the%20event.";
+        window.open(mailtoLink, '_self');
+    };
 
     return (
         <div>
@@ -166,7 +176,7 @@ export default function Landing() {
                         {/* Heartbeat */}
                         <div className="bg-black rounded-2xl p-6 md:p-8 h-[360px]">
                             <h2 className="font-display text-[28px] md:text-[40px] font-black leading-[36px] md:leading-[48px] tracking-[-0.01em]">
-                                The heartbeat of West Africa's blockchain evolution
+                                The heartbeat of West Africa&apos;s blockchain evolution
                             </h2>
                         </div>
 
@@ -202,7 +212,7 @@ export default function Landing() {
                                 </h3>
                                 <div className="relative overflow-hidden">
                                     <p className="text-base text-gray-600 transition-all duration-700 ease-in-out max-h-[280px] group-hover:max-h-[500px]">
-                                        Creating pathways between African builders and global Web3 ecosystems. IBX acts as a bridge linking African innovators with global blockchain networks, founders, companies, and opportunities. Through strategic partnerships, ecosystem collaborations, and international visibility, we amplify African voices, projects, and talent on the world stage. Whether it's access to global exchanges, participation in online hackathons, mentorship opportunities, or integration into leading blockchain ecosystems, IBX ensures that African builders are not isolated but they are connected, recognized, and empowered to scale.
+                                        Creating pathways between African builders and global Web3 ecosystems. IBX acts as a bridge linking African innovators with global blockchain networks, founders, companies, and opportunities. Through strategic partnerships, ecosystem collaborations, and international visibility, we amplify African voices, projects, and talent on the world stage. Whether it&apos;s access to global exchanges, participation in online hackathons, mentorship opportunities, or integration into leading blockchain ecosystems, IBX ensures that African builders are not isolated but they are connected, recognized, and empowered to scale.
                                     </p>
                                 </div>
                             </div>
@@ -216,7 +226,7 @@ export default function Landing() {
                                 </h3>
                                 <div className="relative overflow-hidden">
                                     <p className="text-base text-gray-600 transition-all duration-700 ease-in-out max-h-[280px] group-hover:max-h-[500px]">
-                                        Scaling blockchain awareness across West Africa's emerging tech hubs. IBX is rapidly expanding its reach across major and emerging cities, activating new communities and igniting blockchain awareness everywhere we go. Each country and hub we visit becomes part of a growing Web3 network creating new pockets of innovation, collaboration, and opportunity. Our goal is simple: Build a unified West African blockchain corridor where education, innovation, and participation are accessible to all. By expanding consistently and intentionally, IBX is shaping the strongest blockchain frontier on the continent.
+                                        Scaling blockchain awareness across West Africa&apos;s emerging tech hubs. IBX is rapidly expanding its reach across major and emerging cities, activating new communities and igniting blockchain awareness everywhere we go. Each country and hub we visit becomes part of a growing Web3 network creating new pockets of innovation, collaboration, and opportunity. Our goal is simple: Build a unified West African blockchain corridor where education, innovation, and participation are accessible to all. By expanding consistently and intentionally, IBX is shaping the strongest blockchain frontier on the continent.
                                     </p>
                                 </div>
                             </div>
@@ -225,11 +235,11 @@ export default function Landing() {
                         {/* Security Focused Card */}
                         <div className="bg-black rounded-2xl p-6 md:p-8 h-[360px] flex flex-col justify-between">
                             <p className="font-sans text-[14px] md:text-[15px] font-medium leading-[20px] md:leading-[24px] tracking-[-0.015em]">
-                                The Ibom Blockchain Xperience (IBX) is West Africa's premier blockchain gathering,
+                                The Ibom Blockchain Xperience (IBX) is West Africa&apos;s premier blockchain gathering,
                                 a convergence of innovators, industry leaders, creators, and enthusiasts from
                                 5 countries to explore the power of the Blockchain. Each edition brings thousands
                                 together to learn, connect, and Experience what blockchain and adoption truly means.
-                                It's the heartbeat of West Africa's blockchain evolution.
+                                It&apos;s the heartbeat of West Africa&apos;s blockchain evolution.
                             </p>
                         </div>
                     </div>
@@ -241,15 +251,15 @@ export default function Landing() {
                 <section className="block md:hidden px-5 w-full mx-auto py-10">
                     <div className="max-w-4xl flex flex-col gap-6">
                         <h3 className="font-display text-[25px] text-white font-black leading-[36px] tracking-[-0.02em]">
-                            The heartbeat of West Africa's blockchain evolution
+                            The heartbeat of West Africa&apos;s blockchain evolution
                         </h3>
                         <p className="font-sans text-[16px] font-medium leading-[24px] tracking-[-0.01em] text-gray-300 mb-4">
-                            The Ibom Blockchain Xperience (IBX) is West Africa's premier blockchain gathering,
+                            The Ibom Blockchain Xperience (IBX) is West Africa&apos;s premier blockchain gathering,
                             uniting innovators, industry leaders, creators, and enthusiasts from across
                             5 countries to explore the transformative power of blockchain technology.
                             Each edition brings thousands together to learn, connect, and experience
                             what blockchain adoption truly means. It stands as the driving force behind
-                            West Africa's blockchain evolution.
+                            West Africa&apos;s blockchain evolution.
                         </p>
                     </div>
                 </section>
@@ -298,7 +308,7 @@ export default function Landing() {
                                     CONNECTION
                                 </h3>
                                 <p className={`font-sans ${showMore['connection'] ? "" : "line-clamp-3"} text-[14px] font-medium leading-[20px] tracking-[-0.015em] text-white`}>
-                                    Creating pathways between African builders and global Web3 ecosystems. IBX acts as a bridge linking African innovators with global blockchain networks, founders, companies, and opportunities. Through strategic partnerships, ecosystem collaborations, and international visibility, we amplify African voices, projects, and talent on the world stage. Whether it's access to global exchanges, participation in online hackathons, mentorship opportunities, or integration into leading blockchain ecosystems, IBX ensures that African builders are not isolated but they are connected, recognized, and empowered to scale.
+                                    Creating pathways between African builders and global Web3 ecosystems. IBX acts as a bridge linking African innovators with global blockchain networks, founders, companies, and opportunities. Through strategic partnerships, ecosystem collaborations, and international visibility, we amplify African voices, projects, and talent on the world stage. Whether it&apos;s access to global exchanges, participation in online hackathons, mentorship opportunities, or integration into leading blockchain ecosystems, IBX ensures that African builders are not isolated but they are connected, recognized, and empowered to scale.
                                 </p>
                                 <span
                                     className="hover:underline hover:cursor-pointer text-white mt-2 inline-block"
@@ -322,7 +332,7 @@ export default function Landing() {
                                     EXPANSION
                                 </h3>
                                 <p className={`font-sans ${showMore['expansion'] ? "" : "line-clamp-3"} text-[14px] font-medium leading-[20px] tracking-[-0.015em] text-white`}>
-                                    Scaling blockchain awareness across West Africa's emerging tech hubs. IBX is rapidly expanding its reach across major and emerging cities, activating new communities and igniting blockchain awareness everywhere we go. Each country and hub we visit becomes part of a growing Web3 network creating new pockets of innovation, collaboration, and opportunity. Our goal is simple: Build a unified West African blockchain corridor where education, innovation, and participation are accessible to all. By expanding consistently and intentionally, IBX is shaping the strongest blockchain frontier on the continent.
+                                    Scaling blockchain awareness across West Africa&apos;s emerging tech hubs. IBX is rapidly expanding its reach across major and emerging cities, activating new communities and igniting blockchain awareness everywhere we go. Each country and hub we visit becomes part of a growing Web3 network creating new pockets of innovation, collaboration, and opportunity. Our goal is simple: Build a unified West African blockchain corridor where education, innovation, and participation are accessible to all. By expanding consistently and intentionally, IBX is shaping the strongest blockchain frontier on the continent.
                                 </p>
                                 <span
                                     className="hover:underline hover:cursor-pointer text-white mt-2 inline-block"
@@ -338,7 +348,7 @@ export default function Landing() {
                 {/* A Glimpse Into 2025 Section */}
                 <section className="py-10 md:py-20 px-4 md:px-12 lg:px-20 bg-black">
                     <h2 className="font-display text-[32px] md:text-[72px] font-black text-center mb-6 md:mb-16 tracking-[-0.01em]">
-                        "A Glimpse Into 2025"
+                        &ldquo;A Glimpse Into 2025&rdquo;
                     </h2>
 
                     <div className="w-full max-w-[400px] md:max-w-[1400px] mx-auto grid grid-cols-3 gap-2 md:gap-5">
@@ -450,7 +460,7 @@ export default function Landing() {
                                 Developers
                             </h3>
                             <p className="font-sans text-[14px] font-medium leading-[20px] tracking-[-0.015em] text-gray-300">
-                                Individuals or teams eager to invest in Web3 by developing innovative technologies for opportunities that promise growth and lasting returns, making them an essential part of our event's audience.
+                                Individuals or teams eager to invest in Web3 by developing innovative technologies for opportunities that promise growth and lasting returns, making them an essential part of our event&apos;s audience.
                             </p>
                         </div>
 
@@ -463,7 +473,7 @@ export default function Landing() {
                                 Blockchain Enthusiast
                             </h3>
                             <p className="font-sans text-[14px] font-medium leading-[20px] tracking-[-0.015em] text-gray-300">
-                                People keen on exploring decentralized solutions and blockchain opportunities that offer potential for growth and disrupt returns, making them a vital segment of our event's audience.
+                                People keen on exploring decentralized solutions and blockchain opportunities that offer potential for growth and disrupt returns, making them a vital segment of our event&apos;s audience.
                             </p>
                         </div>
 
@@ -476,7 +486,7 @@ export default function Landing() {
                                 Regulators
                             </h3>
                             <p className="font-sans text-[14px] font-medium leading-[20px] tracking-[-0.015em] text-gray-300">
-                                Regulators are essential to Web3's adoption and innovation potential, ensuring scalable and dependable regulations that form a crucial part of our event's audience.
+                                Regulators are essential to Web3&apos;s adoption and innovation potential, ensuring scalable and dependable regulations that form a crucial part of our event&apos;s audience.
                             </p>
                         </div>
 
@@ -495,6 +505,8 @@ export default function Landing() {
                             ref={cardsScroll.scrollRef}
                             className="flex gap-4 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-4"
                             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                            onMouseEnter={() => cardsScroll.setIsPaused(true)}
+                            onMouseLeave={() => cardsScroll.setIsPaused(false)}
                             onTouchStart={() => cardsScroll.setIsPaused(true)}
                             onTouchEnd={() => setTimeout(() => cardsScroll.setIsPaused(false), 2000)}
                         >
@@ -715,7 +727,8 @@ export default function Landing() {
                                     {/* Button */}
                                     <div className="flex flex-col sm:flex-row gap-4 items-center justify-center w-full px-4">
                                         <a
-                                            href="/opening"
+                                            href="#"
+                                            onClick={handleRegisterClick}
                                             // download="IBX'26 Pitch Deck.pdf"
                                             className="group relative inline-flex items-center justify-center bg-orange-500 hover:bg-orange-600 text-white font-bold text-[14px] md:text-[16px] rounded-xl px-8 md:px-10 py-3 md:py-4 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/50 overflow-hidden w-full sm:w-auto"
                                         >
@@ -786,7 +799,7 @@ export default function Landing() {
 
                                     {/* Description */}
                                     <p className="text-gray-400 text-base md:text-lg lg:text-xl max-w-2xl mx-auto mb-6 font-medium px-4">
-                                        Be part of West Africa's largest blockchain ecosystem. Partner with us to shape the future of Web3 innovation.
+                                        Be part of West Africa&apos;s largest blockchain ecosystem. Partner with us to shape the future of Web3 innovation.
                                     </p>
 
                                     {/* Logo */}

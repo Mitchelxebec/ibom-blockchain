@@ -13,6 +13,7 @@ interface NavbarProps {
     logoAlt?: string;
     logoWidth?: number;
     logoHeight?: number;
+    style?: React.CSSProperties;
 }
 
 export default function Navbar({
@@ -21,7 +22,8 @@ export default function Navbar({
     logo = "/images/ibx26.png",
     logoAlt = "IBX logo",
     logoWidth = 143,
-    logoHeight = 51
+    logoHeight = 51,
+    style
 }: NavbarProps) {
     const [menuOpen, setMenuOpen] = useState(false);
     const pathname = usePathname();
@@ -42,7 +44,7 @@ export default function Navbar({
                         alt={logoAlt}
                         width={logoWidth}
                         height={logoHeight}
-                        style={{ transform: 'rotate(0deg)' }}
+                        style={{ height: "auto",transform: 'rotate(0deg)', ...style }}
                         priority
                     />
                 </div>
