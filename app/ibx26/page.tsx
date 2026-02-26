@@ -35,7 +35,7 @@ function useAutoScroll({
     itemCount,
     interval = 3000
 }: UseAutoScrollOptions) {
-    const scrollRef = useRef<HTMLDivElement>(null);
+    const scrollRef = useRef<HTMLDivElement|null>(null);
     const [isPaused, setIsPaused] = useState(false);
 
     useEffect(() => {
@@ -502,7 +502,7 @@ export default function Landing() {
 
                         {/* Cards Horizontal Scrollable Container */}
                         <div
-                            ref={cardsScroll.scrollRef}
+                            ref={cardsScroll?.scrollRef}
                             className="flex gap-4 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-4"
                             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
                             onMouseEnter={() => cardsScroll.setIsPaused(true)}
