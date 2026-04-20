@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import Image from 'next/image';
 
 // Types
 interface Event {
@@ -30,38 +31,28 @@ const useAutoScroll = (config: {
     const [isPaused, setIsPaused] = useState(false);
 
     useEffect(() => {
-        if (!scrollRef.current || isPaused) return;
-
         const scroll = scrollRef.current;
+        if (!scroll || isPaused) return;
+
         const itemSize = config.itemWidth + config.gap;
         const singleSetWidth = itemSize * (config.itemCount / 3);
 
-        // Initialize scroll position to the middle set
         scroll.scrollLeft = singleSetWidth;
 
         const autoScroll = setInterval(() => {
-            if (!scroll) return;
-
-            // Smooth scroll by one full card width
             const currentScroll = scroll.scrollLeft;
             const targetScroll = currentScroll + itemSize;
 
-            scroll.scrollTo({
-                left: targetScroll,
-                behavior: 'smooth'
-            });
+            scroll.scrollTo({ left: targetScroll, behavior: 'smooth' });
 
-            // Check if we've scrolled past the second set
             setTimeout(() => {
                 if (scroll.scrollLeft >= singleSetWidth * 2 - itemSize) {
                     scroll.scrollLeft = singleSetWidth;
                 }
-
                 if (scroll.scrollLeft <= itemSize) {
                     scroll.scrollLeft = singleSetWidth;
                 }
-            }, 600); // Wait for smooth scroll to complete
-
+            }, 600);
         }, config.interval);
 
         return () => clearInterval(autoScroll);
@@ -103,10 +94,12 @@ const EventCard: React.FC<{ event: Event }> = ({ event }) => (
 
         <div className="px-6 pb-6">
             <div className="w-full h-[240px] relative rounded-xl overflow-hidden bg-gray-200">
-                <img
+                <Image
                     src={event.image}
                     alt={event.alt}
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
+                    sizes="320px"
                 />
             </div>
         </div>
