@@ -18,8 +18,6 @@ const embeddedImg3 = "/images/embedded-img3.jpg";
 const embeddedImg4 = "/images/embedded-img4.jpg";
 const embeddedImg5 = "/images/embedded-img5.jpg";
 const ibx26 = "/images/ibx26.png";
-const ibxBig = "/images/ibx-big.png";
-const rogues = "/images/RoguesLogo.png";
 
 interface UseAutoScrollOptions {
     itemWidth: number;
@@ -148,7 +146,7 @@ export default function Landing() {
             <section className="relative h-screen flex items-center justify-center overflow-hidden -mt-20">
                 {/* Background Image with Overlay */}
                 <div className="absolute inset-0 z-0">
-                    <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black z-10"></div>
+                    <div className="absolute inset-0 bg-linear-to-b from-black/60 via-black/50 to-black z-10"></div>
                     <video autoPlay loop muted playsInline className="w-full h-full object-cover">
                         <source src="/videos/header-vid.mp4" type="video/mp4" />
                     </video>
@@ -156,8 +154,8 @@ export default function Landing() {
 
                 {/* Hero Content */}
                 <div className="relative z-20 px-4 md:px-16 w-full max-w-7xl mx-auto pb-16 md:pb-20 mt-auto">
-                    <div className="w-full max-w-full md:max-w-[730px] flex flex-col gap-8">
-                        <h1 className="font-display text-[32px] md:text-[56px] font-black leading-tight md:leading-[64px] tracking-[-0.01em] text-white capitalize">
+                    <div className="w-full max-w-full md:max-w-182.5 flex flex-col gap-8">
+                        <h1 className="font-display text-[32px] md:text-[56px] font-black leading-tight md:leading-16 tracking-[-0.01em] text-white capitalize">
                             West Africa Largest <span className="text-orange-500 font-display">Blockchain</span> Gathering
                         </h1>
                         <Link href="https://ibx2026.eventcrib.com" className="bg-orange-500 hover:bg-orange-600 text-white font-[DM Sans] font-bold text-[14px] md:text-[16px] rounded-lg px-6 md:px-8 py-3 md:py-3.5 text-base md:text-lg transition transform hover:scale-105 w-fit">
@@ -170,23 +168,23 @@ export default function Landing() {
             <main className="bg-black text-white py-5 px-2 md:px-2">
                 {/* Content Grid Section - DESKTOP */}
                 <section className="py-20 px-6 md:px-12 lg:px-20 max-w-7xl mx-auto hidden md:block">
-                    <div className="w-full max-w-[1282px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                    <div className="w-full max-w-320.5 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
 
                         {/* Heartbeat */}
-                        <div className="bg-black rounded-2xl p-6 md:p-8 h-[360px]">
-                            <h2 className="font-display text-[28px] md:text-[40px] font-black leading-[36px] md:leading-[48px] tracking-[-0.01em]">
+                        <div className="bg-black rounded-2xl p-6 md:p-8 h-90">
+                            <h2 className="font-display text-[28px] md:text-[40px] font-black leading-9 md:leading-12 tracking-[-0.01em]">
                                 The heartbeat of West Africa&apos;s blockchain evolution
                             </h2>
                         </div>
 
                         {/* ADOPTION Card */}
-                        <div className="relative h-[360px] w-full">
+                        <div className="relative h-90 w-full">
                             <div className="group absolute inset-0 bg-white rounded-xl p-5 cursor-pointer transition-all duration-700 ease-out overflow-hidden border border-gray-300 hover:shadow-2xl hover:scale-[1.08] hover:z-10">
                                 <h3 className="font-bold text-2xl text-black mb-3">
                                     ADOPTION
                                 </h3>
                                 <div className="relative overflow-hidden">
-                                    <p className="text-base text-gray-600 transition-all duration-700 ease-in-out max-h-[280px] group-hover:max-h-[500px]">
+                                    <p className="text-base text-gray-600 transition-all duration-700 ease-in-out max-h-70 group-hover:max-h-125">
                                         Bringing education and tools directly to communities. IBX drives adoption by taking blockchain knowledge straight to the people who need it most not waiting for them to find it. Through on-ground workshops, grassroots activations, and multilingual community sessions, we simplify blockchain concepts, demystify Web3, and provide practical tools that help everyday Africans participate confidently in the digital economy. Bringing blockchain education and tools directly to communities.
                                     </p>
                                 </div>
@@ -194,7 +192,7 @@ export default function Landing() {
                         </div>
 
                         {/* Summit Image 1 */}
-                        <div className="bg-gray-800 rounded-2xl overflow-hidden relative h-[360px]">
+                        <div className="bg-gray-800 rounded-2xl overflow-hidden relative h-90">
                             <Image
                                 src={blockchainEvent}
                                 alt="Blockchain Event"
@@ -204,13 +202,13 @@ export default function Landing() {
                         </div>
 
                         {/* CONNECTION Card */}
-                        <div className="relative h-[360px] w-full">
+                        <div className="relative h-90 w-full">
                             <div className="group absolute inset-0 bg-white rounded-xl p-5 cursor-pointer transition-all duration-700 ease-out overflow-hidden border border-gray-300 hover:shadow-2xl hover:scale-[1.08] hover:z-10">
                                 <h3 className="font-bold text-2xl text-black mb-3">
                                     CONNECTION
                                 </h3>
                                 <div className="relative overflow-hidden">
-                                    <p className="text-base text-gray-600 transition-all duration-700 ease-in-out max-h-[280px] group-hover:max-h-[500px]">
+                                    <p className="text-base text-gray-600 transition-all duration-700 ease-in-out max-h-70 group-hover:max-h-125">
                                         Creating pathways between African builders and global Web3 ecosystems. IBX acts as a bridge linking African innovators with global blockchain networks, founders, companies, and opportunities. Through strategic partnerships, ecosystem collaborations, and international visibility, we amplify African voices, projects, and talent on the world stage. Whether it&apos;s access to global exchanges, participation in online hackathons, mentorship opportunities, or integration into leading blockchain ecosystems, IBX ensures that African builders are not isolated but they are connected, recognized, and empowered to scale.
                                     </p>
                                 </div>
@@ -218,13 +216,13 @@ export default function Landing() {
                         </div>
 
                         {/* EXPANSION Card */}
-                        <div className="relative h-[360px] w-full">
+                        <div className="relative h-90 w-full">
                             <div className="group absolute inset-0 bg-white rounded-xl p-5 cursor-pointer transition-all duration-700 ease-out overflow-hidden border border-gray-300 hover:shadow-2xl hover:scale-[1.08] hover:z-10">
                                 <h3 className="font-bold text-2xl text-black mb-3">
                                     EXPANSION
                                 </h3>
                                 <div className="relative overflow-hidden">
-                                    <p className="text-base text-gray-600 transition-all duration-700 ease-in-out max-h-[280px] group-hover:max-h-[500px]">
+                                    <p className="text-base text-gray-600 transition-all duration-700 ease-in-out max-h-70 group-hover:max-h-125">
                                         Scaling blockchain awareness across West Africa&apos;s emerging tech hubs. IBX is rapidly expanding its reach across major and emerging cities, activating new communities and igniting blockchain awareness everywhere we go. Each country and hub we visit becomes part of a growing Web3 network creating new pockets of innovation, collaboration, and opportunity. Our goal is simple: Build a unified West African blockchain corridor where education, innovation, and participation are accessible to all. By expanding consistently and intentionally, IBX is shaping the strongest blockchain frontier on the continent.
                                     </p>
                                 </div>
@@ -232,8 +230,8 @@ export default function Landing() {
                         </div>
 
                         {/* Security Focused Card */}
-                        <div className="bg-black rounded-2xl p-6 md:p-8 h-[360px] flex flex-col justify-between">
-                            <p className="font-sans text-[14px] md:text-[15px] font-medium leading-[20px] md:leading-[24px] tracking-[-0.015em]">
+                        <div className="bg-black rounded-2xl p-6 md:p-8 h-90 flex flex-col justify-between">
+                            <p className="font-sans text-[14px] md:text-[15px] font-medium leading-5 md:leading-6 tracking-[-0.015em]">
                                 The Ibom Blockchain Xperience (IBX) is West Africa&apos;s premier blockchain gathering,
                                 a convergence of innovators, industry leaders, creators, and enthusiasts from
                                 5 countries to explore the power of the Blockchain. Each edition brings thousands
@@ -249,10 +247,10 @@ export default function Landing() {
                 {/* Heartbeat Section for Mobile */}
                 <section className="block md:hidden px-5 w-full mx-auto py-10">
                     <div className="max-w-4xl flex flex-col gap-6">
-                        <h3 className="font-display text-[25px] text-white font-black leading-[36px] tracking-[-0.02em]">
+                        <h3 className="font-display text-[25px] text-white font-black leading-9 tracking-[-0.02em]">
                             The heartbeat of West Africa&apos;s blockchain evolution
                         </h3>
-                        <p className="font-sans text-[16px] font-medium leading-[24px] tracking-[-0.01em] text-gray-300 mb-4">
+                        <p className="font-sans text-[16px] font-medium leading-6 tracking-[-0.01em] text-gray-300 mb-4">
                             The Ibom Blockchain Xperience (IBX) is West Africa&apos;s premier blockchain gathering,
                             uniting innovators, industry leaders, creators, and enthusiasts from across
                             5 countries to explore the transformative power of blockchain technology.
@@ -271,7 +269,7 @@ export default function Landing() {
 
                     <div className="w-full flex flex-col gap-5">
                         {/* ADOPTION Card */}
-                        <div className="rounded-2xl overflow-hidden relative h-[400px]">
+                        <div className="rounded-2xl overflow-hidden relative h-100">
                             <Image
                                 src={talkSession}
                                 alt="Blockchain talk session"
@@ -279,10 +277,10 @@ export default function Landing() {
                                 className="object-cover opacity-50"
                             />
                             <div className="absolute inset-0 flex flex-col justify-end p-8 z-10">
-                                <h3 className="font-display text-[20px] font-black leading-[28px] tracking-normal mb-4 text-white">
+                                <h3 className="font-display text-[20px] font-black leading-7 tracking-normal mb-4 text-white">
                                     ADOPTION
                                 </h3>
-                                <p className={`font-sans ${showMore['adoption'] ? "" : "line-clamp-3"} text-[14px] font-medium leading-[20px] tracking-[-0.015em] text-white`}>
+                                <p className={`font-sans ${showMore['adoption'] ? "" : "line-clamp-3"} text-[14px] font-medium leading-5 tracking-[-0.015em] text-white`}>
                                     Bringing blockchain education and tools directly to communities. IBX drives adoption by taking blockchain knowledge straight to the people who need it most not waiting for them to find it. Through on-ground workshops, grassroots activations, and multilingual community sessions, we simplify blockchain concepts, demystify Web3, and provide practical tools that help everyday Africans participate confidently in the digital economy.
                                 </p>
                                 <span
@@ -295,7 +293,7 @@ export default function Landing() {
                         </div>
 
                         {/* CONNECTION Card */}
-                        <div className="rounded-2xl overflow-hidden relative h-[400px]">
+                        <div className="rounded-2xl overflow-hidden relative h-100">
                             <Image
                                 src={talkSession}
                                 alt="Blockchain talk session"
@@ -303,10 +301,10 @@ export default function Landing() {
                                 className="object-cover opacity-50"
                             />
                             <div className="absolute inset-0 flex flex-col justify-end p-8 z-10">
-                                <h3 className="font-display text-[20px] font-black leading-[28px] tracking-normal mb-4 text-white">
+                                <h3 className="font-display text-[20px] font-black leading-7 tracking-normal mb-4 text-white">
                                     CONNECTION
                                 </h3>
-                                <p className={`font-sans ${showMore['connection'] ? "" : "line-clamp-3"} text-[14px] font-medium leading-[20px] tracking-[-0.015em] text-white`}>
+                                <p className={`font-sans ${showMore['connection'] ? "" : "line-clamp-3"} text-[14px] font-medium leading-5 tracking-[-0.015em] text-white`}>
                                     Creating pathways between African builders and global Web3 ecosystems. IBX acts as a bridge linking African innovators with global blockchain networks, founders, companies, and opportunities. Through strategic partnerships, ecosystem collaborations, and international visibility, we amplify African voices, projects, and talent on the world stage. Whether it&apos;s access to global exchanges, participation in online hackathons, mentorship opportunities, or integration into leading blockchain ecosystems, IBX ensures that African builders are not isolated but they are connected, recognized, and empowered to scale.
                                 </p>
                                 <span
@@ -319,7 +317,7 @@ export default function Landing() {
                         </div>
 
                         {/* EXPANSION Card */}
-                        <div className="rounded-2xl overflow-hidden relative h-[400px]">
+                        <div className="rounded-2xl overflow-hidden relative h-100">
                             <Image
                                 src={talkSession}
                                 alt="Blockchain talk session"
@@ -327,10 +325,10 @@ export default function Landing() {
                                 className="object-cover opacity-50"
                             />
                             <div className="absolute inset-0 flex flex-col justify-end p-8 z-10">
-                                <h3 className="font-display text-[20px] font-black leading-[28px] tracking-normal mb-4 text-white">
+                                <h3 className="font-display text-[20px] font-black leading-7 tracking-normal mb-4 text-white">
                                     EXPANSION
                                 </h3>
-                                <p className={`font-sans ${showMore['expansion'] ? "" : "line-clamp-3"} text-[14px] font-medium leading-[20px] tracking-[-0.015em] text-white`}>
+                                <p className={`font-sans ${showMore['expansion'] ? "" : "line-clamp-3"} text-[14px] font-medium leading-5 tracking-[-0.015em] text-white`}>
                                     Scaling blockchain awareness across West Africa&apos;s emerging tech hubs. IBX is rapidly expanding its reach across major and emerging cities, activating new communities and igniting blockchain awareness everywhere we go. Each country and hub we visit becomes part of a growing Web3 network creating new pockets of innovation, collaboration, and opportunity. Our goal is simple: Build a unified West African blockchain corridor where education, innovation, and participation are accessible to all. By expanding consistently and intentionally, IBX is shaping the strongest blockchain frontier on the continent.
                                 </p>
                                 <span
@@ -350,27 +348,27 @@ export default function Landing() {
                         &ldquo;A Glimpse Into 2025&rdquo;
                     </h2>
 
-                    <div className="w-full max-w-[400px] md:max-w-[1400px] mx-auto grid grid-cols-3 gap-2 md:gap-5">
+                    <div className="w-full max-w-100 md:max-w-350 mx-auto grid grid-cols-3 gap-2 md:gap-5">
 
                         {/* Left Column - 3 Images Stacked */}
                         <div className="flex flex-col gap-2 md:gap-5">
-                            <div className="bg-gray-800 rounded-lg md:rounded-2xl overflow-hidden relative h-[100px] md:h-[360px]">
+                            <div className="bg-gray-800 rounded-lg md:rounded-2xl overflow-hidden relative h-25 md:h-90">
                                 <Image src={speaker} alt="Speaker 1" fill className="object-cover" />
                             </div>
-                            <div className="bg-gray-800 rounded-lg md:rounded-2xl overflow-hidden relative h-[100px] md:h-[360px]">
+                            <div className="bg-gray-800 rounded-lg md:rounded-2xl overflow-hidden relative h-25 md:h-90">
                                 <Image src={embeddedImg1} alt="speaker 2" fill className="object-cover" />
                             </div>
-                            <div className="bg-gray-800 rounded-lg md:rounded-2xl overflow-hidden relative h-[100px] md:h-[360px]">
+                            <div className="bg-gray-800 rounded-lg md:rounded-2xl overflow-hidden relative h-25 md:h-90">
                                 <Image src={embeddedImg2} alt="Speaker 3" fill className="object-cover" />
                             </div>
                         </div>
 
                         {/* Center Column - Stats Vertical */}
-                        <div className="bg-gray-900 rounded-lg md:rounded-2xl overflow-hidden relative h-[320px] md:h-[1150px]">
+                        <div className="bg-gray-900 rounded-lg md:rounded-2xl overflow-hidden relative h-80 md:h-287.5">
                             <div className="w-full h-full flex flex-col items-center justify-center p-2 md:p-8 gap-5 md:gap-20">
                                 {/* Stat 1 */}
                                 <div className="text-center">
-                                    <h3 className="font-display text-[28px] md:text-[96px] font-black leading-[1] mb-1 md:mb-2">
+                                    <h3 className="font-display text-[28px] md:text-[96px] font-black leading-none mb-1 md:mb-2">
                                         7K
                                     </h3>
                                     <p className="font-sans text-[10px] md:text-[24px] font-medium text-gray-300">
@@ -380,7 +378,7 @@ export default function Landing() {
 
                                 {/* Stat 2 */}
                                 <div className="text-center">
-                                    <h3 className="font-display text-[28px] md:text-[96px] font-black leading-[1] mb-1 md:mb-2">
+                                    <h3 className="font-display text-[28px] md:text-[96px] font-black leading-none mb-1 md:mb-2">
                                         30+
                                     </h3>
                                     <p className="font-sans text-[10px] md:text-[24px] font-medium text-gray-300">
@@ -390,7 +388,7 @@ export default function Landing() {
 
                                 {/* Stat 3 */}
                                 <div className="text-center">
-                                    <h3 className="font-display text-[28px] md:text-[96px] font-black leading-[1] mb-1 md:mb-2">
+                                    <h3 className="font-display text-[28px] md:text-[96px] font-black leading-none mb-1 md:mb-2">
                                         4.8K
                                     </h3>
                                     <p className="font-sans text-[10px] md:text-[24px] font-medium text-gray-300">
@@ -400,7 +398,7 @@ export default function Landing() {
 
                                 {/* Stat 4 */}
                                 <div className="text-center">
-                                    <h3 className="font-display text-[28px] md:text-[96px] font-black leading-[1] mb-1 md:mb-2">
+                                    <h3 className="font-display text-[28px] md:text-[96px] font-black leading-none mb-1 md:mb-2">
                                         30
                                     </h3>
                                     <p className="font-sans text-[10px] md:text-[24px] font-medium text-gray-300">
@@ -412,13 +410,13 @@ export default function Landing() {
 
                         {/* Right Column - 3 Images Stacked */}
                         <div className="flex flex-col gap-2 md:gap-5">
-                            <div className="bg-gray-800 rounded-lg md:rounded-2xl overflow-hidden relative h-[100px] md:h-[360px]">
+                            <div className="bg-gray-800 rounded-lg md:rounded-2xl overflow-hidden relative h-25 md:h-90">
                                 <Image src={embeddedImg3} alt="Speaker 4" fill className="object-cover" />
                             </div>
-                            <div className="bg-gray-800 rounded-lg md:rounded-2xl overflow-hidden relative h-[100px] md:h-[360px]">
+                            <div className="bg-gray-800 rounded-lg md:rounded-2xl overflow-hidden relative h-25 md:h-90">
                                 <Image src={embeddedImg4} alt="Speaker 5" fill className="object-cover" />
                             </div>
-                            <div className="bg-gray-800 rounded-lg md:rounded-2xl overflow-hidden relative h-[100px] md:h-[360px]">
+                            <div className="bg-gray-800 rounded-lg md:rounded-2xl overflow-hidden relative h-25 md:h-90">
                                 <Image src={embeddedImg5} alt="Speaker 6" fill className="object-cover" />
                             </div>
                         </div>
@@ -428,24 +426,24 @@ export default function Landing() {
                 {/* Who Is This Event For? Section - DESKTOP */}
                 <section className="py-20 px-6 md:px-12 lg:px-20 max-w-7xl mx-auto hidden md:block">
                     {/* Header */}
-                    <div className="w-full max-w-[1281px] mx-auto mb-[60px]">
-                        <h2 className="font-display text-[40px] md:text-[56px] font-black leading-[48px] md:leading-[64px] tracking-[-0.01em]">
+                    <div className="w-full max-w-320.25 mx-auto mb-15">
+                        <h2 className="font-display text-[40px] md:text-[56px] font-black leading-12 md:leading-16 tracking-[-0.01em]">
                             Who Is This Event For?
                         </h2>
                     </div>
 
                     {/* Cards Grid */}
-                    <div className="w-full max-w-[1281px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+                    <div className="w-full max-w-320.25 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
 
                         {/* Investors */}
                         <div className="bg-gray-900 rounded-2xl p-6">
                             <div className="w-12 h-12 bg-orange-500/20 rounded-lg flex items-center justify-center mb-4">
                                 <TrendingUp className="w-6 h-6 text-orange-500" strokeWidth={2.5} />
                             </div>
-                            <h3 className="font-display text-[20px] font-black leading-[28px] mb-3">
+                            <h3 className="font-display text-[20px] font-black leading-7 mb-3">
                                 Investors
                             </h3>
-                            <p className="font-sans text-[14px] font-medium leading-[20px] tracking-[-0.015em] text-gray-300">
+                            <p className="font-sans text-[14px] font-medium leading-5 tracking-[-0.015em] text-gray-300">
                                 Individuals or entities looking to allocate capital into promising ventures. They seek opportunities that offer potential for growth and return on investment, making them a crucial audience for our event.
                             </p>
                         </div>
@@ -455,10 +453,10 @@ export default function Landing() {
                             <div className="w-12 h-12 bg-orange-500/20 rounded-lg flex items-center justify-center mb-4">
                                 <Code className="w-6 h-6 text-orange-500" strokeWidth={2.5} />
                             </div>
-                            <h3 className="font-display text-[20px] font-black leading-[28px] mb-3">
+                            <h3 className="font-display text-[20px] font-black leading-7 mb-3">
                                 Developers
                             </h3>
-                            <p className="font-sans text-[14px] font-medium leading-[20px] tracking-[-0.015em] text-gray-300">
+                            <p className="font-sans text-[14px] font-medium leading-5 tracking-[-0.015em] text-gray-300">
                                 Individuals or teams eager to invest in Web3 by developing innovative technologies for opportunities that promise growth and lasting returns, making them an essential part of our event&apos;s audience.
                             </p>
                         </div>
@@ -468,10 +466,10 @@ export default function Landing() {
                             <div className="w-12 h-12 bg-orange-500/20 rounded-lg flex items-center justify-center mb-4">
                                 <Sparkles className="w-6 h-6 text-orange-500" strokeWidth={2.5} />
                             </div>
-                            <h3 className="font-display text-[20px] font-black leading-[28px] mb-3">
+                            <h3 className="font-display text-[20px] font-black leading-7 mb-3">
                                 Blockchain Enthusiast
                             </h3>
-                            <p className="font-sans text-[14px] font-medium leading-[20px] tracking-[-0.015em] text-gray-300">
+                            <p className="font-sans text-[14px] font-medium leading-5 tracking-[-0.015em] text-gray-300">
                                 People keen on exploring decentralized solutions and blockchain opportunities that offer potential for growth and disrupt returns, making them a vital segment of our event&apos;s audience.
                             </p>
                         </div>
@@ -481,10 +479,10 @@ export default function Landing() {
                             <div className="w-12 h-12 bg-orange-500/20 rounded-lg flex items-center justify-center mb-4">
                                 <Building2 className="w-6 h-6 text-orange-500" strokeWidth={2.5} />
                             </div>
-                            <h3 className="font-display text-[20px] font-black leading-[28px] mb-3">
+                            <h3 className="font-display text-[20px] font-black leading-7 mb-3">
                                 Regulators
                             </h3>
-                            <p className="font-sans text-[14px] font-medium leading-[20px] tracking-[-0.015em] text-gray-300">
+                            <p className="font-sans text-[14px] font-medium leading-5 tracking-[-0.015em] text-gray-300">
                                 Regulators are essential to Web3&apos;s adoption and innovation potential, ensuring scalable and dependable regulations that form a crucial part of our event&apos;s audience.
                             </p>
                         </div>
@@ -495,7 +493,7 @@ export default function Landing() {
                 {/* Who Is This Event For? Section - MOBILE */}
                 <section className="py-16 px-4 md:hidden">
                     <div className="max-w-7xl mx-auto">
-                        <h2 className="font-display text-[40px] font-black leading-[48px] tracking-[-0.01em] mb-12">
+                        <h2 className="font-display text-[40px] font-black leading-12 tracking-[-0.01em] mb-12">
                             Who Is This Event For?
                         </h2>
 
@@ -514,15 +512,15 @@ export default function Landing() {
                                 return (
                                     <div
                                         key={`mobile-card-${index}`}
-                                        className="bg-gray-900 rounded-2xl p-6 flex-shrink-0 w-[280px] snap-start"
+                                        className="bg-gray-900 rounded-2xl p-6 shrink-0 w-70 snap-start"
                                     >
                                         <div className="w-12 h-12 bg-orange-500/20 rounded-lg flex items-center justify-center mb-4">
                                             <Icon className="w-6 h-6 text-orange-500" strokeWidth={2.5} />
                                         </div>
-                                        <h3 className="font-display text-[20px] font-black leading-[28px] mb-3">
+                                        <h3 className="font-display text-[20px] font-black leading-7 mb-3">
                                             {card.title}
                                         </h3>
-                                        <p className="font-sans text-[14px] font-medium leading-[20px] tracking-[-0.015em] text-gray-300">
+                                        <p className="font-sans text-[14px] font-medium leading-5 tracking-[-0.015em] text-gray-300">
                                             {card.description}
                                         </p>
                                     </div>
@@ -534,12 +532,12 @@ export default function Landing() {
 
                 {/* 2026 WILL DEFINE AN XPERIENCE - DESKTOP */}
                 <section className="py-20 px-6 md:px-12 lg:px-20 max-w-7xl mx-auto hidden md:block">
-                    <div className="w-full max-w-[1441px] mx-auto bg-black rounded-2xl p-16">
+                    <div className="w-full max-w-360.25 mx-auto bg-black rounded-2xl p-16">
                         <div className="grid grid-cols-[0.8fr_2.2fr] gap-24">
 
                             {/* Left Column - Title */}
                             <div>
-                                <h2 className="font-display text-[72px] font-black leading-[80px] text-white">
+                                <h2 className="font-display text-[72px] font-black leading-20 text-white">
                                     2026 WILL<br />
                                     DEFINE AN<br />
                                     XPERIENCE
@@ -552,18 +550,18 @@ export default function Landing() {
                                 {/* Row 1 - 150+ Projects and 100+ Exhibitors with Vertical Lines Below */}
                                 <div className="grid grid-cols-2 gap-16 mb-0 relative">
                                     <div className="text-left relative pb-12">
-                                        <p className="font-display text-[48px] font-black leading-[56px] text-white mb-2">150 +</p>
+                                        <p className="font-display text-[48px] font-black leading-14 text-white mb-2">150 +</p>
                                         <p className="font-display text-[20px] font-bold text-white mb-3">Projects</p>
-                                        <p className="font-sans text-[14px] leading-[20px] text-white/70 mb-4">
+                                        <p className="font-sans text-[14px] leading-5 text-white/70 mb-4">
                                             Innovation unleashed across Africa and beyond.
                                         </p>
                                         {/* Vertical line below extending to horizontal line */}
                                         <div className="absolute bottom-0 left-1/2 w-px h-12 bg-white/20"></div>
                                     </div>
                                     <div className="text-left relative pb-12">
-                                        <p className="font-display text-[48px] font-black leading-[56px] text-white mb-2">100 +</p>
+                                        <p className="font-display text-[48px] font-black leading-14 text-white mb-2">100 +</p>
                                         <p className="font-display text-[20px] font-bold text-white mb-3">Exhibitors</p>
-                                        <p className="font-sans text-[14px] leading-[20px] text-white/70 mb-4">
+                                        <p className="font-sans text-[14px] leading-5 text-white/70 mb-4">
                                             Showcasing groundbreaking blockchain solutions.
                                         </p>
                                         {/* Vertical line below extending to horizontal line */}
@@ -580,11 +578,11 @@ export default function Landing() {
                                     <div className="text-left relative right-7">
                                         {/* Vertical line at top */}
                                         <div className="absolute -top-12 left-1/2 w-px h-12 bg-white/20"></div>
-                                        <p className="font-display text-[40px] font-black leading-[48px] text-white mb-2 flex items-center gap-1">
+                                        <p className="font-display text-[40px] font-black leading-12 text-white mb-2 flex items-center gap-1">
                                             <span>12,000</span><span>+</span>
                                         </p>
                                         <p className="font-display text-[16px] font-bold text-white mb-2">Participants</p>
-                                        <p className="font-sans text-[12px] leading-[18px] text-white/70">
+                                        <p className="font-sans text-[12px] leading-4.5 text-white/70">
                                             A movement of minds reshaping the present.
                                         </p>
                                     </div>
@@ -593,9 +591,9 @@ export default function Landing() {
                                     <div className="text-left relative left-5">
                                         {/* Vertical line at top */}
                                         <div className="absolute -top-12 left-1/2 w-px h-12 bg-white/20"></div>
-                                        <p className="font-display text-[40px] font-black leading-[48px] text-white mb-2">300 +</p>
+                                        <p className="font-display text-[40px] font-black leading-12 text-white mb-2">300 +</p>
                                         <p className="font-display text-[16px] font-bold text-white mb-2">Collaborators</p>
-                                        <p className="font-sans text-[12px] leading-[18px] text-white/70">
+                                        <p className="font-sans text-[12px] leading-4.5 text-white/70">
                                             Building powerful alliances that drive impact.
                                         </p>
                                     </div>
@@ -604,9 +602,9 @@ export default function Landing() {
                                     <div className="text-left relative left-5">
                                         {/* Vertical line at top */}
                                         <div className="absolute -top-12 left-1/2 w-px h-12 bg-white/20"></div>
-                                        <p className="font-display text-[40px] font-black leading-[48px] text-white mb-2">100 +</p>
+                                        <p className="font-display text-[40px] font-black leading-12 text-white mb-2">100 +</p>
                                         <p className="font-display text-[16px] font-bold text-white mb-2">Speakers</p>
-                                        <p className="font-sans text-[12px] leading-[18px] text-white/70">
+                                        <p className="font-sans text-[12px] leading-4.5 text-white/70">
                                             Thought leaders shaping the blockchain narrative.
                                         </p>
                                     </div>
@@ -620,7 +618,7 @@ export default function Landing() {
                 {/* 2026 WILL DEFINE AN XPERIENCE - MOBILE */}
                 <section className="py-10 px-4 w-full mx-auto md:hidden">
                     <div className="w-full bg-black rounded-2xl p-8 text-white">
-                        <h3 className="font-display text-[32px] font-black leading-[40px] mb-12 text-center">
+                        <h3 className="font-display text-[32px] font-black leading-10 mb-12 text-center">
                             2026 WILL<br />
                             DEFINE AN<br />
                             XPERIENCE
@@ -629,9 +627,9 @@ export default function Landing() {
                         <div className="space-y-0">
                             {/* 12,000 + Participants */}
                             <div className="text-center relative pb-8">
-                                <p className="font-display text-[40px] font-black leading-[48px] mb-1">12,000 +</p>
+                                <p className="font-display text-[40px] font-black leading-12 mb-1">12,000 +</p>
                                 <p className="font-display text-[18px] font-bold mb-2">Participants</p>
-                                <p className="font-sans text-[14px] leading-[20px] text-white/70">
+                                <p className="font-sans text-[14px] leading-5 text-white/70">
                                     A movement of minds reshaping the present.
                                 </p>
                                 {/* Vertical line below */}
@@ -640,9 +638,9 @@ export default function Landing() {
 
                             {/* 150 + Projects */}
                             <div className="text-center relative py-8">
-                                <p className="font-display text-[40px] font-black leading-[48px] mb-1">150 +</p>
+                                <p className="font-display text-[40px] font-black leading-12 mb-1">150 +</p>
                                 <p className="font-display text-[18px] font-bold mb-2">Projects</p>
-                                <p className="font-sans text-[14px] leading-[20px] text-white/70">
+                                <p className="font-sans text-[14px] leading-5 text-white/70">
                                     Innovation unleashed across Africa and beyond.
                                 </p>
                                 {/* Vertical line below */}
@@ -651,9 +649,9 @@ export default function Landing() {
 
                             {/* 300 + Collaborators */}
                             <div className="text-center relative py-8">
-                                <p className="font-display text-[40px] font-black leading-[48px] mb-1">300 +</p>
+                                <p className="font-display text-[40px] font-black leading-12 mb-1">300 +</p>
                                 <p className="font-display text-[18px] font-bold mb-2">Collaborators</p>
-                                <p className="font-sans text-[14px] leading-[20px] text-white/70">
+                                <p className="font-sans text-[14px] leading-5 text-white/70">
                                     Building powerful alliances that drive impact.
                                 </p>
                                 {/* Vertical line below */}
@@ -662,9 +660,9 @@ export default function Landing() {
 
                             {/* 100 + Exhibitors */}
                             <div className="text-center relative py-8">
-                                <p className="font-display text-[40px] font-black leading-[48px] mb-1">100 +</p>
+                                <p className="font-display text-[40px] font-black leading-12 mb-1">100 +</p>
                                 <p className="font-display text-[18px] font-bold mb-2">Exhibitors</p>
-                                <p className="font-sans text-[14px] leading-[20px] text-white/70">
+                                <p className="font-sans text-[14px] leading-5 text-white/70">
                                     Showcasing groundbreaking blockchain solutions.
                                 </p>
                                 {/* Vertical line below */}
@@ -673,9 +671,9 @@ export default function Landing() {
 
                             {/* 100 + Speakers */}
                             <div className="text-center relative pt-8">
-                                <p className="font-display text-[40px] font-black leading-[48px] mb-1">100 +</p>
+                                <p className="font-display text-[40px] font-black leading-12 mb-1">100 +</p>
                                 <p className="font-display text-[18px] font-bold mb-2">Speakers</p>
-                                <p className="font-sans text-[14px] leading-[20px] text-white/70">
+                                <p className="font-sans text-[14px] leading-5 text-white/70">
                                     Thought leaders shaping the blockchain narrative.
                                 </p>
                             </div>
@@ -702,10 +700,10 @@ export default function Landing() {
                         {/* Header with Button */}
                         <div className="flex justify-between items-start mb-6 max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
                             <div>
-                                <h2 className="font-display text-[56px] font-black leading-[64px] tracking-[-0.01em] mb-2">
+                                <h2 className="font-display text-[56px] font-black leading-16 tracking-[-0.01em] mb-2">
                                     Our Collaborators
                                 </h2>
-                                <p className="font-sans text-[16px] font-normal leading-[24px] text-gray-300 max-w-[600px]">
+                                <p className="font-sans text-[16px] font-normal leading-6 text-gray-300 max-w-150">
                                     We are proud to partner with these industry leaders who share our passion for discovery and help make our expeditions possible.
                                 </p>
                             </div>
@@ -725,11 +723,11 @@ export default function Landing() {
                 {/* Our Collaborators Section - MOBILE */}
                 <section className="py-10 w-full md:hidden overflow-hidden">
                     <div className="px-4 mb-8">
-                        <h2 className="font-display text-[28px] font-black leading-[36px] tracking-[-0.01em] mb-3">
+                        <h2 className="font-display text-[28px] font-black leading-9 tracking-[-0.01em] mb-3">
                             Our Collaborators
                         </h2>
 
-                        <p className="font-sans text-[14px] font-normal leading-[20px] text-gray-300 mb-6">
+                        <p className="font-sans text-[14px] font-normal leading-5 text-gray-300 mb-6">
                             We are proud to partner with these industry leaders who share our passion for discovery and help make our expeditions possible.
                         </p>
 

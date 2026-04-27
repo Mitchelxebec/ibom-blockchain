@@ -74,7 +74,7 @@ export default function Navbar({
                     {/* CTA Button */}
                     {showButton && (
                         <Link
-                            href="https://ibx2026.eventcrib.com"
+                            href="/app/success/page.tsx"
                             className="hidden md:block bg-orange-500 hover:bg-orange-600 text-white px-5 py-2 rounded-lg transition"
                         >
                             Register Now
@@ -118,7 +118,7 @@ export default function Navbar({
                     {/* Show button on mobile if enabled */}
                     {showButton && (
                         <Link
-                            href="https://ibx2026.eventcrib.com"
+                            href="/app/success/page.tsx"
                             onClick={() => setMenuOpen(false)}
                             className="inline-block mt-4 bg-orange-500 hover:bg-orange-600 text-white px-5 py-2 rounded-lg transition"
                         >

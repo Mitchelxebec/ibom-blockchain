@@ -22,7 +22,7 @@ export default function MaintenancePage() {
 
             {/* Circular Radial Gradient Overlay - Orange to Black */}
             <div
-                className="absolute inset-0 z-[1]"
+                className="absolute inset-0 z-1"
                 style={{
                     background: 'radial-gradient(circle at center, rgba(239, 133, 16, 0.3) 0%, rgba(239, 133, 16, 0.25) 40%, rgba(0, 0, 0, 0.6) 80%, rgba(0, 0, 0, 0.95) 100%)'
                 }}

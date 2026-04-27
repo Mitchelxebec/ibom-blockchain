@@ -132,7 +132,7 @@ const ScrollRow: React.FC<ScrollRowProps> = ({ collaborators, direction, rowId, 
                     return (
                         <div
                             key={`${rowId}-${index}`}
-                            className="bg-black rounded-lg flex items-center justify-center flex-shrink-0"
+                            className="bg-black rounded-lg flex items-center justify-center shrink-0"
                             style={{
                                 width: `${containerWidth}px`,
                                 height: `${containerHeight}px`

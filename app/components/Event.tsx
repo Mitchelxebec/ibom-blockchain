@@ -63,7 +63,7 @@ const useAutoScroll = (config: {
 
 // Event Card Component
 const EventCard: React.FC<{ event: Event }> = ({ event }) => (
-    <div className="bg-white text-black rounded-2xl overflow-hidden flex-shrink-0 w-[320px] snap-start">
+    <div className="bg-white text-black rounded-2xl overflow-hidden shrink-0 w-[320px] snap-start">
         <div className="p-6 pb-4">
             <p className="text-[10px] font-bold uppercase tracking-wide text-gray-500 mb-4">
                 {event.title}
@@ -71,14 +71,14 @@ const EventCard: React.FC<{ event: Event }> = ({ event }) => (
 
             <div className="flex gap-4 mb-4">
                 <div className="flex flex-col">
-                    <h3 className="text-[56px] font-black leading-[56px]">{event.day}</h3>
+                    <h3 className="text-[56px] font-black leading-14">{event.day}</h3>
                     <p className="text-[14px] font-bold">{event.month}</p>
                 </div>
 
                 <div className="flex flex-col gap-2 pt-2">
                     <div className="flex items-start gap-2">
                         <span className="text-[12px]">📍</span>
-                        <p className="text-[12px] font-medium text-gray-900 leading-[16px]">
+                        <p className="text-[12px] font-medium text-gray-900 leading-4">
                             {event.location}
                         </p>
                     </div>
@@ -93,7 +93,7 @@ const EventCard: React.FC<{ event: Event }> = ({ event }) => (
         </div>
 
         <div className="px-6 pb-6">
-            <div className="w-full h-[240px] relative rounded-xl overflow-hidden bg-gray-200">
+            <div className="w-full h-60 relative rounded-xl overflow-hidden bg-gray-200">
                 <Image
                     src={event.image}
                     alt={event.alt}
@@ -129,16 +129,16 @@ const DesktopEventGrid: React.FC<{
     onAddToCalendar: () => void;
 }> = ({ events, onAddToCalendar }) => (
     <section className="py-20 px-6 md:px-12 lg:px-20 max-w-7xl mx-auto hidden md:block">
-        <div className="w-full max-w-[1441px] mx-auto">
+        <div className="w-full max-w-360.25 mx-auto">
             <div className="flex justify-between items-start mb-8">
-                <h2 className="font-display text-[56px] font-black leading-[64px] tracking-[-0.01em] text-white">
+                <h2 className="font-display text-[56px] font-black leading-16 tracking-[-0.01em] text-white">
                     Event Outline
                 </h2>
                 <AddToCalendarButton onClick={onAddToCalendar} />
             </div>
 
             <div className="mb-12">
-                <p className="font-sans text-[16px] font-normal leading-[24px] tracking-[-0.006em] text-white max-w-[960px]">
+                <p className="font-sans text-[16px] font-normal leading-6 tracking-[-0.006em] text-white max-w-240">
                     Join us at the Ibom Blockchain Summit, where visionaries and pioneers converge to explore the future of Blockchain technology.
                     This annual event is dedicated to fostering collaboration and innovation, providing a unique opportunity to engage with thought
                     leaders and discover cutting-edge developments in the Web3 space.
@@ -178,7 +178,7 @@ const MobileEventCarousel: React.FC<{
         <section className="py-16 px-4 md:hidden">
             <div className="max-w-7xl mx-auto">
                 <div className="flex justify-between flex-col items-start mb-8">
-                    <h2 className="font-display text-[40px] font-black leading-[64px] tracking-[-0.01em] text-white">
+                    <h2 className="font-display text-[40px] font-black leading-16 tracking-[-0.01em] text-white">
                         Event Outline
                     </h2>
                     <AddToCalendarButton onClick={onAddToCalendar} />
