@@ -158,7 +158,7 @@ export default function Landing() {
                         <h1 className="font-display text-[32px] md:text-[56px] font-black leading-tight md:leading-16 tracking-[-0.01em] text-white capitalize">
                             West Africa Largest <span className="text-orange-500 font-display">Blockchain</span> Gathering
                         </h1>
-                        <Link href="https://ibx2026.eventcrib.com" className="bg-orange-500 hover:bg-orange-600 text-white font-[DM Sans] font-bold text-[14px] md:text-[16px] rounded-lg px-6 md:px-8 py-3 md:py-3.5 text-base md:text-lg transition transform hover:scale-105 w-fit">
+                        <Link href="/success" className="bg-orange-500 hover:bg-orange-600 text-white font-[DM Sans] font-bold text-[14px] md:text-[16px] rounded-lg px-6 md:px-8 py-3 md:py-3.5 text-base md:text-lg transition transform hover:scale-105 w-fit">
                             Register Now
                         </Link>
                     </div>

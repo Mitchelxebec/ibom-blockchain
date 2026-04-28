@@ -56,37 +56,6 @@ export default function MaintenancePage() {
         >
           IBX 2026 was a success, See you in 2027
         </h1>
-
-        <div className="space-y-2">
-          <p
-            className="text-white/90"
-            style={{
-              fontFamily: "DM Sans, sans-serif",
-              fontWeight: 400,
-              fontStyle: "normal",
-              fontSize: "18px",
-              lineHeight: "24px",
-              letterSpacing: "-1.5%",
-              textAlign: "center",
-            }}
-          >
-            We are Currently Updating this page.
-          </p>
-          <p
-            className="text-white/90"
-            style={{
-              fontFamily: "DM Sans, sans-serif",
-              fontWeight: 400,
-              fontStyle: "normal",
-              fontSize: "18px",
-              lineHeight: "24px",
-              letterSpacing: "-1.5%",
-              textAlign: "center",
-            }}
-          >
-            Will be live again soon
-          </p>
-        </div>
       </div>
 
       <style jsx>{`
