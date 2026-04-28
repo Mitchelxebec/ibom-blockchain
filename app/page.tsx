@@ -1,7 +1,6 @@
 "use client"
 
 import Navbar from "./components/Navbar";
-import Link from "next/link";
 import CollaboratorsSection from "./components/Collaborators";
 import Footer from "./components/Footer";
 import HeroSection from "./components/HeroSection";
@@ -26,15 +25,15 @@ export default function Home() {
 
       <main className="bg-black">
         {/* Sponsor Section */}
-        <section className="flex flex-col items-start justify-center w-full max-w-[1280px] mx-auto px-6 md:px-16 py-16 md:py-20">
-          <div className="flex flex-col gap-6 max-w-[867px]">
+        <section className="flex flex-col items-start justify-center w-full max-w-7xl mx-auto px-6 md:px-16 py-16 md:py-20">
+          <div className="flex flex-col gap-6 max-w-216.75">
             {/* Label */}
-            <label className="font-[DM Sans] font-semibold text-[12px] md:text-[14px] leading-[20px] tracking-[0.1em] text-gray-400 uppercase">
+            <label className="font-[DM Sans] font-semibold text-[12px] md:text-[14px] leading-5 tracking-widest text-gray-400 uppercase">
               COLLABORATORS
             </label>
 
             {/* Heading */}
-            <h5 className="font-[DM Sans] font-black text-[24px] leading-[32px] tracking-[0%] text-white">
+            <h5 className="font-[DM Sans] font-black text-[24px] leading-8 tracking-[0%] text-white">
               Join 300+ communities in amplifying impact, inspire participation, and build the foundation and shaping a strong West African Blockchain story.
             </h5>
 
