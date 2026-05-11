@@ -5,35 +5,35 @@ import Footer from "../components/Footer";
 import CollaboratorsSection from "../components/Collaborators";
 import ToursNavbarScroll from "../components/ToursNavbarScroll";
 
-const ibx = "/images/ibx-logo.png";
+const ibx = "/images/IBX_logo.png";
 
 const tourComponents = [
   {
     category: "Town hall activations",
     heading: "Grassroots engagements and onboarding of 100,000 underbanked individuals into DeFi.",
     focus: "Wallet creation, savings education, and financial inclusion.",
-    image: "/images/embedded-img1.jpg",
+    image: "/images/audienceattownhall.png",
     alt: "Audience at a town hall",
   },
   {
     category: "Marketplace invasions",
     heading: "Live demonstrations of blockchain use in everyday trade.",
     focus: "Vendors accepting crypto payments, hands-on DeFi exposure.",
-    image: "/images/embedded-img2.jpg",
+    image: "/images/marketplacedemo.png",
     alt: "Marketplace demo",
   },
   {
     category: "Hub & community visits",
     heading: "Collaborations with blockchain hubs and communities to host mini-events, trainings, and panels.",
     focus: "Developer education, startup networking, ecosystem building.",
-    image: "/images/embedded-img3.jpg",
+    image: "/images/communityhallvisit.png",
     alt: "Community hub visit",
   },
   {
     category: "Education & awareness campaigns",
     heading: "Short digital and on-ground activations spreading blockchain literacy.",
     focus: "Simplifying blockchain for new users.",
-    image: "/images/embedded-img4.jpg",
+    image: "/images/educationalpanel.png",
     alt: "Education panel on stage",
   },
 ];
@@ -79,7 +79,7 @@ export default function ToursPage() {
       {/* HERO SECTION */}
       <section
         className="min-h-screen flex items-center px-6 md:px-[60px] pt-[100px] pb-[60px] md:pt-0"
-        style={{ background: "url('/images/card-image.jpg') no-repeat center center / cover" }}
+        style={{ background: "url('/images/hero-bg.png') no-repeat center center / cover" }}
       >
         <div className="absolute inset-0 bg-black/60" />
         <div className="relative z-10 max-w-[800px]">
@@ -231,7 +231,7 @@ export default function ToursPage() {
 
       {/* ROADMAP */}
       <section className="min-h-screen py-12 px-4 md:px-[60px]"
-        style={{ background: "linear-gradient(to bottom, #000, #111)" }}>
+        style={{ background: "url('/images/roadmapbg.png') no-repeat center center / cover" }}>
         <h2
           className="text-[1.3rem] text-center tracking-[1px] mt-4 mb-9 font-normal text-white"
           style={{ fontFamily: "var(--font-dt-getai)" }}

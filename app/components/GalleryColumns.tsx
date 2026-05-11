@@ -3,99 +3,81 @@
 import Image from "next/image";
 
 const col1 = [
-  "/images/embedded-img1.jpg",
-  "/images/embedded-img2.jpg",
-  "/images/embedded-img3.jpg",
-  "/images/embedded-img4.jpg",
-  "/images/embedded-img5.jpg",
-  "/images/embedded-img6.jpg",
-  "/images/March10.jpg",
-  "/images/March11.jpg",
-  "/images/March12.jpg",
-  "/images/March13.jpg",
-  "/images/March14.jpg",
-  "/images/card-image.jpg",
+  "/images/photo1gallery.png",
+  "/images/photo2gallery.png",
+  "/images/photo3gallery.png",
+  "/images/photo4gallery.png",
+  "/images/photo5gallery.png",
+  "/images/photo6gallery.png",
+  "/images/photo7gallery.png",
+  "/images/photo8gallery.png",
+  "/images/photo9gallery.png",
+  "/images/photo10gallery.png",
 ];
 
 const col2 = [
-  "/images/March11.jpg",
-  "/images/March12.jpg",
-  "/images/embedded-img3.jpg",
-  "/images/embedded-img4.jpg",
-  "/images/March13.jpg",
-  "/images/March14.jpg",
-  "/images/embedded-img1.jpg",
-  "/images/embedded-img5.jpg",
-  "/images/card-image.jpg",
-  "/images/talk-session.jpg",
-  "/images/embedded-img2.jpg",
-  "/images/embedded-img6.jpg",
-  "/images/March10.jpg",
-  "/images/March11.jpg",
+  "/images/photo11gallery.png",
+  "/images/photo12gallery.png",
+  "/images/photo13gallery.png",
+  "/images/photo14gallery.png",
+  "/images/photo15gallery.png",
+  "/images/photo16gallery.png",
+  "/images/photo17gallery.png",
+  "/images/photo18gallery.png",
+  "/images/photo19gallery.png",
+  "/images/photo20gallery.png",
 ];
 
 const col3 = [
-  "/images/embedded-img5.jpg",
-  "/images/embedded-img6.jpg",
-  "/images/March10.jpg",
-  "/images/March12.jpg",
-  "/images/embedded-img1.jpg",
-  "/images/embedded-img2.jpg",
-  "/images/March13.jpg",
-  "/images/March14.jpg",
-  "/images/embedded-img3.jpg",
-  "/images/embedded-img4.jpg",
-  "/images/talk-session.jpg",
-  "/images/card-image.jpg",
-  "/images/March11.jpg",
-  "/images/embedded-img5.jpg",
+  "/images/photo21gallery.png",
+  "/images/photo22gallery.png",
+  "/images/photo23gallery.png",
+  "/images/photo24gallery.png",
+  "/images/photo25gallery.png",
+  "/images/photo26gallery.png",
+  "/images/photo27gallery.png",
+  "/images/photo28gallery.png",
+  "/images/photo29gallery.png",
+  "/images/photo30gallery.png",
 ];
 
 const col4 = [
-  "/images/March13.jpg",
-  "/images/March14.jpg",
-  "/images/embedded-img2.jpg",
-  "/images/embedded-img4.jpg",
-  "/images/March10.jpg",
-  "/images/embedded-img6.jpg",
-  "/images/March11.jpg",
-  "/images/embedded-img1.jpg",
-  "/images/embedded-img3.jpg",
-  "/images/March12.jpg",
-  "/images/talk-session.jpg",
-  "/images/embedded-img5.jpg",
-  "/images/card-image.jpg",
-  "/images/March14.jpg",
+  "/images/photo31gallery.png",
+  "/images/photo32gallery.png",
+  "/images/photo33gallery.png",
+  "/images/photo34gallery.png",
+  "/images/photo35gallery.png",
+  "/images/photo36gallery.png",
+  "/images/photo37gallery.png",
+  "/images/photo38gallery.png",
+  "/images/photo39gallery.png",
+  "/images/photo40gallery.png",
 ];
 
 const col5 = [
-  "/images/embedded-img1.jpg",
-  "/images/March12.jpg",
-  "/images/embedded-img3.jpg",
-  "/images/March10.jpg",
-  "/images/embedded-img5.jpg",
-  "/images/March13.jpg",
-  "/images/embedded-img2.jpg",
-  "/images/talk-session.jpg",
-  "/images/March11.jpg",
-  "/images/embedded-img4.jpg",
-  "/images/March14.jpg",
-  "/images/embedded-img6.jpg",
+  "/images/photo41gallery.png",
+  "/images/photo42gallery.png",
+  "/images/photo43gallery.png",
+  "/images/photo45gallery.png",
+  "/images/photo46gallery.png",
+  "/images/photo47gallery.png",
+  "/images/photo48gallery.png",
+  "/images/photo49gallery.png",
+  "/images/photo50gallery.png",
+  "/images/photo51gallery.png",
 ];
 
 const col6 = [
-  "/images/March14.jpg",
-  "/images/embedded-img6.jpg",
-  "/images/March11.jpg",
-  "/images/embedded-img2.jpg",
-  "/images/March13.jpg",
-  "/images/embedded-img4.jpg",
-  "/images/card-image.jpg",
-  "/images/March10.jpg",
-  "/images/embedded-img1.jpg",
-  "/images/March12.jpg",
-  "/images/embedded-img3.jpg",
-  "/images/embedded-img5.jpg",
+  "/images/photo52gallery.png",
+  "/images/photo53gallery.png",
+  "/images/photo54gallery.png",
+  "/images/photo55gallery.png",
+  "/images/photo56gallery.png",
+  "/images/photo57gallery.png",
+  "/images/photo58gallery.png",
+  "/images/photo4gallery.png",
+  "/images/photo8gallery.png",
+  "/images/photo12gallery.png",
 ];
 
 const columns = [
@@ -105,12 +87,6 @@ const columns = [
   { images: col4, duration: 10 },
   { images: col5, duration: 15 },
   { images: col6, duration: 10 },
-];
-
-// Flatten all columns into one list for mobile horizontal scroll
-const allImages = [
-  ...col1, ...col2, ...col3,
-  ...col4, ...col5, ...col6,
 ];
 
 function GalleryColumn({ images, duration }: { images: string[]; duration: number }) {
@@ -166,7 +142,6 @@ export default function GalleryColumns() {
   return (
     <>
       <style>{`
-        /* ---- Y-axis scroll (desktop) ---- */
         @keyframes gallery-scroll-y {
           0% { transform: translateY(0); }
           100% { transform: translateY(-50%); }
@@ -193,8 +168,6 @@ export default function GalleryColumns() {
           transform: scale(1.1);
           box-shadow: 0 0 0 4px #0A2647, 0 0 0 6px #FFB100;
         }
-
-        /* ---- X-axis scroll (mobile) ---- */
         @keyframes gallery-scroll-left {
           0% { transform: translateX(0); }
           100% { transform: translateX(-50%); }
@@ -229,11 +202,8 @@ export default function GalleryColumns() {
           transform: scale(1.05);
           box-shadow: 0 0 0 3px #0A2647, 0 0 0 5px #FFB100;
         }
-
         @media (prefers-reduced-motion: reduce) {
-          .gallery-col,
-          .gallery-row-left,
-          .gallery-row-right {
+          .gallery-col, .gallery-row-left, .gallery-row-right {
             animation: none !important;
           }
         }
