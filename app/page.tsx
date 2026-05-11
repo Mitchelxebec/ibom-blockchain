@@ -17,7 +17,7 @@ export default function Home() {
         extraLinks={[
           { label: "About Us", href: "/maintenance" },
           { label: "IBX 26", href: "/ibx26" },
-          { label: "IBX Tour", href: "/maintenance" },
+          { label: "IBX Tour", href: "/tours" },
         ]}
       />
 

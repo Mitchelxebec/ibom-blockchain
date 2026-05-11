@@ -1,4 +1,6 @@
-import React, { useRef, useEffect } from 'react';
+"use client";
+
+import Image from 'next/image';
 
 const collaborators = [
     "/images/AdomLabs.png",
@@ -40,122 +42,65 @@ const collaborators = [
     "/images/TheConCave.png",
 ];
 
+// Split into rows so each row has fewer items
+const row1 = collaborators.slice(0, 8);
+const row2 = collaborators.slice(8, 15);
+const row3 = collaborators.slice(15, 22);
+const row4 = collaborators.slice(22, 29);
+const row5 = collaborators.slice(29);
+
 interface ScrollRowProps {
-    collaborators: string[];
+    items: string[];
     direction: "left" | "right";
     rowId: string;
     isMobile?: boolean;
+    duration: number;
 }
 
-const ScrollRow: React.FC<ScrollRowProps> = ({ collaborators, direction, rowId, isMobile = false }) => {
-    const scrollRef = useRef<HTMLDivElement>(null);
-    const gap = isMobile ? 12 : 16; // gap in pixels
+function ScrollRow({ items, direction, rowId, isMobile = false, duration }: ScrollRowProps) {
     const containerWidth = isMobile ? 90 : 120;
     const containerHeight = isMobile ? 60 : 80;
     const imageWidth = isMobile ? 65 : 75;
     const imageHeight = isMobile ? 65 : 75;
 
     const getImageSize = (collaborator: string) => {
-        if (collaborator.includes('BA')) {
-            return isMobile ? { width: 35, height: 35 } : { width: 45, height: 45 };
-        }
-        if (collaborator.includes('cadinu')) {
+        if (collaborator.includes('BA') || collaborator.includes('cadinu') ||
+            collaborator.includes('cyberChain') || collaborator.includes('TheConCave')) {
             return isMobile ? { width: 35, height: 35 } : { width: 45, height: 45 };
         }
         if (collaborator.includes('CalabarBTCClub')) {
-            return isMobile ? { width: 55, height: 55 } : { width: 55, height: 55 };
-        }
-        if (collaborator.includes('cyberChain')) {
-            return isMobile ? { width: 35, height: 35 } : { width: 45, height: 45 };
-        }
-        if (collaborator.includes('TheConCave')) {
-            return isMobile ? { width: 35, height: 35 } : { width: 45, height: 45 };
+            return { width: 55, height: 55 };
         }
         return { width: imageWidth, height: imageHeight };
     };
 
-    useEffect(() => {
-        const scrollElement = scrollRef.current;
-        if (!scrollElement) return;
-
-        const itemWidth = containerWidth + gap;
-        const singleSetWidth = itemWidth * collaborators.length;
-
-        // Set initial position to middle set
-        scrollElement.scrollLeft = singleSetWidth;
-
-        let animationId: number;
-        const speed = isMobile ? 1.5 : 1; // pixels per frame
-
-        const animate = () => {
-            if (!scrollElement) return;
-
-            if (direction === "right") {
-                scrollElement.scrollLeft += speed;
-                // Reset to middle when reaching end of second set
-                if (scrollElement.scrollLeft >= singleSetWidth * 2) {
-                    scrollElement.scrollLeft = singleSetWidth;
-                }
-            } else {
-                scrollElement.scrollLeft -= speed;
-                // Reset to middle when reaching start
-                if (scrollElement.scrollLeft <= 0) {
-                    scrollElement.scrollLeft = singleSetWidth;
-                }
-            }
-
-            animationId = requestAnimationFrame(animate);
-        };
-
-        animationId = requestAnimationFrame(animate);
-
-        return () => {
-            if (animationId) cancelAnimationFrame(animationId);
-        };
-    }, [direction, isMobile, collaborators.length, containerWidth, gap]);
-
-    // Triple the collaborators for seamless loop
-    const tripleCollaborators = [...collaborators, ...collaborators, ...collaborators];
+    const animClass = direction === 'left' ? 'collab-scroll-left' : 'collab-scroll-right';
 
     return (
         <div className="relative overflow-hidden w-full">
             <div
-                ref={scrollRef}
-                className="flex overflow-x-hidden scrollbar-hide"
-                style={{
-                    gap: `${gap}px`,
-                    scrollBehavior: 'auto'
-                }}
+                className={animClass}
+                style={{ animationDuration: `${duration}s` }}
             >
-                {tripleCollaborators.map((collaborator, index) => {
+                {[...items, ...items].map((collaborator, index) => {
                     const size = getImageSize(collaborator);
                     return (
                         <div
                             key={`${rowId}-${index}`}
-                            className="bg-black rounded-lg flex items-center justify-center shrink-0"
+                            className="bg-black rounded-lg flex items-center justify-center flex-shrink-0"
                             style={{
                                 width: `${containerWidth}px`,
-                                height: `${containerHeight}px`
+                                height: `${containerHeight}px`,
+                                marginRight: isMobile ? '12px' : '16px',
                             }}
                         >
-                            <div
-                                style={{
-                                    width: size.width,
-                                    height: size.height,
-                                    position: 'relative',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center'
-                                }}
-                            >
-                                <img
+                            <div style={{ width: size.width, height: size.height, position: 'relative' }}>
+                                <Image
                                     src={collaborator}
                                     alt={`Collaborator ${index + 1}`}
-                                    style={{
-                                        maxWidth: '100%',
-                                        maxHeight: '100%',
-                                        objectFit: 'contain'
-                                    }}
+                                    fill
+                                    sizes={`${size.width}px`}
+                                    style={{ objectFit: 'contain' }}
                                     loading="lazy"
                                 />
                             </div>
@@ -165,85 +110,59 @@ const ScrollRow: React.FC<ScrollRowProps> = ({ collaborators, direction, rowId, 
             </div>
         </div>
     );
-};
+}
 
 export default function CollaboratorsSection() {
     return (
         <>
-            <style>{`
-                .scrollbar-hide::-webkit-scrollbar {
-                    display: none;
+            <style jsx global>{`
+                @keyframes collab-scroll-left {
+                    0% { transform: translateX(0); }
+                    100% { transform: translateX(-50%); }
                 }
-                .scrollbar-hide {
-                    -ms-overflow-style: none;
-                    scrollbar-width: none;
+                @keyframes collab-scroll-right {
+                    0% { transform: translateX(-50%); }
+                    100% { transform: translateX(0); }
+                }
+                .collab-scroll-left {
+                    display: flex;
+                    min-width: max-content;
+                    will-change: transform;
+                    animation: collab-scroll-left linear infinite;
+                }
+                .collab-scroll-right {
+                    display: flex;
+                    min-width: max-content;
+                    will-change: transform;
+                    animation: collab-scroll-right linear infinite;
+                }
+                @media (prefers-reduced-motion: reduce) {
+                    .collab-scroll-left,
+                    .collab-scroll-right {
+                        animation: none !important;
+                    }
                 }
             `}</style>
 
-            {/* Our Collaborators Section - DESKTOP */}
+            {/* Desktop */}
             <section className="py-8 w-full hidden md:block overflow-hidden">
                 <div className="space-y-6">
-                    <ScrollRow
-                        collaborators={collaborators}
-                        direction="right"
-                        rowId="desktop-row1"
-                    />
-                    <ScrollRow
-                        collaborators={collaborators}
-                        direction="left"
-                        rowId="desktop-row2"
-                    />
-                    <ScrollRow
-                        collaborators={collaborators}
-                        direction="right"
-                        rowId="desktop-row3"
-                    />
-                    <ScrollRow
-                        collaborators={collaborators}
-                        direction="left"
-                        rowId="desktop-row4"
-                    />
-                    <ScrollRow
-                        collaborators={collaborators}
-                        direction="right"
-                        rowId="desktop-row5"
-                    />
+                    <ScrollRow items={row1} direction="right" rowId="d1" duration={12} />
+                    <ScrollRow items={row2} direction="left"  rowId="d2" duration={12} />
+                    <ScrollRow items={row3} direction="right" rowId="d3" duration={12} />
+                    <ScrollRow items={row4} direction="left"  rowId="d4" duration={12} />
+                    <ScrollRow items={row5} direction="right" rowId="d5" duration={12} />
                 </div>
             </section>
 
-            {/* Our Collaborators Section - MOBILE */}
+            {/* Mobile */}
             <section className="py-6 w-full md:hidden overflow-hidden">
                 <div className="space-y-4">
-                    <ScrollRow
-                        collaborators={collaborators}
-                        direction="right"
-                        rowId="mobile-row1"
-                        isMobile
-                    />
-                    <ScrollRow
-                        collaborators={collaborators}
-                        direction="left"
-                        rowId="mobile-row2"
-                        isMobile
-                    />
-                    <ScrollRow
-                        collaborators={collaborators}
-                        direction="right"
-                        rowId="mobile-row3"
-                        isMobile
-                    />
-                    <ScrollRow
-                        collaborators={collaborators}
-                        direction="left"
-                        rowId="mobile-row4"
-                        isMobile
-                    />
-                    <ScrollRow
-                        collaborators={collaborators}
-                        direction="right"
-                        rowId="mobile-row5"
-                        isMobile
-                    />
+                    <ScrollRow items={row1} direction="right" rowId="m1" isMobile duration={10} />
+                    <ScrollRow items={row2} direction="left"  rowId="m2" isMobile duration={10} />
+                    <ScrollRow items={row3} direction="right" rowId="m3" isMobile duration={10} />
+                    <ScrollRow items={row4} direction="left"  rowId="m4" isMobile duration={10} />
+                    <ScrollRow items={row5} direction="right" rowId="m5" isMobile duration={10} />
                 </div>
             </section>
         </>

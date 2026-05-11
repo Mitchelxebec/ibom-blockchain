@@ -138,7 +138,7 @@ export default function Landing() {
                 showButton={true}
                 extraLinks={[
                     { label: "About Us", href: "/maintenance" },
-                    { label: "IBX Tour", href: "/maintenance" },
+                    { label: "IBX Tour", href: "/tours" },
                 ]}
             />
 

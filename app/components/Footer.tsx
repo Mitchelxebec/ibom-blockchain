@@ -77,7 +77,7 @@ export default function Footer() {
             </div>
             <div>
               <Link
-                href="/maintenance"
+                href="/tours"
                 className="font-sans text-[14px] md:text-[16px] font-normal hover:text-orange-500 transition"
               >
                 IBX Tour
