@@ -22,11 +22,11 @@ export default function HeroSection() {
       <div className="relative z-20 px-6 md:px-16 w-full max-w-[1280px] mx-auto pb-20 md:pb-24">
         <div className="w-full max-w-full md:max-w-[702px] flex flex-col gap-6 md:gap-8">
           <h1 className="font-[DM Sans] text-[40px] md:text-[56px] lg:text-[64px] font-black leading-tight md:leading-[64px] lg:leading-[72px] tracking-[-0.01em] text-white">
-            West Africa Largest <span className="text-[#E87A12]">Blockchain</span> Campaign
+            West Africa's Largest <span className="text-[#E87A12]">Blockchain</span> Movement
           </h1>
 
           <p className="font-[DM Sans] text-[16px] md:text-[18px] font-normal leading-[24px] md:leading-[28px] tracking-[-0.015em] text-gray-300 max-w-[640px]">
-            Empowering and unifying communities and connecting innovators to shape the future of Web3 and ignite blockchain adoption, innovation, and collaboration across West Africa and beyond
+            IBX is mobilizing communities, innovators, ecosystems, and global Web3 leaders to accelerate blockchain adoption, infrastructure, innovation, and opportunity across West Africa and beyond.
           </p>
 
           <div className="flex items-center gap-4 md:gap-6 mt-2">
@@ -38,7 +38,7 @@ export default function HeroSection() {
             </Link>
 
             <Link
-              href="/maintenance"
+              href="/tours"
               className="text-white font-[DM Sans] font-bold text-[14px] md:text-[16px] border-2 border-white rounded-lg px-6 md:px-8 py-3 md:py-3.5 transition-all duration-300 hover:bg-white/10 hover:scale-105"
             >
               IBX Tour

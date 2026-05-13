@@ -9,43 +9,47 @@ const ibx = "/images/IBX_logo.png";
 
 const tourComponents = [
   {
-    category: "Town hall activations",
-    heading: "Grassroots engagements and onboarding of 100,000 underbanked individuals into DeFi.",
-    focus: "Wallet creation, savings education, and financial inclusion.",
+    category: "Blockchain Community Meetups & Campus Activations",
+    heading: "Bringing blockchain conversations to communities and campuses across West Africa.",
+    focus: "Grassroots awareness, student onboarding, and local community engagement.",
     image: "/images/audienceattownhall.png",
-    alt: "Audience at a town hall",
+    alt: "Blockchain community meetup",
   },
   {
-    category: "Marketplace invasions",
-    heading: "Live demonstrations of blockchain use in everyday trade.",
-    focus: "Vendors accepting crypto payments, hands-on DeFi exposure.",
-    image: "/images/marketplacedemo.png",
-    alt: "Marketplace demo",
-  },
-  {
-    category: "Hub & community visits",
-    heading: "Collaborations with blockchain hubs and communities to host mini-events, trainings, and panels.",
-    focus: "Developer education, startup networking, ecosystem building.",
-    image: "/images/communityhallvisit.png",
-    alt: "Community hub visit",
-  },
-  {
-    category: "Education & awareness campaigns",
-    heading: "Short digital and on-ground activations spreading blockchain literacy.",
-    focus: "Simplifying blockchain for new users.",
+    category: "Developer, Builders & Web3 Education Campaigns",
+    heading: "Equipping the next generation of African builders with Web3 skills and knowledge.",
+    focus: "Workshops, hackathons, and hands-on developer training sessions.",
     image: "/images/educationalpanel.png",
-    alt: "Education panel on stage",
+    alt: "Developer education campaign",
   },
-];
-
-const roadmapPhases = [
-  { phase: "Phase 1", desc: "Launch" },
-  { phase: "Phase 2", desc: "Country 1 (Nigeria)" },
-  { phase: "Phase 3", desc: "Country 2 (Ghana)" },
-  { phase: "Phase 4", desc: "Country 3 (Togo)" },
-  { phase: "Phase 5", desc: "Country 4 (Benin Republic)" },
-  { phase: "Phase 6", desc: "Country 5 (Cameroon)" },
-  { phase: "Phase 7", desc: "Wrap-up & Transition to IBX 2026 Main Event" },
+  {
+    category: "Founder/Startup Engagements & Innovation Showcases",
+    heading: "Spotlighting African blockchain startups and connecting founders to global opportunities.",
+    focus: "Pitch sessions, startup showcases, and investor networking.",
+    image: "/images/communityhallvisit.png",
+    alt: "Founder and startup engagement",
+  },
+  {
+    category: "Ecosystem Networking and Partnership Conversations",
+    heading: "Forging cross-border partnerships between blockchain communities and ecosystem players.",
+    focus: "B2B meetings, ecosystem roundtables, and strategic alliance building.",
+    image: "/images/marketplacedemo.png",
+    alt: "Ecosystem networking",
+  },
+  {
+    category: "Media & Community Outreach",
+    heading: "Amplifying the IBX story and West Africa's blockchain narrative across media channels.",
+    focus: "Press coverage, social media activations, and community storytelling.",
+    image: "/images/audienceattownhall.png",
+    alt: "Media and community outreach",
+  },
+  {
+    category: "Grassroots Blockchain Adoption Campaigns",
+    heading: "Driving real-world crypto and blockchain adoption at the grassroots level.",
+    focus: "Wallet creation, DeFi onboarding, and everyday blockchain use cases.",
+    image: "/images/educationalpanel.png",
+    alt: "Grassroots blockchain adoption",
+  },
 ];
 
 const galleryImages = [
@@ -122,58 +126,46 @@ export default function ToursPage() {
             className="text-[28px] md:text-[40px] font-black leading-[1] mb-[18px] text-white"
             style={{ fontFamily: "var(--font-dt-getai)", letterSpacing: "-0.005em" }}
           >
-            Vision: Banking 100 million unbanked West Africans by 2030 through blockchain empowerment.
+            A Movement Across Borders
           </h2>
-          <p className="text-gray-400 text-[16px] md:text-[18px] font-medium leading-[24px] mb-12"
+          <p className="text-gray-400 text-[16px] md:text-[18px] font-medium leading-[28px] mb-6"
             style={{ letterSpacing: "-0.015em" }}>
-            Join us at the Ibom Blockchain Summit, where visionaries and pioneers converge to explore
-            the future of Blockchain technology.&nbsp;This annual event is dedicated to fostering
-            collaboration and innovation, providing a unique opportunity to engage with thought leaders
-            and discover cutting-edge developments in the Web3 space.
+            The IBX Tour is more than a roadshow — it is one of Africa&apos;s most ambitious blockchain expansion campaigns.
+          </p>
+          <p className="text-gray-400 text-[16px] md:text-[18px] font-medium leading-[28px] mb-6"
+            style={{ letterSpacing: "-0.015em" }}>
+            Designed to unify the region&apos;s fragmented blockchain ecosystem, the tour connects cities, campuses, innovation hubs, startups, local communities, and global Web3 brands through strategic engagements across West Africa.
+          </p>
+          <p className="text-gray-400 text-[16px] md:text-[18px] font-medium leading-[28px] mb-12"
+            style={{ letterSpacing: "-0.015em" }}>
+            IBX is building direct access to the next generation of African blockchain users, builders, and innovators while creating pathways for collaboration, education, adoption, and opportunity.
           </p>
 
-          <div className="grid md:grid-cols-2 gap-12 md:gap-16">
-            {/* Left - 2026 Target */}
-            <div className="px-[6px] py-[12px]">
-              <h3
-                className="text-[20px] md:text-[28px] font-black mb-[18px]"
-                style={{ fontFamily: "var(--font-dt-getai)" }}
-              >
-                2026 Target
-              </h3>
-              <ul className="space-y-[18px] list-none p-0">
-                <li>
-                  <p className="text-gray-400 text-[20px] md:text-[24px] font-medium leading-[32px] mb-12"
-                    style={{ letterSpacing: "-0.015em" }}>
-                    100,000 onboarded during this year&apos;s tour.
-                  </p>
-                </li>
-                <li className="flex gap-3 items-start">
-                  <span className="w-2.5 h-2.5 rounded-full bg-white/30 mt-2 shrink-0" />
-                  <p className="text-gray-400 text-[18px] md:text-[20px] font-medium leading-[32px]"
-                    style={{ letterSpacing: "-0.015em" }}>
-                    6 months across 5 West African countries.
-                  </p>
-                </li>
-              </ul>
+          <div className="flex flex-col gap-6">
+            <h3
+              className="text-[24px] md:text-[36px] font-black text-white"
+              style={{ fontFamily: "var(--font-dt-getai)" }}
+            >
+              Driving Blockchain Adoption Across West Africa
+            </h3>
+
+            <div className="flex flex-col gap-3 mt-2">
+              {[
+                "6+ West African Countries",
+                "40+ Cities & Ecosystem Stops",
+                "300+ Blockchain Communities",
+                "Thousands Of Participants",
+              ].map((stat, i) => (
+                <div key={i} className="flex items-center gap-3">
+                  <span className="text-[#E87A12] text-[18px]">★</span>
+                  <p className="text-white font-semibold text-[16px] md:text-[18px] leading-[26px]">{stat}</p>
+                </div>
+              ))}
             </div>
 
-            {/* Right - Core Objectives */}
-            <div className="px-[6px] py-[12px]">
-              <h3
-                className="text-[20px] md:text-[28px] font-black mb-[18px]"
-                style={{ fontFamily: "var(--font-dt-getai)" }}
-              >
-                Core objectives:
-              </h3>
-              <ul className="list-disc pl-5 space-y-0 text-gray-400 text-[18px] md:text-[20px] leading-[32px]"
-                style={{ letterSpacing: "-0.015em" }}>
-                <li>Drive blockchain education and inclusion.</li>
-                <li>Empower communities through town hall activations.</li>
-                <li>Encourage real-world crypto adoption in local markets.</li>
-                <li>Build cross-border partnerships between blockchain communities.</li>
-              </ul>
-            </div>
+            <p className="text-[#E87A12] font-semibold text-[15px] md:text-[17px] tracking-wide mt-2">
+              ★ Developers • Traders • Founders • Students • Creators
+            </p>
           </div>
         </div>
       </section>
@@ -185,19 +177,16 @@ export default function ToursPage() {
             className="text-[34px] md:text-[56px] font-black leading-[1] mb-[18px] text-white"
             style={{ fontFamily: "var(--font-dt-getai)", letterSpacing: "-0.01em" }}
           >
-            Tour Components
+            What happens on the tour?
           </h2>
           <p className="text-[#d7d7d7] text-[15px] md:text-[20px] leading-relaxed mb-7 max-w-[900px]">
-            Join us at the Ibom Blockchain Summit, where visionaries and pioneers converge to explore
-            the future of Blockchain technology.&nbsp;This annual event is dedicated to fostering
-            collaboration and innovation, providing a unique opportunity to engage with thought leaders
-            and discover cutting-edge developments in the Web3 space.
+            Each stop on the IBX Tour is designed to create real ecosystem impact through education, collaboration, and community activation.
           </p>
         </div>
       </div>
 
       {/* TOUR COMPONENTS GRID */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-[15px] mx-[30px] mb-[30px]">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[15px] mx-[30px] mb-[30px]">
         {tourComponents.map((item, i) => (
           <article
             key={i}
@@ -228,67 +217,6 @@ export default function ToursPage() {
           </article>
         ))}
       </div>
-
-      {/* ROADMAP */}
-      <section className="min-h-screen py-12 px-4 md:px-[60px]"
-        style={{ background: "url('/images/roadmapbg.png') no-repeat center center / cover" }}>
-        <h2
-          className="text-[1.3rem] text-center tracking-[1px] mt-4 mb-9 font-normal text-white"
-          style={{ fontFamily: "var(--font-dt-getai)" }}
-        >
-          Roadmap
-        </h2>
-
-        {/* Timeline - desktop */}
-        <div className="relative w-[90vw] max-w-[700px] min-h-[540px] mx-auto hidden md:block">
-          {/* Dotted vertical line */}
-          <div
-            className="absolute left-1/2 -translate-x-1/2 top-[7px] bottom-[10px] w-[2px] z-[1]"
-            style={{
-              background: "repeating-linear-gradient(to bottom, rgba(255,255,255,0.8), rgba(255,255,255,0.8) 4px, transparent 4px, transparent 10px)"
-            }}
-          />
-          {roadmapPhases.map((item, i) => (
-            <div
-              key={i}
-              className={`absolute w-[48%] max-w-[290px] z-[2] flex flex-col ${
-                i % 2 === 0
-                  ? "left-0 items-end text-right"
-                  : "right-0 items-start text-left"
-              }`}
-              style={{ top: `${i * 13}%` }}
-            >
-              <div className="relative">
-                {/* Horizontal connector line */}
-                <span
-                  className="absolute top-[16px] w-[32px] h-[1.5px] bg-white/50"
-                  style={i % 2 === 0 ? { right: "-36px" } : { left: "-36px" }}
-                />
-                <p className="text-[1.15rem] font-semibold text-white">{item.phase}</p>
-                <p className="text-[0.98rem] text-[#dadada] mt-1 font-normal">{item.desc}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Timeline - mobile (stacked) */}
-        <div className="md:hidden flex flex-col items-center gap-6 px-4">
-          {roadmapPhases.map((item, i) => (
-            <div key={i} className="text-center relative">
-              <p className="text-[1.05rem] font-semibold text-white">{item.phase}</p>
-              <p className="text-[0.95rem] text-[#dadada] mt-1">{item.desc}</p>
-              {i < roadmapPhases.length - 1 && (
-                <div
-                  className="w-[2px] h-[28px] mx-auto mt-2"
-                  style={{
-                    background: "repeating-linear-gradient(to bottom, rgba(255,255,255,0.85), rgba(255,255,255,0.85) 2px, transparent 2px, transparent 6px)"
-                  }}
-                />
-              )}
-            </div>
-          ))}
-        </div>
-      </section>
 
       {/* COLLABORATORS */}
       <section className="bg-black py-12 overflow-hidden">

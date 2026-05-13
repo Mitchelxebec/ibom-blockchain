@@ -34,14 +34,14 @@ export default function Home() {
 
             {/* Heading */}
             <h5 className="font-[DM Sans] font-black text-[24px] leading-8 tracking-[0%] text-white">
-              Join 300+ communities in amplifying impact, inspire participation, and build the foundation and shaping a strong West African Blockchain story.
+              IBX stands at the center of Africa&apos;s rising blockchain economy — connecting communities, infrastructure, education, innovation, and adoption across West Africa.
             </h5>
 
             {/* Button */}
             <a href="mailto:partnerships@ibomblockchain.com"
               className="bg-[#E87A12] text-black font-[DM Sans] font-bold text-[14px] md:text-[16px] rounded-lg px-6 md:px-8 py-3 md:py-3.5 w-fit transition-all duration-300 hover:bg-[#f68924] hover:scale-105 hover:shadow-lg hover:shadow-orange-500/30"
             >
-              Become a Collaborator
+              Join the Force
             </a>
           </div>
         </section>
