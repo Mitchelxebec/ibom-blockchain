@@ -54,7 +54,7 @@ const DesktopCard: React.FC<{ item: TourComponent }> = ({ item }) => (
         alt={item.alt}
         width={800}
         height={300}
-        className="w-full h-full object-cover grayscale hover:scale-[1.03] transition-transform duration-500"
+        className="w-full h-full object-cover  hover:scale-[1.03] transition-transform duration-500"
       />
     </div>
     <div className="px-[18px] py-[16px] pb-[20px] flex flex-col gap-[6px]">

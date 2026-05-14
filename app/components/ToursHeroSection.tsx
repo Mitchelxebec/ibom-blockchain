@@ -93,12 +93,6 @@ export default function ToursHeroSection() {
           >
             Join The Tour
           </Link>
-          <a
-            href="mailto:partnerships@ibomblockchain.com"
-            className="bg-white text-black font-semibold text-[14px] rounded-[6px] px-7 py-3 transition-all duration-300 hover:bg-gray-100 text-center"
-          >
-            Partner with Us
-          </a>
         </div>
       </div>
     </section>

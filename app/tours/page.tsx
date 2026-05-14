@@ -7,7 +7,7 @@ import ToursNavbarScroll from "../components/ToursNavbarScroll";
 import TourComponentsSection from "../components/TourComponentsSection";
 import ToursHeroSection from "../components/ToursHeroSection";
 
-const ibx = "/images/IBX_logo.png";
+const ibx = "/images/IBX-new-logo.png";
 
 const tourComponents = [
   {
@@ -71,8 +71,8 @@ export default function ToursPage() {
         <Navbar
           logo={ibx}
           logoAlt="IBX Logo"
-          logoWidth={120}
-          logoHeight={50}
+          logoWidth={150}
+          logoHeight={60}
           showButton
           extraLinks={[
             { label: "About Us", href: "/maintenance" },
@@ -116,7 +116,7 @@ export default function ToursPage() {
 
             <div className="flex flex-col gap-3 mt-2">
               {[
-                "6+ West African Countries",
+                "6 West African Countries",
                 "40+ Cities & Ecosystem Stops",
                 "300+ Blockchain Communities",
                 "Thousands Of Participants",
@@ -127,21 +127,20 @@ export default function ToursPage() {
                     <p className="text-white font-semibold text-[16px] md:text-[18px] leading-[26px]">{stat}</p>
                   </div>
                   {i === 0 && (
-                    <div className="flex gap-2 ml-7">
+                    <div className="flex ml-7" style={{ gap: "4px" }}>
                       {[
                         { src: "/images/Nigeria.png", alt: "Nigeria" },
                         { src: "/images/Ghana.png", alt: "Ghana" },
                         { src: "/images/Cameroon.png", alt: "Cameroon" },
                         { src: "/images/Togo.png", alt: "Togo" },
                         { src: "/images/Benin.png", alt: "Benin" },
-                        { src: "/images/ivoryCoast.png", alt: "Ivory Coast" },
                       ].map((flag) => (
-                        <div key={flag.alt} className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0">
+                        <div key={flag.alt} className="w-6 h-6 rounded-full overflow-hidden flex-shrink-0">
                           <Image
                             src={flag.src}
                             alt={flag.alt}
-                            width={32}
-                            height={32}
+                            width={24}
+                            height={24}
                             className="object-cover w-full h-full"
                           />
                         </div>
@@ -157,7 +156,7 @@ export default function ToursPage() {
                 style={{
                   display: "flex",
                   minWidth: "max-content",
-                  animation: "audience-scroll 12s linear infinite",
+                  animation: "audience-scroll 40s linear infinite",
                   willChange: "transform",
                 }}
               >
