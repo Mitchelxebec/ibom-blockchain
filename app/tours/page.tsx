@@ -106,7 +106,7 @@ export default function ToursPage() {
             IBX is building direct access to the next generation of African blockchain users, builders, and innovators while creating pathways for collaboration, education, adoption, and opportunity.
           </p>
 
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-3">
             <h3
               className="text-[24px] md:text-[36px] font-black text-white"
               style={{ fontFamily: "var(--font-dt-getai)" }}
@@ -134,6 +134,7 @@ export default function ToursPage() {
                         { src: "/images/Cameroon.png", alt: "Cameroon" },
                         { src: "/images/Togo.png", alt: "Togo" },
                         { src: "/images/Benin.png", alt: "Benin" },
+                        { src: "/images/ivoryCoast.png", alt: "Ivory Coast" },
                       ].map((flag) => (
                         <div key={flag.alt} className="w-6 h-6 rounded-full overflow-hidden flex-shrink-0">
                           <Image
