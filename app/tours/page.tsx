@@ -134,6 +134,7 @@ export default function ToursPage() {
                         { src: "/images/Cameroon.png", alt: "Cameroon" },
                         { src: "/images/Togo.png", alt: "Togo" },
                         { src: "/images/Benin.png", alt: "Benin" },
+                        { src: "/images/ivoryCoast.png", alt: "Ivory Coast" },
                       ].map((flag) => (
                         <div key={flag.alt} className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0">
                           <Image

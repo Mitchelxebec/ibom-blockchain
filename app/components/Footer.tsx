@@ -9,6 +9,7 @@ export default function Footer() {
     { src: "/images/Cameroon.png", alt: "Cameroon" },
     { src: "/images/Togo.png", alt: "Togo" },
     { src: "/images/Benin.png", alt: "Benin" },
+    { src: "/images/ivoryCoast.png", alt: "Ivory Coast" },
   ];
 
   const date = new Date();
