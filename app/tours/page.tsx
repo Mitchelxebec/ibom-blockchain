@@ -163,9 +163,32 @@ export default function ToursPage() {
               ))}
             </div>
 
-            <p className="text-[#E87A12] font-semibold text-[15px] md:text-[17px] tracking-wide mt-2">
-              ★ Developers • Traders • Founders • Students • Creators
-            </p>
+            <div className="overflow-hidden w-full">
+              <div
+                style={{
+                  display: "flex",
+                  minWidth: "max-content",
+                  animation: "audience-scroll 12s linear infinite",
+                  willChange: "transform",
+                }}
+              >
+                {[...Array(6)].map((_, i) => (
+                  <span key={i} className="text-[#E87A12] font-semibold text-[15px] md:text-[17px] tracking-wide whitespace-nowrap mr-12">
+                    ★ Developers • Traders • Founders • Students • Creators
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <style>{`
+              @keyframes audience-scroll {
+                0%   { transform: translateX(0); }
+                100% { transform: translateX(-50%); }
+              }
+              @media (prefers-reduced-motion: reduce) {
+                .audience-scroll { animation: none !important; }
+              }
+            `}</style>
           </div>
         </div>
       </section>
