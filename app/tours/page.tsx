@@ -4,6 +4,8 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import CollaboratorsSection from "../components/Collaborators";
 import ToursNavbarScroll from "../components/ToursNavbarScroll";
+import TourComponentsSection from "../components/TourComponentsSection";
+import ToursHeroSection from "../components/ToursHeroSection";
 
 const ibx = "/images/IBX_logo.png";
 
@@ -12,53 +14,53 @@ const tourComponents = [
     category: "Blockchain Community Meetups & Campus Activations",
     heading: "Bringing blockchain conversations to communities and campuses across West Africa.",
     focus: "Grassroots awareness, student onboarding, and local community engagement.",
-    image: "/images/audienceattownhall.png",
+    image: "/images/photo1gallery.jpeg",
     alt: "Blockchain community meetup",
   },
   {
     category: "Developer, Builders & Web3 Education Campaigns",
     heading: "Equipping the next generation of African builders with Web3 skills and knowledge.",
     focus: "Workshops, hackathons, and hands-on developer training sessions.",
-    image: "/images/educationalpanel.png",
+    image: "/images/photo2gallery.jpeg",
     alt: "Developer education campaign",
   },
   {
     category: "Founder/Startup Engagements & Innovation Showcases",
     heading: "Spotlighting African blockchain startups and connecting founders to global opportunities.",
     focus: "Pitch sessions, startup showcases, and investor networking.",
-    image: "/images/communityhallvisit.png",
+    image: "/images/photo3gallery.jpeg",
     alt: "Founder and startup engagement",
   },
   {
     category: "Ecosystem Networking and Partnership Conversations",
     heading: "Forging cross-border partnerships between blockchain communities and ecosystem players.",
     focus: "B2B meetings, ecosystem roundtables, and strategic alliance building.",
-    image: "/images/marketplacedemo.png",
+    image: "/images/photo4gallery.jpeg",
     alt: "Ecosystem networking",
   },
   {
     category: "Media & Community Outreach",
     heading: "Amplifying the IBX story and West Africa's blockchain narrative across media channels.",
     focus: "Press coverage, social media activations, and community storytelling.",
-    image: "/images/card-image.jpg",
+    image: "/images/photo6gallery.jpeg",
     alt: "Media and community outreach",
   },
   {
     category: "Grassroots Blockchain Adoption Campaigns",
     heading: "Driving real-world crypto and blockchain adoption at the grassroots level.",
     focus: "Wallet creation, DeFi onboarding, and everyday blockchain use cases.",
-    image: "/images/photo1gallery.jpeg",
+    image: "/images/photo7gallery.jpeg",
     alt: "Grassroots blockchain adoption",
   },
 ];
 
 const galleryImages = [
-  "/images/embedded-img1.jpg",
-  "/images/embedded-img2.jpg",
-  "/images/embedded-img3.jpg",
-  "/images/embedded-img4.jpg",
-  "/images/embedded-img5.jpg",
-  "/images/embedded-img6.jpg",
+  "/images/heroimage1.jpeg",
+  "/images/heroimage2.jpeg",
+  "/images/heroimage3.jpeg",
+  "/images/heroimage4.jpeg",
+  "/images/heroimage5.jpeg",
+  "/images/heroimage6.jpeg",
 ];
 
 export default function ToursPage() {
@@ -80,44 +82,7 @@ export default function ToursPage() {
         />
       </ToursNavbarScroll>
 
-      {/* HERO SECTION */}
-      <section
-        className="min-h-screen flex items-center px-6 md:px-[60px] pt-[100px] pb-[60px] md:pt-0"
-        style={{ background: "url('/images/hero-bg.png') no-repeat center center / cover" }}
-      >
-        <div className="absolute inset-0 bg-black/60" />
-        <div className="relative z-10 max-w-[800px]">
-          <h1
-            className="text-[32px] md:text-[55px] font-black leading-[1.1] mb-5 text-white"
-            style={{ fontFamily: "var(--font-dt-getai)" }}
-          >
-            Empowering 100,000<br />
-            West Africans — The IBX<br />
-            2026 Tour Begins
-          </h1>
-          <p className="text-[15px] md:text-[18px] font-normal leading-[24px] text-white/90 mb-8 max-w-[680px]"
-            style={{ letterSpacing: "-0.015em" }}>
-            A 6-month West African campaign driving blockchain adoption, inclusion, and grassroots
-            innovation across Nigeria, Ghana, Cameroon, Togo, and Benin Republic.
-          </p>
-          <div className="flex flex-col md:flex-row gap-4 md:gap-[15px]">
-            <Link
-              href="https://ibx2026.eventcrib.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-[#ff8a2a] text-black font-semibold text-[14px] rounded-[6px] px-7 py-3 transition-all duration-300 hover:brightness-110 text-center"
-            >
-              Join the Movement
-            </Link>
-            <a
-              href="mailto:partnerships@ibomblockchain.com"
-              className="bg-white text-black font-semibold text-[14px] rounded-[6px] px-7 py-3 transition-all duration-300 hover:bg-gray-100 text-center"
-            >
-              Partner with Us
-            </a>
-          </div>
-        </div>
-      </section>
+      <ToursHeroSection />
 
       {/* VISION SECTION */}
       <section className="px-[39px] py-[39px] md:px-[60px] md:py-[60px]">
@@ -156,9 +121,32 @@ export default function ToursPage() {
                 "300+ Blockchain Communities",
                 "Thousands Of Participants",
               ].map((stat, i) => (
-                <div key={i} className="flex items-center gap-3">
-                  <span className="text-[#E87A12] text-[18px]">★</span>
-                  <p className="text-white font-semibold text-[16px] md:text-[18px] leading-[26px]">{stat}</p>
+                <div key={i} className="flex flex-col gap-2">
+                  <div className="flex items-center gap-3">
+                    <span className="text-[#E87A12] text-[18px]">★</span>
+                    <p className="text-white font-semibold text-[16px] md:text-[18px] leading-[26px]">{stat}</p>
+                  </div>
+                  {i === 0 && (
+                    <div className="flex gap-2 ml-7">
+                      {[
+                        { src: "/images/Nigeria.png", alt: "Nigeria" },
+                        { src: "/images/Ghana.png", alt: "Ghana" },
+                        { src: "/images/Cameroon.png", alt: "Cameroon" },
+                        { src: "/images/Togo.png", alt: "Togo" },
+                        { src: "/images/Benin.png", alt: "Benin" },
+                      ].map((flag) => (
+                        <div key={flag.alt} className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0">
+                          <Image
+                            src={flag.src}
+                            alt={flag.alt}
+                            width={32}
+                            height={32}
+                            className="object-cover w-full h-full"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
@@ -208,38 +196,7 @@ export default function ToursPage() {
         </div>
       </div>
 
-      {/* TOUR COMPONENTS GRID */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[15px] mx-[30px] mb-[30px]">
-        {tourComponents.map((item, i) => (
-          <article
-            key={i}
-            className="bg-white text-[#111] rounded-[14px] overflow-hidden flex flex-col shadow-[0_18px_40px_rgba(0,0,0,0.65)] border border-black/20"
-          >
-            {/* Image */}
-            <div className="m-[10px] rounded-[20px] overflow-hidden h-[200px] md:h-[300px] bg-[#efefef] border border-black/6">
-              <Image
-                src={item.image}
-                alt={item.alt}
-                width={800}
-                height={300}
-                className="w-full h-full object-cover grayscale hover:scale-[1.03] transition-transform duration-500"
-              />
-            </div>
-            {/* Body */}
-            <div className="px-[18px] py-[16px] pb-[20px] flex flex-col gap-[6px]">
-              <span className="text-[11px] text-[#8f8f8f] uppercase tracking-[1px] font-semibold">
-                {item.category}
-              </span>
-              <h3 className="text-[15px] md:text-[16px] font-bold text-[#111] leading-[1.28]">
-                {item.heading}
-              </h3>
-              <p className="text-[#6f6f6f] text-[14px] font-normal">
-                <strong className="text-[#111]">Focus:</strong> {item.focus}
-              </p>
-            </div>
-          </article>
-        ))}
-      </div>
+      <TourComponentsSection items={tourComponents} />
 
       {/* COLLABORATORS */}
       <section className="bg-black py-12 overflow-hidden">
@@ -269,7 +226,7 @@ export default function ToursPage() {
             className="text-[1.8rem] md:text-[2.3rem] font-normal text-white"
             style={{ fontFamily: "var(--font-dt-getai)" }}
           >
-            Gallery of Last Tour
+            Our Last Tour
           </h2>
           <Link
             href="/gallery"

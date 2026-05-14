@@ -16,13 +16,13 @@ const col1 = [
 ];
 
 const col2 = [
-  "/images/photo11gallery.png",
-  "/images/photo12gallery.png",
-  "/images/photo13gallery.png",
-  "/images/photo14gallery.png",
-  "/images/photo15gallery.png",
-  "/images/photo16gallery.png",
-  "/images/photo17gallery.png",
+  "/images/heroimage1.jpeg",
+  "/images/heroimage2.jpeg",
+  "/images/heroimage3.jpeg",
+  "/images/heroimage4.jpeg",
+  "/images/heroimage5.jpeg",
+  "/images/heroimage6.jpeg",
+  "/images/heroimage7.jpeg",
   "/images/photo18gallery.png",
   "/images/photo19gallery.png",
   "/images/photo20gallery.png",

@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import GalleryColumns from "../components/GalleryColumns";
 
 const ibx = "/images/IBX_logo.png";
@@ -45,8 +44,6 @@ export default function GalleryPage() {
 
         </div>
       </section>
-
-      <Footer />
     </div>
   );
 }
