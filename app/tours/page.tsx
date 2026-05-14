@@ -40,14 +40,14 @@ const tourComponents = [
     category: "Media & Community Outreach",
     heading: "Amplifying the IBX story and West Africa's blockchain narrative across media channels.",
     focus: "Press coverage, social media activations, and community storytelling.",
-    image: "/images/audienceattownhall.png",
+    image: "/images/card-image.jpg",
     alt: "Media and community outreach",
   },
   {
     category: "Grassroots Blockchain Adoption Campaigns",
     heading: "Driving real-world crypto and blockchain adoption at the grassroots level.",
     focus: "Wallet creation, DeFi onboarding, and everyday blockchain use cases.",
-    image: "/images/educationalpanel.png",
+    image: "/images/photo1gallery.jpeg",
     alt: "Grassroots blockchain adoption",
   },
 ];
@@ -226,18 +226,14 @@ export default function ToursPage() {
               className="text-[34px] md:text-[56px] font-black leading-[0.95] text-white"
               style={{ fontFamily: "var(--font-dt-getai)", letterSpacing: "-0.02em" }}
             >
-              Our Collaborators
+              Powered By Communities
             </h2>
-            <a
-              href="mailto:partnerships@ibomblockchain.com"
-              className="bg-[#ff8a2a] text-[#111] font-bold px-[18px] py-[10px] rounded-[12px] text-[1rem] cursor-pointer transition-all duration-150 hover:-translate-y-1 hover:shadow-[0_12px_28px_rgba(255,138,42,0.16)] shrink-0"
-            >
-              Become a Sponsor
-            </a>
           </div>
+          <p className="text-[#d1d1d1] text-[16px] leading-[1.6] max-w-[900px] mb-1 opacity-95">
+            The strength of the IBX Tour lies in the communities driving it forward.
+          </p>
           <p className="text-[#d1d1d1] text-[16px] leading-[1.6] max-w-[900px] mb-4 opacity-95">
-            We are proud to partner with these industry leaders who share our passion for discovery
-            and help make our expeditions possible.
+            From local blockchain hubs and campus communities to developers, creators, founders, and ecosystem leaders, the movement is built by the people shaping Africa&apos;s decentralized future.
           </p>
         </div>
         <CollaboratorsSection />
@@ -250,7 +246,7 @@ export default function ToursPage() {
             className="text-[1.8rem] md:text-[2.3rem] font-normal text-white"
             style={{ fontFamily: "var(--font-dt-getai)" }}
           >
-            Gallery
+            Gallery of Last Tour
           </h2>
           <Link
             href="/gallery"
@@ -290,33 +286,6 @@ export default function ToursPage() {
           </div>
         </div>
 
-        {/* CTA Block */}
-        <div className="bg-[#181818] mx-[2vw] mt-11 py-8 rounded-[0.7rem] flex justify-center">
-          <div className="text-center">
-            <p
-              className="text-[#ff7e23] font-bold text-[1.25rem] mb-3"
-              style={{ fontFamily: "var(--font-dt-getai)" }}
-            >
-              Join the Movement
-            </p>
-            <Image
-              src={ibx}
-              alt="IBX Logo"
-              width={120}
-              height={44}
-              className="mx-auto my-3"
-              style={{ height: "44px", width: "auto" }}
-            />
-            <Link
-              href="/success"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block mx-auto bg-[#ff7e23] text-black font-medium text-[1.01rem] px-7 py-[0.6rem] rounded-[6px] hover:brightness-110 transition w-fit"
-            >
-              Register Now
-            </Link>
-          </div>
-        </div>
       </section>
 
       <Footer />

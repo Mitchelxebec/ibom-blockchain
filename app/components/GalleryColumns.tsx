@@ -3,13 +3,13 @@
 import Image from "next/image";
 
 const col1 = [
-  "/images/photo1gallery.png",
-  "/images/photo2gallery.png",
-  "/images/photo3gallery.png",
-  "/images/photo4gallery.png",
+  "/images/photo1gallery.jpeg",
+  "/images/photo2gallery.jpeg",
+  "/images/photo3gallery.jpeg",
+  "/images/photo4gallery.jpeg",
   "/images/photo5gallery.png",
-  "/images/photo6gallery.png",
-  "/images/photo7gallery.png",
+  "/images/photo6gallery.jpeg",
+  "/images/photo7gallery.jpeg",
   "/images/photo8gallery.png",
   "/images/photo9gallery.png",
   "/images/photo10gallery.png",

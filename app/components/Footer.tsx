@@ -42,17 +42,18 @@ export default function Footer() {
             {/* Tagline */}
             <div className="max-w-md">
               <h3 className="font-display text-[18px] md:text-[20px] font-bold leading-6.5 md:leading-7 mb-4">
-                Experience the next wave of innovation.
-                <br />
-                Secure your place among the leaders.
+                Africa&apos;s Blockchain Movement Is Already In Motion
               </h3>
+              <p className="text-gray-400 text-[14px] md:text-[15px] leading-[22px] mb-5">
+                Join the Global partners driving blockchain adoption and ecosystem expansion across West Africa through the IBX Tour.
+              </p>
 
-              {/* Learn More Button */}
+              {/* CTA Button */}
               <a
-                href="/success"
-                className="border border-white text-white px-6 py-2 rounded-lg text-sm font-medium hover:bg-white hover:text-black transition inline-block"
+                href="mailto:partnerships@ibomblockchain.com"
+                className="bg-[#E87A12] text-black px-6 py-2 rounded-lg text-sm font-bold hover:bg-[#f68924] transition inline-block"
               >
-                Register Now
+                Become A Partner
               </a>
             </div>
           </div>
