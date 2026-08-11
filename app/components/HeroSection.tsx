@@ -6,7 +6,7 @@ export default function HeroSection() {
   return (
     <section className="relative h-screen flex items-end justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/95 z-10"></div>
+        <div className="absolute inset-0 bg-linear-to-b from-black/70 via-black/60 to-black/95 z-10"></div>
         <video
           autoPlay
           loop
@@ -19,7 +19,7 @@ export default function HeroSection() {
         </video>
       </div>
 
-      <div className="relative z-20 px-6 md:px-16 w-full max-w-[1280px] mx-auto pb-20 md:pb-24">
+      <div className="relative z-20 px-6 md:px-16 w-full max-w-7xl mx-auto pb-20 md:pb-24">
         <div className="w-full max-w-full md:max-w-[702px] flex flex-col gap-6 md:gap-8">
           <h1 className="font-[DM Sans] text-[40px] md:text-[56px] lg:text-[64px] font-black leading-tight md:leading-[64px] lg:leading-[72px] tracking-[-0.01em] text-white">
             West Africa's Largest <span className="text-[#E87A12]">Blockchain</span> Movement
@@ -38,7 +38,7 @@ export default function HeroSection() {
             </Link>
 
             <Link
-              href="/tours"
+              href="/maintenance"
               className="text-white font-[DM Sans] font-bold text-[14px] md:text-[16px] border-2 border-white rounded-lg px-6 md:px-8 py-3 md:py-3.5 transition-all duration-300 hover:bg-white/10 hover:scale-105"
             >
               IBX Tour

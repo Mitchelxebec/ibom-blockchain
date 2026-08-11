@@ -16,7 +16,7 @@ export default function GalleryPage() {
         extraLinks={[
           { label: "About Us", href: "/maintenance" },
           { label: "IBX 26", href: "/ibx26" },
-          { label: "IBX Tour", href: "/tours" },
+          { label: "IBX Tour", href: "/maintenance" },
         ]}
       />
 

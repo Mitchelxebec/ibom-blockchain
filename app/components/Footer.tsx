@@ -45,7 +45,7 @@ export default function Footer() {
               <h3 className="font-display text-[18px] md:text-[20px] font-bold leading-6.5 md:leading-7 mb-4">
                 Africa&apos;s Blockchain Movement Is Already In Motion
               </h3>
-              <p className="text-gray-400 text-[14px] md:text-[15px] leading-[22px] mb-5">
+              <p className="text-gray-400 text-[14px] md:text-[15px] leading-5.5 mb-5">
                 Join the Global partners driving blockchain adoption and ecosystem expansion across West Africa through the IBX Tour.
               </p>
 
@@ -79,7 +79,7 @@ export default function Footer() {
             </div>
             <div>
               <Link
-                href="/tours"
+                href="/maintenance"
                 className="font-sans text-[14px] md:text-[16px] font-normal hover:text-orange-500 transition"
               >
                 IBX Tour
